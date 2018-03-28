@@ -1,6 +1,17 @@
 /*General*/
 a {outline-style:none;}
 
+.payTone{
+    font-family: 'Paytone One', sans-serif;
+}
+
+body {
+    font-family: 'Paytone One', sans-serif;
+}
+/*Menu*/
+  
+/*Menu end*/
+
 /*sidebar*/
 .sidepanel {height: 100vh; position: fixed; z-index: 10; background: rgba(0,0,0,.1);}
 .sidepanel.full {width: 100vw;}
