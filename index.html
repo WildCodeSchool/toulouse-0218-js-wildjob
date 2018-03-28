@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+       #map {
+        height: 800px;
+        width: 100%;
+       }
+    </style>
+  </head>
+  <body>
+    <h3>WILDJOB</h3>
+    <div id="map"></div>
+    <div id="legend"><h3>Legend</h3></div>
+
+    <script>
+      function initMap() {
+        const wildcodeschool = {lat: 43.601433, lng: 1.442133};
+        let map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 10,
+          center: wildcodeschool
+        });
+        let marker = new google.maps.Marker({
+          position: wildcodeschool,
+          map: map
+        });
+
+
+
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwC__7psOPTWbszU21xZvnsFL2XdrrpZk &callback=initMap ">
+    </script>
+  </body>
+</html>
