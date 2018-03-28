@@ -16,20 +16,35 @@
           <div id="legend"><h3>Legend</h3></div>
         </div>
       </div>
+    </div>    
+    <div class="container">
+      <div class="row">
+        <input type="checkbox" id="clickMe"/>
+        <div class="col-5 col-sm-4 col-md-3 col-lg-2 filter">
+          <label for="clickMe"><div class="arrow"></div></label>
+        </div>
+      </div>
+      <div class="row">
+        <label for="clickMe">
+          <div class="btnFilter">
+            <div class="reduce"></div>
+            <div class="full"></div>
+          </div>
+        </label>
+      </div>
     </div>
-
     <script>
-      function initMap() {
-        const wildcodeschool = {lat: 43.601433, lng: 1.442133};
-        let map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 10,
-          center: wildcodeschool
-        });
-        let marker = new google.maps.Marker({
-          position: wildcodeschool,
-          map: map
-        });
-      }
+        function initMap() {
+          const wildcodeschool = {lat: 43.601433, lng: 1.442133};
+          let map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 10,
+            center: wildcodeschool
+          });
+          let marker = new google.maps.Marker({
+            position: wildcodeschool,
+            map: map
+          });
+        }
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwC__7psOPTWbszU21xZvnsFL2XdrrpZk &callback=initMap "></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

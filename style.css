@@ -4,3 +4,55 @@
     background-color: grey;
     border:1px solid black;
 }
+.filter{
+    position:fixed;
+    top:0;
+    right:-260px;    
+    height:100vh;
+    background-color:#000000;
+    transition:right 100ms ease-out;
+    z-index:10;
+}
+.arrow{
+    position:absolute;
+    left:15px;
+    bottom:15px;
+    width:20px;
+    height:20px;
+}
+.arrow:hover{
+    background-color:#888888;
+}
+.btnFilter{
+    position:fixed;
+    right:-80px;
+    bottom:0;
+    width:100px;
+    transition:transform 100ms ease-out;
+}
+.reduce{
+    position:absolute;
+    top:0;
+    left:0;
+    width:20px;
+    background-color:#ff0000;
+}
+.full{
+    position:absolute;
+    top:0;
+    right:0;
+    width:80px;
+    background-color:#00ff00;
+}
+.btnFilter, .reduce, .full{
+    height:50px;
+}
+.btnFilter:hover{
+    transform:translate(-80px);
+}
+#clickMe{
+    display:none;
+}
+#clickMe:checked ~ .filter{
+    right:0px;
+}
