@@ -1,3 +1,22 @@
+/*sidebar*/
+.sidepanel {height: 100vh; position: fixed; z-index: 10; background: rgba(0,0,0,.1);}
+.sidepanel.full {width: 100vw;}
+.sidemenu:hover { background: #000; transition: all .3s ease-in-out;}
+.sidemenu { padding: 20px 10px; border-right: 1px solid rgba(255,255,255,.1); height: 100vh; position: fixed; top: 0; left: 0; width: 57px;  z-index: 2;  }
+.sidemenu nav {position: fixed; left: 0; top: 0; -webkit-transform-origin: left top;
+  -webkit-transform:rotate(-90deg) translateX(-100%);}
+.sidemenu nav ul { margin: 10px 30px 10px 10px;}
+.sidemenu nav li { float:left; height:100%; margin: 0 15px; font-family: 'gtl', helvetica, arial, serif;}
+.sidemenu nav li a { cursor: pointer; -webkit-font-smoothing: antialiased; font-size: 19px; color: #b1b0b0; letter-spacing: 1px; position: relative; display: block; transform: translate3d(0,0,0);}
+.sidemenu nav li a::before {content: ""; position: absolute; bottom :0; left: 0; width: 0; height: 2px; background: #fff; opacity: 0; transition: all .3s cubic-bezier(0.46, 0, 0.07, 1);}
+.sidemenu nav li a:hover::before { width: 100%;  opacity: 1; }
+.sidemenu nav li a.panselect::before {content: ""; position: absolute; bottom :0; left: 0; width: 100%;  opacity: 1; height: 2px; background: #fff; transition: all .3s cubic-bezier(0.46, 0, 0.07, 1);}
+.sidemenu .social { padding: 20px 5px; position: absolute; bottom: 0px ; left: 10px;}
+.sidemenu .social a { display: block; width: 100%; margin-bottom: 5px; opacity: .7;}
+.sidemenu .social a:hover { opacity: .5;}
+.sidemenu .social img { width: 24px;}
+
+/*sidebar end*/
 .map{
     width: 100%;
     height: 800px;
