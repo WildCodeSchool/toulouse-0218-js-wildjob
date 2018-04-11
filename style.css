@@ -9,6 +9,10 @@ a {
 body {
     font-family: 'Paytone One', sans-serif;
 }
+
+h3 {
+    margin-top: 1rem;
+}
 /*General end*/
 
 /*Menu*/
@@ -222,3 +226,10 @@ body {
     right:0px;
 }
 /*filter end*/
+
+/*form admin*/
+.form-group{
+    margin-bottom: 0.5rem;
+}
+
+/*form admin end*/
