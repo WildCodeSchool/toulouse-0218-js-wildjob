@@ -1,119 +1,118 @@
 <!DOCTYPE html>
 <html lang="fr">    
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <title>Wild Job</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-    crossorigin="anonymous" />
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css?family=Paytone+One" rel="stylesheet">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Wild Job</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Paytone+One" rel="stylesheet">
+  </head>
 
-<body class="payTone">
-  <!--map-->
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-12">
-        <div id="map"></div>
-        <div id="legend"><h3>Legend</h3></div>
+  <body class="payTone">
+    <!--map-->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 map">
+          <!--filter-->
+          <div class="row">
+            <input type="checkbox" id="clickMe"/>
+            <div class="col-5 col-sm-4 col-md-3 col-lg-2 filter">
+              <div class="mask">
+                <label for="clickMe"><div class="arrow"></div></label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <label for="clickMe">
+              <div class="btnFilter">
+                <div class="reduce"></div>
+                <div class="full"></div>
+              </div>
+            </label>
+          </div>
+          <!--filter end-->
+          <div id="map"></div>
+          <div id="legend"><h3>Legend</h3></div>
+        </div>
       </div>
     </div>
-  </div>
-  <!--map end-->
+    <!--map end-->
 
-  <!--Main menu-->
-  <div class="container-fluid">
-    <div class="row">
-      <input type="checkbox" id="smashMe"/>
-      <label for="smashMe"><div class="btnBurger"></div></label>
-      <div class="menu">
-        <a href="#" class="kesako">kesako?!</a>
-        <a href="#" class="ecole">L'école</a>
-      <div>      
-    </div>
-  </div>
-  <!--Main menu end-->
+    <!--Main menu-->
+    <div class ="container">
+      <div class="row">
+        <input type="checkbox" id="smashMe"/>
+        <label for="smashMe"><div class="btnBurger"></div></label>
+        <div class="menu">
+          <a href="#" class="kesako">kesako?!</a>
+          <a href="#" class="ecole">L'école</a>
+        </div>      
+      </div>
+    </div>  
+    <!--Main menu end-->
 
-  <!--sidebar-->
-  <div class="container">
-    <div class="row">
-      <div class="sidepanel">
-        <div class="sidemenu">
-          <nav>
-            <ul>
-              <li>
-                <a class="payTone" href="#">entreprises</a>
-              </li>
-              <li>
-                <a class="payTone" href="#">écosystème</a>
-              </li>
-            </ul>
-          </nav>
-          <div class="social">
-            <a href="https://www.facebook.com/wildcodeschool" target="_blank">
-              <img src="img/SocialMediaIcons/Facebook/Facebook.png" alt="">
-            </a>
-            <a href="https://www.instagram.com/wildcodeschool/" target="_blank">
-              <img src="img/SocialMediaIcons/Instagram/Instagram.png" alt="">
-            </a>
-            <a href="https://www.linkedin.com/school/10387519/?pathWildcard=10387519" target="_blank">
-              <img src="img/SocialMediaIcons/LinkedIn/LinkedIn.png" alt="">
-            </a>
-            <a href="https://twitter.com/wildcodeschool" target="_blank">
-              <img src="img/SocialMediaIcons/Twitter/Twitter.png" alt="">
-            </a>
-            <a href="https://www.youtube.com/channel/UCi99G_0QPx5sYsK8zdvQzfw" target="_blank">
-              <img src="img/SocialMediaIcons/Youtube/Youtube.png" alt="">
-            </a>
+    <!--sidebar-->
+    <div class="container">
+      <div class="row">
+        <div class="sidepanel">
+          <div class="sidemenu">
+            <nav>
+              <ul>
+                <li>
+                  <a class="payTone" href="#">entreprises</a>
+                </li>
+                <li>
+                  <a class="payTone" href="#">écosystème</a>
+                </li>
+              </ul>
+            </nav>
+            <div class="social">
+              <a href="https://www.facebook.com/wildcodeschool" target="_blank">
+                <img src="img/SocialMediaIcons/Facebook/Facebook.png" alt="">
+              </a>
+              <a href="https://www.instagram.com/wildcodeschool/" target="_blank">
+                <img src="img/SocialMediaIcons/Instagram/Instagram.png" alt="">
+              </a>
+              <a href="https://www.linkedin.com/school/10387519/?pathWildcard=10387519" target="_blank">
+                <img src="img/SocialMediaIcons/LinkedIn/LinkedIn.png" alt="">
+              </a>
+              <a href="https://twitter.com/wildcodeschool" target="_blank">
+                <img src="img/SocialMediaIcons/Twitter/Twitter.png" alt="">
+              </a>
+              <a href="https://www.youtube.com/channel/UCi99G_0QPx5sYsK8zdvQzfw" target="_blank">
+                <img src="img/SocialMediaIcons/Youtube/Youtube.png" alt="">
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <!--sidebar end-->
+    <!--sidebar end-->
 
-  <!--filter-->
-  <div class="container">
-    <div class="row">
-      <input type="checkbox" id="clickMe"/>
-      <div class="col-5 col-sm-4 col-md-3 col-lg-2 filter">
-        <label for="clickMe"><div class="arrow"></div></label>
-      </div>
-    </div>
-    <div class="row">
-      <label for="clickMe">
-        <div class="btnFilter">
-          <div class="reduce"></div>
-          <div class="full"></div>
-        </div>
-      </label>
-    </div>
-  </div>
-  <!--filter end-->
-
-  <!--script map-->
-  <script>
-      function initMap() {
-        const wildcodeschool = {lat: 43.601433, lng: 1.442133};
-        let map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 10,
-          center: wildcodeschool
-        });
-        let marker = new google.maps.Marker({
-          position: wildcodeschool,
-          map: map
-        });
-      }
-  </script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwC__7psOPTWbszU21xZvnsFL2XdrrpZk &callback=initMap "></script>
-  <!--script map end-->
-  
-  <!--script bootstrap-->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <!--script bootstrap end-->
-</body>
+    <!--script map-->
+    <script>
+        function initMap() {
+          const wildcodeschool = {lat: 43.601433, lng: 1.442133};
+          let map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 10,
+            center: wildcodeschool
+          });
+          let marker = new google.maps.Marker({
+            position: wildcodeschool,
+            map: map
+          });
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwC__7psOPTWbszU21xZvnsFL2XdrrpZk &callback=initMap "></script>
+    <!--script map end-->
+    
+    <!--script bootstrap-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!--script bootstrap end-->
+  </body>
 
 </html>
