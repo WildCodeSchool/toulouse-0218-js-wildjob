@@ -17,6 +17,19 @@ h3{
 }
 /*General end*/
 
+/*Accueil*/
+.fondAccueil{
+    width:100vw;
+    height:100vh;
+    padding:0;
+}
+.logo{
+    position:absolute;
+    top:calc(50% - 151px);
+    left:calc(50% - 224.5px)
+}
+/*Accueil end*/
+
 /*Menu*/
 .menu{
     position:fixed;
@@ -26,7 +39,7 @@ h3{
     height:40vh;
     background-color:black;
     transition:top 100ms ease-out;
-    z-index:11;
+    z-index:20;
 }
 .btnBurger{
     position:fixed;
@@ -36,7 +49,7 @@ h3{
     height:60px;
     background-color:red;
     transition:background-color 100ms ease-out;
-    z-index:12;
+    z-index:30;
 }
 #smashMe{
     display:none;
@@ -57,7 +70,7 @@ h3{
     color:#ffffff;
 }
 .menu a:hover{
-    color:#00ff00;
+    color:#93238d;
 }
 .kesako{
     right:210px;
@@ -71,7 +84,7 @@ h3{
 .sidepanel {
     height: 100vh;
     position: fixed;
-    z-index: 10;
+    z-index: 30;
     background: rgba(0,0,0,.1);
 }
 .sidepanel.full {
@@ -83,13 +96,11 @@ h3{
 }
 .sidemenu { 
     padding: 20px 10px;
-    border-right: 1px solid rgba(255,255,255,.1);
     height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
     width: 57px;
-    z-index: 2;
 }
 .sidemenu nav {
     position: fixed;
@@ -110,7 +121,7 @@ h3{
 .sidemenu nav li a {
      cursor: pointer;
      -webkit-font-smoothing: antialiased;
-     font-size: 19px; color: #b1b0b0;
+     font-size: 19px; color: #93238d;
      letter-spacing: 1px;
      position: relative;
      display: block;
@@ -122,7 +133,7 @@ h3{
     left: 0;
     width: 0;
     height: 2px;
-    background: #fff;
+    background: #ce85ca;
     opacity: 0;
     transition: all .3s cubic-bezier(0.46, 0, 0.07, 1);
 }
@@ -141,7 +152,7 @@ h3{
     width: 100%;
     opacity: 1;
     height: 2px;
-    background: #fff;
+    background: #9e559a;
     transition: all .3s cubic-bezier(0.46, 0, 0.07, 1);
 }
 .sidemenu .social {
@@ -169,6 +180,7 @@ h3{
 /*map*/
 .map{
     position:relative;
+    width:100vw;
     height:100vh;
     border:1px solid black;
 }
@@ -179,12 +191,10 @@ h3{
     width: 100%;
     height: 100%;
 }
-
+/*map end*/
 
 /*legend*/
-
 #legend {
-
     font-family: Arial, sans-serif;
     background: #fff ;
     padding: 10px;
@@ -198,9 +208,10 @@ h3{
 #legend img {
     vertical-align: middle;
     }
-
-
-/*map end*/
+.espaceMarqueurs{
+    margin:5px 0;
+}
+/*legend*/
 
 /*filter*/
 .filter{
@@ -232,7 +243,7 @@ h3{
     right:0;
     bottom:10px;
     width:20px;
-    z-index:9;
+    z-index:5;
     
 }
 .reduce{
