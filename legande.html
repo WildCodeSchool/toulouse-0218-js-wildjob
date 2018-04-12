@@ -11,17 +11,19 @@
   <div class ="legend"><h3>Legend</h3></div>
 
 <body>
+
+
+
   <script>
+
+
+
+
       //--> Configuration de l'icône personnalisée
-var image = {
+const image = {
     // Adresse de l'icône personnalisée
-    url: 'toulouse-0218-js-wildjob/img/marqeurs/marqeur entreprise.png',
-    // Taille de l'icône personnalisée
-    size: new google.maps.Size(25, 40),
-    // Origine de l'image, souvent (0, 0)
-    origin: new google.maps.Point(0,0),
-    // L'ancre de l'image. Correspond au point de l'image que l'on raccroche à la carte. Par exemple, si votre îcone est un drapeau, cela correspond à son mâts
-    anchor: new google.maps.Point(0, 20)
+    url: 'https://s18.postimg.cc/v88ksi3vd/marqeurschool.png',
+
 };
 
 
@@ -34,7 +36,8 @@ var image = {
         });
         let image = new google.maps.Marker({
           position: wildcodeschool,
-          map: map
+          map: map,
+          icon: image
         });
 
       }
