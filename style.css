@@ -166,6 +166,27 @@ body {
     background-color: grey;
     border:1px solid black;
 }
+
+
+/*legend*/
+
+#legend {
+
+    font-family: Arial, sans-serif;
+    background: #fff ;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 5px 5px 3px grey;
+    /*border: 3px solid #000;*/
+    }
+#legend h3 {
+    margin-top: 0;
+    }
+#legend img {
+    vertical-align: middle;
+    }
+
+
 /*map end*/
 
 /*filter*/
