@@ -12,6 +12,9 @@ body {
 label{
     margin:0;
 }
+h3{
+    margin-top: 1rem;
+}
 /*General end*/
 
 /*Menu*/
@@ -242,3 +245,10 @@ label{
     display:contents;
 }
 /*filter end*/
+
+/*form admin*/
+.form-group{
+    margin-bottom: 0.5rem;
+}
+
+/*form admin end*/
