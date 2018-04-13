@@ -1,5 +1,5 @@
 /*General*/
-a {
+a{
     outline-style:none;
 }
 
@@ -29,8 +29,10 @@ h3{
 }
 .logoAccueil{
     position:absolute;
-    top:calc(50% - 151px);
-    left:calc(50% - 224.5px)
+    top:33.25%;
+    left:35%;
+    width:30%;
+    height:38.5%;
 }
 /*Accueil end*/
 
@@ -47,8 +49,8 @@ h3{
 }
 .btnBurger{
     position:fixed;
-    top:30px;
-    right:60px;
+    top:40px;
+    right:44px;
     width:60px;
     height:60px;
     background-color:red;
@@ -64,17 +66,28 @@ h3{
 #smashMe:checked ~ label .btnBurger{
     background-color:green;
 }
-.menu a{
+.menu a:not(.logoMenu){
     position:absolute;
     bottom:10px;
     width:200px;
     font-size:28pt;
     text-align:center;
     text-decoration:none;
-    color:#ffffff;
+    color:#93238d;
+}
+.logoMenu{
+    position:absolute;
+    top:calc(50% - 67.26px);
+    left:2%;
+    width:200px;
+    height:134.52px;
+}
+.logoMenu img{
+    width:100%;
+    height:100%;
 }
 .menu a:hover{
-    color:#93238d;
+    color:#9353a0;
 }
 .kesako{
     right:210px;
@@ -88,7 +101,7 @@ h3{
 .sidepanel {
     height: 100vh;
     position: fixed;
-    z-index: 30;
+    z-index: 10;
     background: rgba(0,0,0,.1);
 }
 .sidepanel.full {
@@ -137,7 +150,7 @@ h3{
     left: 0;
     width: 0;
     height: 2px;
-    background: #ce85ca;
+    background: #9353a0;
     opacity: 0;
     transition: all .3s cubic-bezier(0.46, 0, 0.07, 1);
 }
@@ -156,7 +169,7 @@ h3{
     width: 100%;
     opacity: 1;
     height: 2px;
-    background: #9e559a;
+    background: #fff;
     transition: all .3s cubic-bezier(0.46, 0, 0.07, 1);
 }
 .sidemenu .social {
@@ -199,21 +212,36 @@ h3{
 
 /*legend*/
 #legend {
+    width:140px;
+    max-height:175px;
     font-family: Arial, sans-serif;
     background: #fff ;
-    padding: 10px;
-    margin: 10px;
+    padding:0;
+    margin-right: 10px;
     box-shadow: 5px 5px 3px grey;
-    /*border: 3px solid #000;*/
-    }
+}
 #legend h3 {
-    margin-top: 0;
-    }
-#legend img {
-    vertical-align: middle;
-    }
-.espaceMarqueurs{
-    margin:5px 0;
+    margin:0;
+}
+.elementLegend{
+    padding:0 0 0 25px;
+    min-width:calc(10% + 25px)
+}
+.elementLegend:last-child{
+    padding-left:20px;
+}
+.containerLabelLegend{
+    display:flex;
+    max-width:60%;
+}
+.marqueursLegend{
+    width:25px;
+    min-width:25px;
+    margin:5px 0 5px calc(50% - 12.5px);
+}
+.labelLegend{
+    font-size:12pt;
+    margin:auto 0;
 }
 /*legend*/
 
@@ -232,6 +260,12 @@ h3{
 .mask{
     display:none;
 }
+.mask h1{
+    position:absolute;
+    top:130px;
+    left:15px;
+    color:#9353a0;
+}
 .arrow{
     position:absolute;
     left:15px;
@@ -244,33 +278,35 @@ h3{
 }
 .btnFilter{
     position:absolute;
-    right:0;
-    bottom:10px;
-    width:20px;
-    z-index:5;
-    
+    right:10px;
+    bottom:127px;
+    width:28px;
+    height:50px;
+    background-color:red;
+    border-radius:2px;
+    z-index:5;    
 }
-.reduce{
+/* .reduce{
     position:absolute;
     top:0;
     left:0;
     width:20px;
     background-color:red;
-}
-.full{
+} */
+/* .full{
     position:absolute;
     top:0;
     right:0;
     width:0;
     background-color:green;
     transition:width 100ms ease-out;
-}
-.btnFilter, .reduce, .full{
+} */
+/* .btnFilter, .reduce, .full{
     height:50px;
-}
-.btnFilter:hover .full{
+} */
+/* .btnFilter:hover .full{
     width:80px;
-}
+} */
 #clickMe{
     display:none;
 }
@@ -286,5 +322,4 @@ h3{
 .form-group{
     margin-bottom: 0.5rem;
 }
-
 /*form admin end*/
