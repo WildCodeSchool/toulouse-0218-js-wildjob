@@ -32,6 +32,7 @@
               <input type="checkbox" id="clickMe"/>
               <div class="col-5 col-sm-4 col-md-3 col-lg-2 filter">
                 <div class="mask">
+                  <h1>Filtres:</h1>
                   <label for="clickMe"><div class="arrow"></div></label>
                 </div>
               </div>
@@ -47,7 +48,13 @@
           </div>
           <!--filter end-->
           <div id="map"></div>
-          <div id="legend"><h3>Légende</h3></div>
+          <div id="legend" class="container" style="top:438px;">
+            <div class="row">
+              <div class="col-12 elementLegend">
+                <h3>Légende:</h3>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -59,6 +66,7 @@
         <input type="checkbox" id="smashMe"/>
         <label for="smashMe"><div class="btnBurger"></div></label>
         <div class="menu">
+          <a href="#" class="logoMenu"><img alt="logo" src="img/LOGOFINI.png"/></a>
           <a href="#" class="kesako">kesako?!</a>
           <a href="#" class="ecole">L'école</a>
         </div>      
@@ -74,10 +82,10 @@
             <nav>
               <ul>
                 <li>
-                  <a class="payTone" href="#">entreprises</a>
+                  <a class="payTone" href="#">écosystème</a>
                 </li>
                 <li>
-                  <a class="payTone" href="#">écosystème</a>
+                  <a class="payTone" href="#">entreprises</a>
                 </li>
               </ul>
             </nav>
@@ -135,14 +143,14 @@
             icon: iconBase + 'marqeurschool.png'
           },
           library: {
-            name: 'Entreprises',
+            name: 'Entreprise',
             icon: iconBase + 'marqeurentreprise.png'
           },
           info: {
             name: 'Incubateur',
             icon: iconBase + 'marqeurincubateur.png'
           }
-          };
+        };
 
       let images = {
           // Adresse de l'icône personnalisée
@@ -170,7 +178,13 @@
           var name = type.name;
           var icon = type.icon;
           var div = document.createElement('div');
-          div.innerHTML = '<img class="espaceMarqueurs" src="' + icon + '"> ' + name;
+          div.className = "row"
+          div.innerHTML = `<div class="col-2 elementLegend">
+            <img class="marqueursLegend" src="${icon}">
+          </div>
+          <div class="col-10 containerLabelLegend elementLegend">
+            <p class="labelLegend">${name}</p>
+          </div>`;
           legend.appendChild(div);
         }
 
