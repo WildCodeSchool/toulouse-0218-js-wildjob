@@ -19,11 +19,15 @@ const indexHtml = /* @html */ `
 <body class="payTone">
   <div id="main"></div>
 
+  <!-- script google maps cle API -->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwC__7psOPTWbszU21xZvnsFL2XdrrpZk "></script>
+  <!-- script google maps cle API end -->
+
   <!-- script dynamique -->
   <script src="page.js"></script>
   <script src="app.js"></script>
-
   <!-- script dynamique end -->
+
   <!--script bootstrap-->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
