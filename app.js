@@ -102,7 +102,7 @@ const mapHtml = /* @html */`
   <!--script map end-->`
 
 const adminHtml = /* @html */`
-  <div class="container">
+<div class="container">
   <h1>Interface admin</h1>
   <h3>Modifier une entreprise/ecole</h3>
   <div class="form-row">
@@ -113,57 +113,62 @@ const adminHtml = /* @html */`
     <button class="btn btn-primary col-1" type="submit">Submit</button>
   </div>
   <h3>Créer une entreprise/ecole</h3>
-      <form>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="inputName">Nom de l'entreprise</label>
-            <input type="text" class="form-control" id="inputName" placeholder="Nom">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="inputEmail4">Email</label>
-            <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="inputWebsite">Site</label>
-            <input type="text" class="form-control" id="inputWebsite" placeholder="www.">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="inputPhone">Téléphone</label>
-            <input type="text" class="form-control" id="inputPhone">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-8">
-            <label for="inputAddress">Addresse</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-          </div>
-          <div class="form-group col-md-4">
-            <label for="inputCity">Ville</label>
-            <input type="text" class="form-control" id="inputCity">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="inputType">Type d'entreprise</label>
-            <select id="inputType" class="form-control">
-              <option selected>Type...</option>
-              <option>ESN</option>
-              <option>Start Up</option>
-              <option>Editeur</option>
-              <option>Autre</option>
-            </select>
-          </div>
-          <div class="form-group col-md-6">
-            <label for="inputContact">Contact</label>
-            <input type="text" class="form-control" id="inputContact" placeholder="Nom du contact">
-            </div>
-          </div>
-          <button type="submit" class="btn btn-primary">Create</button>
-        </div>
-        <div class="form-group col-md-6">
-          <a href="/"><button type="submit" class="btn btn-primary">exit</button></a>
-        </div>
-      </form>
+  <form>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputName">Nom de l'entreprise</label>
+        <input type="text" class="form-control" id="inputName" placeholder="Nom">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Email</label>
+        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputWebsite">Site</label>
+        <input type="text" class="form-control" id="inputWebsite" placeholder="www.">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputPhone">Téléphone</label>
+        <input type="text" class="form-control" id="inputPhone">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-8">
+        <label for="inputAddress">Addresse</label>
+        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputCity">Ville</label>
+        <input type="text" class="form-control" id="inputCity">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputType">Type d'entreprise</label>
+        <select id="inputType" class="form-control">
+          <option selected>Type...</option>
+          <option>ESN</option>
+          <option>Start Up</option>
+          <option>Editeur</option>
+          <option>Autre</option>
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputContact">Contact</label>
+        <input type="text" class="form-control" id="inputContact" placeholder="Nom du contact">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <button type="submit" class="btn btn-primary">Create</button>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <a href="/"><button id="exitAdmin" type="button" class="btn btn-primary">Exit</button></a>
+      </div>
+    </div>
+  </form>
 </div>`
 
 const notFoundHtml = `<img src="https://fab404.com/wp-content/uploads/2009/06/simpsoncrazy404.jpg" alt="">`
