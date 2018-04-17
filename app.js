@@ -174,8 +174,9 @@ const notFoundHtml = `<img src="https://fab404.com/wp-content/uploads/2009/06/si
 const mainDiv = document.getElementById('main')
 mainDiv.innerHTML = mapHtml
 
-function initMap() {
+function initMap(markers) {
   const wildcodeschool = {lat: 43.601433, lng: 1.442133};
+
   //info bulle
     const contentString = '<div id="content">'+
     '<div id="Wildcode School Toulouse">'+
@@ -218,6 +219,14 @@ function initMap() {
       zoom: 10,
       center: wildcodeschool
     });
+    for ( let m of markers){
+      let marker = new google.maps.Marker({
+        position: m,
+        map: map,
+        title: m.title,
+        icon: images
+      });
+    }
   let marker = new google.maps.Marker({
     position: wildcodeschool,
     map: map,
@@ -250,8 +259,15 @@ function initMap() {
 
 
 const showHome = () => {
-  mainDiv.innerHTML = mapHtml
-  initMap()
+  fetch ('/markers.json')
+  .then(function(response){
+    return response.json()
+  })
+  .then( markers => {
+     mainDiv.innerHTML = mapHtml
+    initMap(markers)
+  })
+
 }
 
 const showAdmin = () => {
