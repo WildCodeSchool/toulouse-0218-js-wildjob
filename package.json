@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/WildCodeSchool/toulouse-0218-js-wildjob/issues"
   },
-  "homepage": "https://github.com/WildCodeSchool/toulouse-0218-js-wildjob#readme"
+  "homepage": "https://github.com/WildCodeSchool/toulouse-0218-js-wildjob#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
 }
