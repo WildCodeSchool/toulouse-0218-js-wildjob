@@ -1,7 +1,14 @@
 const express = require('express')
+const path = require('path')
 const app = express()
-
-app.use(express.static(__dirname))
+// console.log(__dirname)
+// console.log(path.normalize(__dirname+'/../../../Documents'))
+// Node ne va pas comprendre un chemin du type
+// /home/wilder/Documents/projet2/toulouse-0218-js-wildjob/back/../public
+// Il faut transformer ça en
+// /home/wilder/Documents/projet2/toulouse-0218-js-wildjob/public
+const staticPath = path.normalize(`${__dirname}/../public`)
+app.use(express.static(staticPath))
 
 const indexHtml = /* @html */ `
 <!DOCTYPE html>
