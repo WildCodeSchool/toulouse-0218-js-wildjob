@@ -74,7 +74,7 @@ const mapHtml = /* @html */`
           </ul>
         </nav>
         <div class="social">
-          <a href="admin.html">
+          <a href="admin">
             <img src="img/SocialMediaIcons/Admi/admicouleur.png" alt"">
           </a>
           <a href="https://www.facebook.com/wildcodeschool" target="_blank">
