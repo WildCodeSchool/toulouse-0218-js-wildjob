@@ -49,4 +49,4 @@ app.get('*', (req, res) => {
 })
 
 app.listen(3000)
-console.log('WASSUP BROOOOO ?!?!')
+console.log('WASSUP BROOOOO ?!?! \nListening on http://localhost:3000')
