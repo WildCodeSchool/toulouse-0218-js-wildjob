@@ -1,4 +1,5 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 const path = require('path')
 const app = express()
 // console.log(__dirname)
@@ -9,6 +10,7 @@ const app = express()
 // /home/wilder/Documents/projet2/toulouse-0218-js-wildjob/public
 const staticPath = path.normalize(`${__dirname}/../public`)
 app.use(express.static(staticPath))
+app.use(bodyParser.json())
 
 const indexHtml = /* @html */ `
 <!DOCTYPE html>
@@ -27,7 +29,7 @@ const indexHtml = /* @html */ `
   <div id="main"></div>
 
   <!-- script google maps cle API -->
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwC__7psOPTWbszU21xZvnsFL2XdrrpZk "></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwC__7psOPTWbszU21xZvnsFL2XdrrpZk "></script>
   <!-- script google maps cle API end -->
 
   <!-- script dynamique -->
@@ -46,6 +48,13 @@ const indexHtml = /* @html */ `
 
 app.get('*', (req, res) => {
   res.send(indexHtml)
+})
+
+app.post("/contact", (req, res) => {
+  console.log(req.body)
+  res.json({
+    success: true
+  })
 })
 
 app.listen(3000)

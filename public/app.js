@@ -111,33 +111,33 @@ const adminHtml = /* @html */`
     <button class="btn btn-primary col-1" type="submit">Submit</button>
   </div>
   <h3>Créer une entreprise/ecole</h3>
-  <form>
+  <form id="form-post" method="POST" action="/contact">
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="inputName">Nom de l'entreprise</label>
-        <input type="text" class="form-control" id="inputName" placeholder="Nom">
+        <input type="text" name="name" class="form-control" id="inputName" placeholder="Nom">
       </div>
       <div class="form-group col-md-6">
         <label for="inputEmail4">Email</label>
-        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+        <input type="email" name="email" class="form-control" id="inputEmail4" placeholder="Email">
       </div>
       <div class="form-group col-md-6">
         <label for="inputWebsite">Site</label>
-        <input type="text" class="form-control" id="inputWebsite" placeholder="www.">
+        <input type="text" name="site" class="form-control" id="inputWebsite" placeholder="www.">
       </div>
       <div class="form-group col-md-6">
         <label for="inputPhone">Téléphone</label>
-        <input type="text" class="form-control" id="inputPhone">
+        <input type="text" name="telephone" class="form-control" id="inputPhone">
       </div>
     </div>
     <div class="form-row">
       <div class="form-group col-md-8">
         <label for="inputAddress">Addresse</label>
-        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+        <input type="text" name="adresse" class="form-control" id="inputAddress" placeholder="1234 Main St">
       </div>
       <div class="form-group col-md-4">
         <label for="inputCity">Ville</label>
-        <input type="text" class="form-control" id="inputCity">
+        <input type="text" name="ville" class="form-control" id="inputCity">
       </div>
     </div>
     <div class="form-row">
@@ -257,6 +257,7 @@ function initMap(markers) {
   map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
 }
 
+// appel HTML
 
 const showHome = () => {
   fetch ('/markers.json')
@@ -272,11 +273,37 @@ const showHome = () => {
 
 const showAdmin = () => {
   mainDiv.innerHTML = adminHtml
+  const formPost = document.getElementById("form-post")
+  formPost.addEventListener("submit", event => {
+    let data = {}
+    event.preventDefault()
+    const inputs = formPost.getElementsByTagName("input")
+    for(input of inputs){
+      if(input.name !== ""){
+        data[input.name] = input.value
+      }
+    }
+    const body = JSON.stringify(data)
+
+    fetch("/contact", {
+      method: "POST",
+      body: body,
+      headers: {
+        Accept:"application.json",
+        "Content-Type": "application/json"
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+    })
+  })
 }
 
 const notFound = () => {
   mainDiv.innerHTML = notFoundHtml
 }
+
 
 page("/", showHome)
 page("/admin", showAdmin)
