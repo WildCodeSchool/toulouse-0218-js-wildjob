@@ -30,10 +30,29 @@ h3{
 }
 .logoAccueil{
     position:absolute;
-    top:33.25%;
-    left:35%;
-    width:30%;
-    height:38.5%;
+    top:40px;
+    left:100px;
+    width:10%;
+    height:auto;
+    filter: drop-shadow(5px 5px 5px black);
+    z-index: 30;
+}
+.texteAccueil{
+    position:absolute;
+    text-align: right;
+    font-size: 4em;
+    color: white;
+    top: 60%;
+    right: 40px;
+    max-width:90%;
+    z-index: 30;
+}
+.texteAccueil span{
+  color:white;
+  transition: color 200ms ease-out;
+}
+.texteAccueil:hover span{
+  color: #93238d;
 }
 /*Accueil end*/
 
@@ -49,12 +68,12 @@ h3{
     z-index:20;
 }
 .btnBurger{
-    position:fixed;
+    position:absolute;
     top:44px;
     right:40px;
     width:40px;
     height:40px;
-    background-image:url("img/burger/BURGER.png");
+    background-image:url("img/burger/burger2.png");
     background-size:contain;
     background-repeat:no-repeat;
     z-index:30;
@@ -66,38 +85,28 @@ h3{
     top:0;
 }
 #smashMe:checked ~ label .btnBurger{
-    background-image:url("img/burger/retourhaut.png");
+    background-image:url("img/burger/ferme.png");
     background-size:contain;
     background-repeat:no-repeat;
 }
 .menu a:not(.logoMenu){
     position:absolute;
-    bottom:10px;
     width:200px;
-    font-size:28pt;
-    text-align:center;
+    font-size:28pt;;
     text-decoration:none;
     color:#93238d;
 }
-.logoMenu{
-    position:absolute;
-    top:calc(50% - 67.26px);
-    left:2%;
-    width:200px;
-    height:134.52px;
-}
-.logoMenu img{
-    width:100%;
-    height:100%;
-}
+
 .menu a:hover{
     color:#9353a0;
 }
-.kesako{
-    right:210px;
+.administrateur{
+    right:130px;
+    bottom:10px;
 }
 .ecole{
-    right:10px;
+    right:130px;
+    bottom: 50px;
 }
 /*Menu end*/
 
@@ -115,7 +124,7 @@ h3{
     background: #000;
     transition: all .3s ease-in-out;
 }
-.sidemenu { 
+.sidemenu {
     padding: 20px 10px;
     height: 100vh;
     position: fixed;
@@ -283,14 +292,12 @@ h3{
 }
 .btnFilter{
     position:absolute;
-    right:10px;
-    bottom:202px;
-    width:28px;
-    height:50px;
-    background-color:#ffffff;
-    border-radius:2px;
+    right:40px;
+    bottom:25Opx;
+    width:70px;
+    height:auto;
     padding:15px 8px;
-    z-index:5;    
+    z-index:5;
 }
 #clickMe{
     display:none;

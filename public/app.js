@@ -6,6 +6,10 @@ const mapHtml = /* @html */`
     <div class="col-12 accueil">
       <img class="fondAccueil" alt="accueil" src="img/fond-fini.png"/>
       <img class="logoAccueil" alt="logo" src="img/LOGOFINI.png"/>
+      <div class="texteAccueil">
+        <p>94% des élèves formés à la Wild Code School sont en stage/emploi
+          <span>un mois après la fin de leur formation de développeur</span></p>
+      </div>
     </div>
   </div>
 </div>
@@ -22,12 +26,12 @@ const mapHtml = /* @html */`
           <div class="col-5 col-sm-4 col-md-3 col-lg-2 filter">
             <div class="mask">
               <h1>Filtres:</h1>
-              <label for="clickMe"><img class="arrow" alt="retour" src="img/burger/retourbas.png"/></label>
+              <label for="clickMe"><img class="arrow" alt="retour" src="img/burger/ferme.png"/></label>
             </div>
           </div>
         </div>
         <div class="row">
-          <label for="clickMe"><img class="btnFilter" alt="ouvrir" src="img/burger/TRIANGLE.png"/></label>
+          <label for="clickMe"><img class="btnFilter" alt="ouvrir" src="img/burger/flechegauche.png"/></label>
         </div>
       </div>
       <!--filter end-->
@@ -50,9 +54,8 @@ const mapHtml = /* @html */`
     <input type="checkbox" id="smashMe"/>
     <label for="smashMe"><div class="btnBurger"></div></label>
     <div class="menu">
-      <a href="#" class="logoMenu"><img alt="logo" src="img/LOGOFINI.png"/></a>
-      <a href="#" class="kesako">kesako?!</a>
       <a href="#" class="ecole">L'école</a>
+      <a href="admin" class="administrateur">Administrateur</a>
     </div>
   </div>
 </div>
@@ -74,9 +77,6 @@ const mapHtml = /* @html */`
           </ul>
         </nav>
         <div class="social">
-          <a href="admin">
-            <img src="img/SocialMediaIcons/Admi/admicouleur.png" alt"">
-          </a>
           <a href="https://www.facebook.com/wildcodeschool" target="_blank">
             <img src="img/SocialMediaIcons/Facebook/Facebook.png" alt="">
           </a>
