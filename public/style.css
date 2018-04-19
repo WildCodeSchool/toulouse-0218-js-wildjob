@@ -293,10 +293,9 @@ h3{
 .btnFilter{
     position:absolute;
     right:40px;
-    bottom:25Opx;
     width:70px;
     height:auto;
-    padding:15px 8px;
+    padding:20px 8px;
     z-index:5;
 }
 #clickMe{
