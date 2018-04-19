@@ -27,7 +27,7 @@ const indexHtml = /* @html */ `
   <div id="main"></div>
 
   <!-- script google maps cle API -->
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwC__7psOPTWbszU21xZvnsFL2XdrrpZk "></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwC__7psOPTWbszU21xZvnsFL2XdrrpZk "></script>
   <!-- script google maps cle API end -->
 
   <!-- script dynamique -->
