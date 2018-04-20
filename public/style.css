@@ -115,7 +115,7 @@ h3{
     background: #000;
     transition: all .3s ease-in-out;
 }
-.sidemenu { 
+.sidemenu {
     padding: 20px 10px;
     height: 100vh;
     position: fixed;
@@ -200,12 +200,12 @@ h3{
 
 /*map*/
 .map{
-    position:absolute;
+    /* position:absolute;
     left:57px;
     max-width:calc(100% - 57px);
     height:100vh;
     border:1px solid black;
-    padding:0;
+    padding:0; */
 }
 #map{
     position:absolute;
@@ -290,7 +290,7 @@ h3{
     background-color:#ffffff;
     border-radius:2px;
     padding:15px 8px;
-    z-index:5;    
+    z-index:5;
 }
 #clickMe{
     display:none;

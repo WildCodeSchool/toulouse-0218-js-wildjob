@@ -1,20 +1,32 @@
 
-const mapHtml = /* @html */`
+const mapHtml = /* @html */ `
 <!--accueil-->
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-12 accueil">
-      <img class="fondAccueil" alt="accueil" src="img/fond-fini.png"/>
-      <img class="logoAccueil" alt="logo" src="img/LOGOFINI.png"/>
+
+
+<div id="fullpage">
+  <div class="section">
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 accueil">
+          <img class="fondAccueil" alt="accueil" src="img/fond-fini.png"/>
+          <img class="logoAccueil" alt="logo" src="img/LOGOFINI.png"/>
+        </div>
+      </div>
     </div>
+
   </div>
-</div>
+
 <!--accueil end-->
 
 <!--map-->
+
+<div class="section">
+
+<!--
 <div class="container-fluid">
   <div class="row">
-    <div class="col-12 map">
+    <div class="col-12 map"> -->
       <!--filter-->
       <div class="container">
         <div class="row">
@@ -39,9 +51,16 @@ const mapHtml = /* @html */`
           </div>
         </div>
       </div>
-    </div>
+    <!-- </div>
   </div>
+
+  </div> -->
+
 </div>
+
+
+</div>
+
 <!--map end-->
 
 <!--Main menu-->
@@ -97,6 +116,7 @@ const mapHtml = /* @html */`
     </div>
   </div>
 </div>
+
 <!--sidebar end-->`
 
 const adminHtml = /* @html */`
@@ -265,6 +285,9 @@ const showHome = () => {
   })
   .then( markers => {
      mainDiv.innerHTML = mapHtml
+     $('#fullpage').fullpage({
+       scrollingSpeed: 500
+ });
     initMap(markers)
   })
 
