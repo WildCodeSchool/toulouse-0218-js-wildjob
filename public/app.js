@@ -1,7 +1,6 @@
 
 // accueil
 const accueil = texte => /* @html */`
-
 <div class="container-fluid">
   <div class="row">
     <div class="col-12 accueil">
