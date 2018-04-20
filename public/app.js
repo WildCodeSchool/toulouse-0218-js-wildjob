@@ -1,25 +1,32 @@
 
-const mapHtml = /* @html */`
-<!--accueil-->
+// accueil
+const accueil = texte => /* @html */`
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-12 accueil">
       <img class="fondAccueil" alt="accueil" src="img/fond-fini.png"/>
       <img class="logoAccueil" alt="logo" src="img/LOGOFINI.png"/>
       <div class="texteAccueil">
-        <p>94% des élèves formés à la Wild Code School sont en stage/emploi
-          <span>un mois après la fin de leur formation de développeur</span></p>
+        <p>${texte}</p>
       </div>
     </div>
   </div>
-</div>
-<!--accueil end-->
+</div>`
 
-<!--map-->
+const texteEntreprise = `94% des élèves formés à la Wild Code School sont en stage/emploi
+                          <span>un mois après la fin de leur formation de développeur</span>`
+
+const texteEco = `La Wild Code School est une école de code
+                    <span>dont chaque campus est connecté à son écosystème local</span>`
+// accueil end
+
+const mapHtml = /* @html */`
+// map
 <div class="container-fluid">
   <div class="row">
     <div class="col-12 map">
-      <!--filter-->
+      // filter
       <div class="container">
         <div class="row">
           <input type="checkbox" id="clickMe"/>
@@ -34,7 +41,7 @@ const mapHtml = /* @html */`
           <label for="clickMe"><img class="btnFilter" alt="ouvrir" src="img/burger/flechegauche.png"/></label>
         </div>
       </div>
-      <!--filter end-->
+      // filter end
       <div id="map"></div>
       <div id="legend" class="container" style="right:40px;">
         <div class="row">
@@ -46,22 +53,22 @@ const mapHtml = /* @html */`
     </div>
   </div>
 </div>
-<!--map end-->
+// map end
 
-<!--Main menu-->
+// Main menu
 <div class ="container">
   <div class="row">
     <input type="checkbox" id="smashMe"/>
     <label for="smashMe"><div class="btnBurger"></div></label>
     <div class="menu">
-      <a href="#" class="ecole">L'école</a>
+      <a href="https://wildcodeschool.fr/" class="ecole" target="_blank">L'école</a>
       <a href="admin" class="administrateur">Administrateur</a>
     </div>
   </div>
 </div>
-<!--Main menu end-->
+// Main menu end
 
-<!--sidebar-->
+// sidebar
 <div class="container">
   <div class="row">
     <div class="sidepanel">
@@ -69,10 +76,10 @@ const mapHtml = /* @html */`
         <nav>
           <ul>
             <li>
-              <a class="payTone" href="#">écosystème</a>
+              <a class="payTone" href="/eco">écosystème</a>
             </li>
             <li>
-              <a class="payTone" href="#">entreprises</a>
+              <a class="payTone" href="/">entreprises</a>
             </li>
           </ul>
         </nav>
@@ -97,7 +104,7 @@ const mapHtml = /* @html */`
     </div>
   </div>
 </div>
-<!--sidebar end-->`
+// sidebar end`
 
 const adminHtml = /* @html */`
 <div class="container">
@@ -193,7 +200,7 @@ function initMap(markers) {
   let infowindow = new google.maps.InfoWindow({
     content: contentString
   });
-  //--> Configuration de l'icône personnalisée
+  // Configuration de l'icône personnalisée
   let iconBase = 'https://sylvainkosc.github.io/marqeurs/';
   let icons = {
     school: {
@@ -264,10 +271,20 @@ const showHome = () => {
     return response.json()
   })
   .then( markers => {
-     mainDiv.innerHTML = mapHtml
+     mainDiv.innerHTML = accueil(texteEntreprise) + mapHtml
     initMap(markers)
   })
+}
 
+const showEco = () => {
+  fetch ('/markers.json')
+  .then(function(response){
+    return response.json()
+  })
+  .then( markers => {
+     mainDiv.innerHTML = accueil(texteEco) + mapHtml
+    initMap(markers)
+  })
 }
 
 const showAdmin = () => {
@@ -279,6 +296,7 @@ const notFound = () => {
 }
 
 page("/", showHome)
+page("/eco", showEco)
 page("/admin", showAdmin)
 page("*", notFound)
 
