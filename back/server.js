@@ -1,6 +1,9 @@
 
 const express = require('express')
+const bodyParser = require('body-parser')
 const path = require('path')
+const fetch = require('node-fetch')
+
 const app = express()
 // console.log(__dirname)
 // console.log(path.normalize(__dirname+'/../../../Documents'))
@@ -10,6 +13,7 @@ const app = express()
 // /home/wilder/Documents/projet2/toulouse-0218-js-wildjob/public
 const staticPath = path.normalize(`${__dirname}/../public`)
 app.use(express.static(staticPath))
+app.use(bodyParser.json())
 
 const indexHtml = /* @html */ `
 <!DOCTYPE html>
@@ -47,6 +51,20 @@ const indexHtml = /* @html */ `
 
 app.get('*', (req, res) => {
   res.send(indexHtml)
+})
+
+app.post("/contact", (req, res) => {
+  const geocoderQuery = `${req.body.adresse} ${req.body.ville}`.replace(/ /g, '+')
+  fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${geocoderQuery}&key=AIzaSyCwC__7psOPTWbszU21xZvnsFL2XdrrpZk`)
+    .then(res => res.json())
+    .then(json => {
+      console.log(req.body)
+      res.json(
+        json
+      )
+      let coord = json.results["0"].geometry.location
+      console.log(coord)
+    })
 })
 
 app.listen(3000)
