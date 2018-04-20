@@ -22,11 +22,11 @@ const texteEco = `La Wild Code School est une école de code
 // accueil end
 
 const mapHtml = /* @html */`
-// map
+<!--map-->
 <div class="container-fluid">
   <div class="row">
     <div class="col-12 map">
-      // filter
+      <!-- filter-->
       <div class="container">
         <div class="row">
           <input type="checkbox" id="clickMe"/>
@@ -41,7 +41,7 @@ const mapHtml = /* @html */`
           <label for="clickMe"><img class="btnFilter" alt="ouvrir" src="img/burger/flechegauche.png"/></label>
         </div>
       </div>
-      // filter end
+      <!-- filter end-->
       <div id="map"></div>
       <div id="legend" class="container" style="right:40px;">
         <div class="row">
@@ -53,9 +53,9 @@ const mapHtml = /* @html */`
     </div>
   </div>
 </div>
-// map end
+<!--map end-->
 
-// Main menu
+<!--Main menu-->
 <div class ="container">
   <div class="row">
     <input type="checkbox" id="smashMe"/>
@@ -66,9 +66,9 @@ const mapHtml = /* @html */`
     </div>
   </div>
 </div>
-// Main menu end
+<!-- Main menu end-->
 
-// sidebar
+<!-- sidebar-->
 <div class="container">
   <div class="row">
     <div class="sidepanel">
@@ -104,7 +104,7 @@ const mapHtml = /* @html */`
     </div>
   </div>
 </div>
-// sidebar end`
+<!-- sidebar end-->`
 
 const adminHtml = /* @html */`
 <div class="container">
@@ -200,7 +200,7 @@ function initMap(markers) {
   let infowindow = new google.maps.InfoWindow({
     content: contentString
   });
-  // Configuration de l'icône personnalisée
+  //Configuration de l'icône personnalisée
   let iconBase = 'https://sylvainkosc.github.io/marqeurs/';
   let icons = {
     school: {
@@ -218,7 +218,7 @@ function initMap(markers) {
   };
 
   let images = {
-    // Adresse de l'icône personnalisée
+    //Adresse de l'icône personnalisée
     url: 'https://sylvainkosc.github.io/marqeurs/marqeurschool.png'
   };
   let map = new google.maps.Map(document.getElementById('map'),
