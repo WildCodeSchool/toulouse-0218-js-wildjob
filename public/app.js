@@ -1,16 +1,20 @@
 
-// accueil
-const accueil = texte => /* @html */`
+const mapHtml = /* @html */ `
+<!--accueil-->
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-12 accueil">
-      <img class="fondAccueil" alt="accueil" src="img/fond-fini.png"/>
-      <img class="logoAccueil" alt="logo" src="img/LOGOFINI.png"/>
-      <div class="texteAccueil">
-        <p>${texte}</p>
+
+<div id="fullpage">
+  <div class="section">
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 accueil">
+          <img class="fondAccueil" alt="accueil" src="img/fond-fini.png"/>
+          <img class="logoAccueil" alt="logo" src="img/LOGOFINI.png"/>
+        </div>
       </div>
     </div>
+
   </div>
 </div>`
 
@@ -23,6 +27,10 @@ const texteEco = `La Wild Code School est une école de code
 
 const mapHtml = /* @html */`
 <!--map-->
+
+<div class="section">
+
+<!--
 <div class="container-fluid">
   <div class="row">
     <div class="col-12 map">
@@ -50,9 +58,16 @@ const mapHtml = /* @html */`
           </div>
         </div>
       </div>
-    </div>
+    <!-- </div>
   </div>
+
+  </div> -->
+
 </div>
+
+
+</div>
+
 <!--map end-->
 
 <!--Main menu-->
@@ -104,7 +119,8 @@ const mapHtml = /* @html */`
     </div>
   </div>
 </div>
-<!-- sidebar end-->`
+
+<!--sidebar end-->`
 
 const adminHtml = /* @html */`
 <div class="container">
@@ -272,7 +288,10 @@ const showHome = () => {
     return response.json()
   })
   .then( markers => {
-     mainDiv.innerHTML = accueil(texteEntreprise) + mapHtml
+     mainDiv.innerHTML = mapHtml
+     $('#fullpage').fullpage({
+       scrollingSpeed: 500
+ });
     initMap(markers)
   })
 }

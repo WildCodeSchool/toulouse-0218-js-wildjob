@@ -209,12 +209,12 @@ h3{
 
 /*map*/
 .map{
-    position:absolute;
+    /* position:absolute;
     left:57px;
     max-width:calc(100% - 57px);
     height:100vh;
     border:1px solid black;
-    padding:0;
+    padding:0; */
 }
 #map{
     position:absolute;
@@ -292,10 +292,13 @@ h3{
 }
 .btnFilter{
     position:absolute;
-    right:40px;
-    width:70px;
-    height:auto;
-    padding:20px 8px;
+    right:10px;
+    bottom:202px;
+    width:28px;
+    height:50px;
+    background-color:#ffffff;
+    border-radius:2px;
+    padding:15px 8px;
     z-index:5;
 }
 #clickMe{
