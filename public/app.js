@@ -59,7 +59,12 @@ const mapHtml = /* @html */`
 <div class ="container">
   <div class="row">
     <input type="checkbox" id="smashMe"/>
-    <label for="smashMe"><div class="btnBurger"></div></label>
+    <label for="smashMe">
+      <div class="btnBurger">
+        <img src="img/burger/Rectangle 1.png" class="btnBurger1" alt="icone burger">
+        <img src="img/burger/Rectangle 1.png" class="btnBurger2" alt="icone burger">
+      </div>
+    </label>
     <div class="menu">
       <a href="https://wildcodeschool.fr/" class="ecole" target="_blank">L'école</a>
       <a href="admin" class="administrateur">Administrateur</a>
