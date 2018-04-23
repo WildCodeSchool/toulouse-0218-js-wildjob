@@ -1,6 +1,6 @@
 
 // accueil
-const accueil = texte => /* @html */`
+const accueilEntreprise = /* @html */`
 
 <div class="container-fluid">
   <div class="row">
@@ -8,17 +8,28 @@ const accueil = texte => /* @html */`
       <img class="fondAccueil" alt="accueil" src="img/fond-fini.png"/>
       <img class="logoAccueil" alt="logo" src="img/LOGOFINI.png"/>
       <div class="texteAccueil">
-        <p>${texte}</p>
+        <p>94% des élèves formés à la Wild Code School sont en stage/emploi
+        <span>un mois après la fin de leur formation de développeur</span></p>
       </div>
     </div>
   </div>
 </div>`
 
-const texteEntreprise = `94% des élèves formés à la Wild Code School sont en stage/emploi
-                          <span>un mois après la fin de leur formation de développeur</span>`
 
-const texteEco = `La Wild Code School est une école de code
-                    <span>dont chaque campus est connecté à son écosystème local</span>`
+const accueilEco = /* @html */`
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 accueil">
+      <img class="fondAccueil" alt="accueil" src="img/fond-fini.png"/>
+      <img class="logoAccueil" alt="logo" src="img/LOGOFINI.png"/>
+      <div class="texteAccueil">
+        <p>La Wild Code School est une école de code
+        <span>dont chaque campus est connecté à son écosystème local</span></p>
+      </div>
+    </div>
+  </div>
+</div>`
 // accueil end
 
 const mapHtml = /* @html */`
@@ -277,7 +288,7 @@ const showHome = () => {
     return response.json()
   })
   .then( markers => {
-     mainDiv.innerHTML = accueil(texteEntreprise) + mapHtml
+     mainDiv.innerHTML = accueilEntreprise + mapHtml
     initMap(markers)
   })
 }
@@ -288,7 +299,7 @@ const showEco = () => {
     return response.json()
   })
   .then( markers => {
-     mainDiv.innerHTML = accueil(texteEco) + mapHtml
+     mainDiv.innerHTML = accueilEco + mapHtml
     initMap(markers)
   })
 }
