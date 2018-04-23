@@ -1,69 +1,74 @@
 
 // accueil
-const accueilEntreprise = /* @html */`
+const texteEcosysteme = `La Wild Code School est une école de code
+  <span>dont chaque campus est connecté à son écosystème local</span>`
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-12 accueil">
-      <img class="fondAccueil" alt="accueil" src="img/fond-fini.png"/>
-      <img class="logoAccueil" alt="logo" src="img/LOGOFINI.png"/>
-      <div class="texteAccueil">
-        <p>94% des élèves formés à la Wild Code School sont en stage/emploi
-        <span>un mois après la fin de leur formation de développeur</span></p>
+  let texteEntreprise = `94% des élèves formés à la Wild Code School sont en stage/emploi
+  <span>un mois après la fin de leur formation de développeur</span>`
+
+
+
+const accueil = texte => /* @html */`
+<div id="fullpage">
+  <div class="section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 accueil">
+          <img class="fondAccueil" alt="accueil" src="img/fond-fini.png"/>
+          <img class="logoAccueil" alt="logo" src="img/LOGOFINI.png"/>
+          <div class="texteAccueil">
+            <p>${texte}</p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>`
+  </div>`
 
 
-const accueilEco = /* @html */`
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-12 accueil">
-      <img class="fondAccueil" alt="accueil" src="img/fond-fini.png"/>
-      <img class="logoAccueil" alt="logo" src="img/LOGOFINI.png"/>
-      <div class="texteAccueil">
-        <p>La Wild Code School est une école de code
-        <span>dont chaque campus est connecté à son écosystème local</span></p>
-      </div>
-    </div>
-  </div>
-</div>`
-// accueil end
 
-const mapHtml = /* @html */`
-<!--map-->
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-12 map">
-      <!-- filter-->
-      <div class="container">
-        <div class="row">
-          <input type="checkbox" id="clickMe"/>
-          <div class="col-5 col-sm-4 col-md-3 col-lg-2 filter">
-            <div class="mask">
-              <h1>Filtres:</h1>
-              <label for="clickMe"><img class="arrow" alt="retour" src="img/burger/ferme.png"/></label>
+  // accueil end
+
+  const mapHtml = /* @html */`
+  <!--map-->
+  <div class="section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 map">
+          <!-- filter -->
+          <div class="container">
+            <div class="row">
+              <input type="checkbox" id="clickMe"/>
+              <div class="col-5 col-sm-4 col-md-3 col-lg-2 filter">
+                <div class="mask">
+                  <h1>Filtres:</h1>
+                  <label for="clickMe"><img class="arrow" alt="retour" src="img/burger/ferme.png"/></label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <label for="clickMe"><img class="btnFilter" alt="ouvrir" src="img/burger/flechegauche.png"/></label>
+            </div>
+          </div>
+          <!-- filter end-->
+          <div id="map"></div>
+          <div id="legend" class="container" style="right:40px;">
+            <div class="row">
+              <div class="col-12 elementLegend">
+                <h3>Légende:</h3>
+              </div>
             </div>
           </div>
         </div>
-        <div class="row">
-          <label for="clickMe"><img class="btnFilter" alt="ouvrir" src="img/burger/flechegauche.png"/></label>
-        </div>
       </div>
-      <!-- filter end-->
-      <div id="map"></div>
-      <div id="legend" class="container" style="right:40px;">
-        <div class="row">
-          <div class="col-12 elementLegend">
-            <h3>Légende:</h3>
-          </div>
-        </div>
-      </div>
+
     </div>
+
   </div>
+
+
 </div>
+
 <!--map end-->
 
 <!--Main menu-->
@@ -120,7 +125,7 @@ const mapHtml = /* @html */`
     </div>
   </div>
 </div>
-<!-- sidebar end-->`
+    <!--sidebar end-->`
 
 const adminHtml = /* @html */`
 <div class="container">
@@ -133,27 +138,27 @@ const adminHtml = /* @html */`
     </div>
     <button class="btn btn-primary col-1" type="submit">Submit</button>
   </div>
-  <h3>Créer une entreprise/ecole</h3>
-  <form id="form-post" method="POST" action="/contact">
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="inputName">Nom de l'entreprise</label>
-        <input type="text" name="name" class="form-control" id="inputName" placeholder="Nom">
+    <h3>Créer une entreprise/ecole</h3>
+    <form id="form-post" method="POST" action="/contact">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputName">Nom de l'entreprise</label>
+          <input type="text" name="name" class="form-control" id="inputName" placeholder="Nom">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputEmail4">Email</label>
+          <input type="email" name="email" class="form-control" id="inputEmail4" placeholder="Email">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputWebsite">Site</label>
+          <input type="text" name="site" class="form-control" id="inputWebsite" placeholder="www.">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputPhone">Téléphone</label>
+          <input type="text" name="telephone" class="form-control" id="inputPhone">
+        </div>
       </div>
-      <div class="form-group col-md-6">
-        <label for="inputEmail4">Email</label>
-        <input type="email" name="email" class="form-control" id="inputEmail4" placeholder="Email">
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputWebsite">Site</label>
-        <input type="text" name="site" class="form-control" id="inputWebsite" placeholder="www.">
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputPhone">Téléphone</label>
-        <input type="text" name="telephone" class="form-control" id="inputPhone">
-      </div>
-    </div>
-    <div class="form-row">
+      <div class="form-row">
       <div class="form-group col-md-8">
         <label for="inputAddress">Addresse</label>
         <input type="text" name="adresse" class="form-control" id="inputAddress" placeholder="1234 Main St">
@@ -195,13 +200,13 @@ const adminHtml = /* @html */`
 const notFoundHtml = `<img src="https://fab404.com/wp-content/uploads/2009/06/simpsoncrazy404.jpg" alt="">`
 
 const mainDiv = document.getElementById('main')
-mainDiv.innerHTML = mapHtml
+  mainDiv.innerHTML = mapHtml
 
 function initMap(markers) {
   const wildcodeschool = {lat: 43.601433, lng: 1.442133};
 
   //info bulle
-    const contentString = '<div id="content">'+
+  const contentString = '<div id="content">'+
     '<div id="Wildcode School Toulouse">'+
     '</div>'+
     '<h1 id="firstHeading" class="firstHeading"Wildcode School</h1>'+
@@ -223,25 +228,25 @@ function initMap(markers) {
       name: 'School',
       icon: iconBase + 'marqeurschool.png'
     },
-    library: {
-      name: 'Entreprise',
-      icon: iconBase + 'marqeurentreprise.png'
-    },
-    info: {
-      name: 'Incubateur',
-      icon: iconBase + 'marqeurincubateur.png'
-    }
-  };
+      library: {
+        name: 'Entreprise',
+        icon: iconBase + 'marqeurentreprise.png'
+      },
+      info: {
+        name: 'Incubateur',
+        icon: iconBase + 'marqeurincubateur.png'
+      }
+    };
 
-  let images = {
+let images = {
     //Adresse de l'icône personnalisée
     url: 'https://sylvainkosc.github.io/marqeurs/marqeurschool.png'
   };
-  let map = new google.maps.Map(document.getElementById('map'),
+let map = new google.maps.Map(document.getElementById('map'),
     {
-      zoom: 10,
-      center: wildcodeschool
-    });
+        zoom: 10,
+        center: wildcodeschool
+      });
     for ( let m of markers){
       let marker = new google.maps.Marker({
         position: m,
@@ -250,24 +255,24 @@ function initMap(markers) {
         icon: images
       });
     }
-  let marker = new google.maps.Marker({
-    position: wildcodeschool,
-    map: map,
-    title: 'Wildcode School (Toulouse)',
-    icon: images
-  });
-  marker.addListener('click', function() {
-    infowindow.open(map, marker);
-  });
+    let marker = new google.maps.Marker({
+      position: wildcodeschool,
+      map: map,
+      title: 'Wildcode School (Toulouse)',
+      icon: images
+    });
+    marker.addListener('click', function() {
+      infowindow.open(map, marker);
+    });
 
-  // legend
-  var legend = document.getElementById('legend');
-  for (var key in icons) {
-    var type = icons[key];
-    var name = type.name;
-    var icon = type.icon;
-    var div = document.createElement('div');
-    div.className = "row"
+    // legend
+    var legend = document.getElementById('legend');
+    for (var key in icons) {
+      var type = icons[key];
+      var name = type.name;
+      var icon = type.icon;
+      var div = document.createElement('div');
+      div.className = "row"
     div.innerHTML = `<div class="col-2 elementLegend">
       <img class="marqueursLegend" src="${icon}">
     </div>
@@ -288,7 +293,10 @@ const showHome = () => {
     return response.json()
   })
   .then( markers => {
-     mainDiv.innerHTML = accueilEntreprise + mapHtml
+    mainDiv.innerHTML = accueil(texteEntreprise) + mapHtml
+    $('#fullpage').fullpage({
+      scrollingSpeed:500
+    });
     initMap(markers)
   })
 }
@@ -299,7 +307,10 @@ const showEco = () => {
     return response.json()
   })
   .then( markers => {
-     mainDiv.innerHTML = accueilEco + mapHtml
+    mainDiv.innerHTML = accueil(texteEcosysteme) + mapHtml
+    $('#fullpage').fullpage({
+      scrollingSpeed:500
+    });
     initMap(markers)
   })
 }
