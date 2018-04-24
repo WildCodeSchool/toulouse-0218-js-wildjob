@@ -15,6 +15,7 @@ const staticPath = path.normalize(`${__dirname}/../public`)
 app.use(express.static(staticPath))
 app.use(bodyParser.json())
 
+
 const indexHtml = /* @html */ `
 <!DOCTYPE html>
 <html lang="fr">
