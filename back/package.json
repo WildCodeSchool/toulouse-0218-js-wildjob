@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/WildCodeSchool/toulouse-0218-js-wildjob#readme",
   "dependencies": {
-    "express": "^4.16.3"
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "node-fetch": "^2.1.2"
   }
 }

@@ -2,17 +2,21 @@
 // accueil
 const accueil = texte => /* @html */`
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-12 accueil">
-      <img class="fondAccueil" alt="accueil" src="img/fond-fini.png"/>
-      <img class="logoAccueil" alt="logo" src="img/LOGOFINI.png"/>
-      <div class="texteAccueil">
-        <p>${texte}</p>
+<div id="fullpage">
+  <div class="section">
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 accueil">
+          <img class="fondAccueil" alt="accueil" src="img/fond-fini.png"/>
+          <img class="logoAccueil" alt="logo" src="img/LOGOFINI.png"/>
+          <div class="texteAccueil">
+            <p>${texte}</p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>`
+  </div>`
 
 const texteEntreprise = `94% des élèves formés à la Wild Code School sont en stage/emploi
                           <span>un mois après la fin de leur formation de développeur</span>`
@@ -22,89 +26,98 @@ const texteEco = `La Wild Code School est une école de code
 // accueil end
 
 const mapHtml = /* @html */`
-<!--map-->
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-12 map">
-      <!-- filter-->
-      <div class="container">
-        <div class="row">
-          <input type="checkbox" id="clickMe"/>
-          <div class="col-5 col-sm-4 col-md-3 col-lg-2 filter">
-            <div class="mask">
-              <h1>Filtres:</h1>
-              <label for="clickMe"><img class="arrow" alt="retour" src="img/burger/ferme.png"/></label>
+
+  <div class="section">
+    <!--map
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 map">
+          filter-->
+          <div class="container">
+            <div class="row">
+              <input type="checkbox" id="clickMe"/>
+              <div class="col-5 col-sm-4 col-md-3 col-lg-2 filter">
+                <div class="mask">
+                  <h1>Filtres:</h1>
+                  <label for="clickMe"><img class="arrow" alt="retour" src="img/burger/ferme.png"/></label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <label for="clickMe"><img class="btnFilter" alt="ouvrir" src="img/burger/flechegauche.png"/></label>
+            </div>
+          </div>
+          <!-- filter end-->
+          <div id="map"></div>
+          <div id="legend" class="container" style="right:40px;">
+            <div class="row">
+              <div class="col-12 elementLegend">
+                <h3>Légende:</h3>
+              </div>
+            </div>
+          </div>
+        <!-- </div>
+      </div>
+    </div> -->
+    <!--map end-->
+
+    <!--Main menu-->
+    <div class ="container">
+      <div class="row">
+        <input type="checkbox" id="smashMe"/>
+        <label for="smashMe">
+          <div class="btnBurger">
+            <img alt="icone burger" src="img/Navigation/Rectangle 1.png" class="btnBurger1"/>
+            <img alt="icone burger" src="img/Navigation/Rectangle 1.png" class="btnBurger2"/>
+          </div>
+        </label>
+        <div class="menu">
+          <a href="https://wildcodeschool.fr/" class="ecole" target="_blank">L'école</a>
+          <a href="admin" class="administrateur">Administrateur</a>
+        </div>
+      </div>
+    </div>
+    <!-- Main menu end-->
+
+    <!-- sidebar-->
+    <div class="container">
+      <div class="row">
+        <div class="sidepanel">
+          <div class="sidemenu">
+            <nav>
+              <ul>
+                <li>
+                  <a class="payTone" href="/eco">écosystème</a>
+                </li>
+                <li>
+                  <a class="payTone" href="/">entreprises</a>
+                </li>
+              </ul>
+            </nav>
+            <div class="social">
+              <a href="https://www.facebook.com/wildcodeschool" target="_blank">
+                <img src="img/SocialMediaIcons/Facebook/Facebook.png" alt="">
+              </a>
+              <a href="https://www.instagram.com/wildcodeschool" target="_blank">
+                <img src="img/SocialMediaIcons/Instagram/Instagram.png" alt="">
+              </a>
+              <a href="https://www.linkedin.com/school/10387519/?pathWildcard=10387519" target="_blank">
+                <img src="img/SocialMediaIcons/LinkedIn/LinkedIn.png" alt="">
+              </a>
+              <a href="https://twitter.com/wildcodeschool" target="_blank">
+                <img src="img/SocialMediaIcons/Twitter/Twitter.png" alt="">
+              </a>
+              <a href="https://www.youtube.com/channel/UCi99G_0QPx5sYsK8zdvQzfw" target="_blank">
+                <img src="img/SocialMediaIcons/Youtube/Youtube.png" alt="">
+              </a>
             </div>
           </div>
         </div>
-        <div class="row">
-          <label for="clickMe"><img class="btnFilter" alt="ouvrir" src="img/burger/flechegauche.png"/></label>
-        </div>
-      </div>
-      <!-- filter end-->
-      <div id="map"></div>
-      <div id="legend" class="container" style="right:40px;">
-        <div class="row">
-          <div class="col-12 elementLegend">
-            <h3>Légende:</h3>
-          </div>
-        </div>
       </div>
     </div>
+    <!-- sidebar end-->
   </div>
-</div>
-<!--map end-->
-
-<!--Main menu-->
-<div class ="container">
-  <div class="row">
-    <input type="checkbox" id="smashMe"/>
-    <label for="smashMe"><div class="btnBurger"></div></label>
-    <div class="menu">
-      <a href="https://wildcodeschool.fr/" class="ecole" target="_blank">L'école</a>
-      <a href="admin" class="administrateur">Administrateur</a>
-    </div>
-  </div>
-</div>
-<!-- Main menu end-->
-
-<!-- sidebar-->
-<div class="container">
-  <div class="row">
-    <div class="sidepanel">
-      <div class="sidemenu">
-        <nav>
-          <ul>
-            <li>
-              <a class="payTone" href="/eco">écosystème</a>
-            </li>
-            <li>
-              <a class="payTone" href="/">entreprises</a>
-            </li>
-          </ul>
-        </nav>
-        <div class="social">
-          <a href="https://www.facebook.com/wildcodeschool" target="_blank">
-            <img src="img/SocialMediaIcons/Facebook/Facebook.png" alt="">
-          </a>
-          <a href="https://www.instagram.com/wildcodeschool" target="_blank">
-            <img src="img/SocialMediaIcons/Instagram/Instagram.png" alt="">
-          </a>
-          <a href="https://www.linkedin.com/school/10387519/?pathWildcard=10387519" target="_blank">
-            <img src="img/SocialMediaIcons/LinkedIn/LinkedIn.png" alt="">
-          </a>
-          <a href="https://twitter.com/wildcodeschool" target="_blank">
-            <img src="img/SocialMediaIcons/Twitter/Twitter.png" alt="">
-          </a>
-          <a href="https://www.youtube.com/channel/UCi99G_0QPx5sYsK8zdvQzfw" target="_blank">
-            <img src="img/SocialMediaIcons/Youtube/Youtube.png" alt="">
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- sidebar end-->`
+</div>`
 
 const adminHtml = /* @html */`
 <div class="container">
@@ -272,6 +285,9 @@ const showHome = () => {
   })
   .then( markers => {
      mainDiv.innerHTML = accueil(texteEntreprise) + mapHtml
+     $('#fullpage').fullpage({
+       scrollingSpeed:500
+     });
     initMap(markers)
   })
 }

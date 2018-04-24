@@ -71,12 +71,16 @@ h3{
     position:absolute;
     top:44px;
     right:40px;
-    width:40px;
-    height:40px;
-    background-image:url("img/burger/burger2.png");
-    background-size:contain;
-    background-repeat:no-repeat;
+    display:flex;
+    flex-direction:column;
     z-index:30;
+}
+.btnBurger1{
+    transition:transform 1s linear;
+}
+.btnBurger2{
+    margin-top:40px;
+    transition:transform 1s linear;
 }
 #smashMe{
     display:none;
@@ -84,10 +88,14 @@ h3{
 #smashMe:checked ~ .menu{
     top:0;
 }
-#smashMe:checked ~ label .btnBurger{
-    background-image:url("img/burger/ferme.png");
-    background-size:contain;
-    background-repeat:no-repeat;
+#smashMe:checked ~ label .btnBurger1{
+    transform:rotateZ(45deg) translate(15px, 31px);
+    transform-origin:center;
+
+}
+#smashMe:checked ~ label .btnBurger2{
+    transform:rotateZ(135deg) translate(-14px, 30px);
+    transform-origin:center;
 }
 .menu a:not(.logoMenu){
     position:absolute;
@@ -208,14 +216,14 @@ h3{
 /*sidebar end*/
 
 /*map*/
-.map{
+/* .map{
     position:absolute;
     left:57px;
     max-width:calc(100% - 57px);
     height:100vh;
     border:1px solid black;
     padding:0;
-}
+} */
 #map{
     position:absolute;
     top:0px;
