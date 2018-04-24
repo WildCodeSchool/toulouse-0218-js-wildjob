@@ -76,11 +76,13 @@ h3{
     z-index:30;
 }
 .btnBurger1{
-    transition:transform 1s linear;
+  width:50px;
+  transition:transform 200ms ease-in;
 }
 .btnBurger2{
-    margin-top:40px;
-    transition:transform 1s linear;
+  width:50px;
+  margin-top: 25px;
+  transition:transform 200ms ease-in, width 200ms ease-in;
 }
 #smashMe{
     display:none;
@@ -89,13 +91,13 @@ h3{
     top:0;
 }
 #smashMe:checked ~ label .btnBurger1{
-    transform:rotateZ(45deg) translate(15px, 31px);
-    transform-origin:center;
-
+  transform:rotateZ(45deg) translate(15px, 31px);
+  transform-origin: center;
 }
 #smashMe:checked ~ label .btnBurger2{
-    transform:rotateZ(135deg) translate(-14px, 30px);
-    transform-origin:center;
+  transform:rotateZ(135deg) translate(-14px, 30px);
+  transform-origin: center;
+  width:70.71px;
 }
 .menu a:not(.logoMenu){
     position:absolute;
@@ -216,14 +218,14 @@ h3{
 /*sidebar end*/
 
 /*map*/
-/* .map{
-    position:absolute;
+.map{
+    position:relative;
     left:57px;
     max-width:calc(100% - 57px);
     height:100vh;
     border:1px solid black;
     padding:0;
-} */
+}
 #map{
     position:absolute;
     top:0px;
@@ -300,10 +302,13 @@ h3{
 }
 .btnFilter{
     position:absolute;
-    right:40px;
-    width:70px;
-    height:auto;
-    padding:20px 8px;
+    right:10px;
+    bottom:202px;
+    width:28px;
+    height:50px;
+    background-color:#ffffff;
+    border-radius:2px;
+    padding:15px 8px;
     z-index:5;
 }
 #clickMe{

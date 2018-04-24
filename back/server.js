@@ -12,7 +12,8 @@ const app = express()
 // /home/wilder/Documents/projet2/toulouse-0218-js-wildjob/public
 const staticPath = path.normalize(`${__dirname}/../public`)
 app.use(express.static(staticPath))
-// app.use(bodyParser.json())
+app.use(bodyParser.json())
+
 
 const indexHtml = /* @html */ `
 <!DOCTYPE html>
@@ -23,23 +24,17 @@ const indexHtml = /* @html */ `
   <title>Wild Job</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css"  />
   <link href="https://fonts.googleapis.com/css?family=Paytone+One" rel="stylesheet">
 
-
-
-
-            <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/jquery.fullpage.css" />
-
-
-
-
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/jquery.fullpage.css" />
 
 </head>
 
 <body class="payTone">
-  <div id="main"></div>
-
+  <div id="main">
+    <div id="fullpage"></div>
+  </div>
   <!-- script google maps cle API -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwC__7psOPTWbszU21xZvnsFL2XdrrpZk "></script>
   <!-- script google maps cle API end -->
@@ -55,11 +50,7 @@ const indexHtml = /* @html */ `
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <!--script bootstrap end-->
 
-
-
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/jquery.fullpage.min.js"></script>
-
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/jquery.fullpage.min.js"></script>
 
 
 </body>
@@ -68,6 +59,20 @@ const indexHtml = /* @html */ `
 
 app.get('*', (req, res) => {
   res.send(indexHtml)
+})
+
+app.post("/contact", (req, res) => {
+  const geocoderQuery = `${req.body.adresse} ${req.body.ville}`.replace(/ /g, '+')
+  fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${geocoderQuery}&key=AIzaSyCwC__7psOPTWbszU21xZvnsFL2XdrrpZk`)
+    .then(res => res.json())
+    .then(json => {
+      console.log(req.body)
+      res.json(
+        json
+      )
+      let coord = json.results["0"].geometry.location
+      console.log(coord)
+    })
 })
 
 app.listen(3000)
