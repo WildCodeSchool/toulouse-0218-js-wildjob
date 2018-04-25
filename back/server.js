@@ -63,7 +63,7 @@ const indexHtml = /* @html */ `
 app.post("/contact", (req, res) => {
   let newContact = req.body
   console.log(newContact)
-  const query = `INSERT INTO Contact (nom, adresse, mail, site, telephone)
+  const query = `INSERT INTO Entite (nom, adresse, mail, site, telephone)
                 VALUES ('${newContact.name}', '${newContact.adresse}', '${newContact.email}', '${newContact.site}', '${newContact.telephone}' )`
   connection.query(query, (error, result) => {
     if(error) {
@@ -79,11 +79,11 @@ app.post("/contact", (req, res) => {
       res.json(
         json
       )
-      let lat = json.results["0"].geometry.location.lat
-      let lng = json.results["0"].geometry.location.lng
-      const query = `INSERT INTO Lieu (latitude, longitude)
-                    VALUES ('${lat}', '${lng}')`
-      console.log(query)
+      // let lat = json.results["0"].geometry.location.lat
+      // let lng = json.results["0"].geometry.location.lng
+      // const query = `INSERT INTO Lieu (latitude, longitude)
+      //               VALUES ('${lat}', '${lng}')`
+      // console.log(query)
     })
 })
 
