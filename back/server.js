@@ -3,6 +3,8 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path')
 const fetch = require('node-fetch')
+const connection = require('./sql/db.js')
+
 const app = express()
 // console.log(__dirname)
 // console.log(path.normalize(__dirname+'/../../../Documents'))
@@ -57,22 +59,35 @@ const indexHtml = /* @html */ `
 
 </html>`
 
-app.get('*', (req, res) => {
-  res.send(indexHtml)
-})
 
 app.post("/contact", (req, res) => {
+  let newContact = req.body
+
   const geocoderQuery = `${req.body.adresse} ${req.body.ville}`.replace(/ /g, '+')
+
   fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${geocoderQuery}&key=AIzaSyCwC__7psOPTWbszU21xZvnsFL2XdrrpZk`)
     .then(res => res.json())
     .then(json => {
-      console.log(req.body)
-      res.json(
-        json
-      )
-      let coord = json.results["0"].geometry.location
-      console.log(coord)
+      let lat = json.results["0"].geometry.location.lat
+      let lng = json.results["0"].geometry.location.lng
+      const query = `INSERT INTO Entite (nom, adresse, mail, site, telephone, latitude, longitude)
+                    VALUES ('${newContact.name}', '${newContact.adresse}', '${newContact.email}', '${newContact.site}', '${newContact.telephone}', ${lat}, ${lng} )`
+      connection.query(query, (error, result) => {
+        if(error) {
+          return res.status(500).json({
+            error: error.message
+          })
+        }
+        console.log(result)
+        res.json(
+          result
+        )
+      })
     })
+})
+
+app.get('*', (req, res) => {
+  res.send(indexHtml)
 })
 
 app.listen(3000)

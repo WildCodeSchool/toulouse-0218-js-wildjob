@@ -179,18 +179,26 @@ const adminHtml = /* @html */`
     </div>
     <div class="form-row">
       <div class="form-group col-md-6">
-        <label for="inputType">Type d'entreprise</label>
-        <select id="inputType" class="form-control">
+        <label for="inputSociety">Type d'entreprise</label>
+        <select id="inputSociety" class="form-control">
           <option selected>Type...</option>
           <option>ESN</option>
           <option>Start Up</option>
+          <option>PME</option>
+          <option>Grand Groupe</option>
+          <option>Agence Web</option>
+          <option>Collectivité / Association</option>
           <option>Editeur</option>
-          <option>Autre</option>
         </select>
       </div>
       <div class="form-group col-md-6">
-        <label for="inputContact">Contact</label>
-        <input type="text" class="form-control" id="inputContact" placeholder="Nom du contact">
+        <label for="inputContract">Type de contrat</label>
+        <select id="inputContract" class="form-control">
+          <option selected>Type...</option>
+          <option>Stage</option>
+          <option>CDD / CDI</option>
+          <option>Stage puis CDD / CDI</option>
+        </select>
       </div>
     </div>
     <div class="form-row">
@@ -369,7 +377,7 @@ const showAdmin = () => {
       method: "POST",
       body: body,
       headers: {
-        Accept:"application.json",
+        Accept:"application/json",
         "Content-Type": "application/json"
       }
     })
