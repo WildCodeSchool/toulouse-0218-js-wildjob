@@ -53,13 +53,16 @@ const mapHtml = /* @html */`
             <div class="col-5 col-sm-4 col-md-3 col-lg-2 filter">
               <div class="mask">
                 <h1>Filtres:</h1>
-                <label for="clickMe"><img class="arrow" alt="retour" src="img/burger/ferme.png"/></label>
+                <label for="clickMe"><img class="cross" alt="retour" src="img/Navigation/ferme.png"/></label>
               </div>
             </div>
           </div>
           <div class="row">
             <label for="clickMe">
-              <img class="btnFilter" alt="ouvrir" src="img/burger/flechegauche.png"/>
+              <div class="btnFilter">
+                <img class="arrow" alt="ouvrir" src="img/Navigation/2.0fleche.png"/>
+                <h3 class="texteBtnFilter">Filtres</h3>
+              </div>
             </label>
           </div>
         </div>
@@ -130,7 +133,7 @@ const sidebar = /* @html */`
 
 // HTML admin
 const adminHtml = /* @html */`
-<div class="container">
+<div class="container titleFormAdmin">
   <h1>Interface admin</h1>
   <!--formulaire recherche-->
   <h3>Modifier une entreprise/ecole</h3>
