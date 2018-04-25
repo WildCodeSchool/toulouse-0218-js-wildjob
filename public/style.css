@@ -308,9 +308,9 @@ label{
 .arrow{
   position:absolute;
   top:35px;
-  right:0;
-  width:94px;
-  padding-right:44px;
+  right:-1px;
+  width:95px;
+  padding-right:45px;
   z-index:5;
   transition:right 200ms linear, opacity 50ms linear 150ms;
 }
