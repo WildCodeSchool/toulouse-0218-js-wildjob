@@ -391,6 +391,7 @@ const showHome = (texte) => () => {
 //   })
 // }
 
+
 const showAdmin = () => {
   mainDiv.innerHTML = adminHtml
   const formPost = document.getElementById("form-post")
