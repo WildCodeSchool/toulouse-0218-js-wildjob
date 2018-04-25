@@ -54,14 +54,14 @@ const indexHtml = /* @html */ `
 app.post("/contact", (req, res) => {
   let newContact = req.body
   console.log(newContact)
-  const query = `INSERT INTO Contact (nom, adresse, mail, site) VALUES ('${newContact.name}', '${newContact.adresse}', '${newContact.email}', '${newContact.site}' )`
+  const query = `INSERT INTO Contact (nom, adresse, mail, site, telephone)
+                VALUES ('${newContact.name}', '${newContact.adresse}', '${newContact.email}', '${newContact.site}', '${newContact.telephone}' )`
   connection.query(query, (error, result) => {
     if(error) {
       return res.status(500).json({
         error: error.message
       })
     }
-    res.json({result: result})
   })
   const geocoderQuery = `${req.body.adresse} ${req.body.ville}`.replace(/ /g, '+')
   fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${geocoderQuery}&key=AIzaSyCwC__7psOPTWbszU21xZvnsFL2XdrrpZk`)
@@ -70,8 +70,11 @@ app.post("/contact", (req, res) => {
       res.json(
         json
       )
-      let coord = json.results["0"].geometry.location
-      // console.log(coord)
+      let lat = json.results["0"].geometry.location.lat
+      let lng = json.results["0"].geometry.location.lng
+      const query = `INSERT INTO Lieu (latitude, longitude)
+                    VALUES ('${lat}', '${lng}')`
+      console.log(query)
     })
 })
 
