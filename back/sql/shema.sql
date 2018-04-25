@@ -29,8 +29,6 @@ CREATE TABLE `Entite` (
   `mail` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `site` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `telephone` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `idLieu` int(11) DEFAULT NULL,
-  `idContrat` int(11) DEFAULT NULL,
   `nomContact` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `type` enum('entreprises','ecosysteme') COLLATE utf8_unicode_ci DEFAULT NULL,
   `soustype` enum('ESN','Start Up','PME','Grand Groupe','Agence Web','Collectivite / Association','Editeur','Coworking','Incubateur / Accelerateur','French Tech','Cluster Numerique','Ecole de code') COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -44,9 +42,7 @@ CREATE TABLE `Entite` (
   `nbStageCDICDD` int(11) DEFAULT '0',
   PRIMARY KEY (`idContact`),
   UNIQUE KEY `Nom_UNIQUE` (`nom`),
-  UNIQUE KEY `Adresse_UNIQUE` (`adresse`),
-  KEY `idLieu_idx` (`idLieu`),
-  KEY `idContrat_idx` (`idContrat`)
+  UNIQUE KEY `Adresse_UNIQUE` (`adresse`)
 ) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -59,4 +55,4 @@ CREATE TABLE `Entite` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-25 15:40:33
+-- Dump completed on 2018-04-25 16:28:02
