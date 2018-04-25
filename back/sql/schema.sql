@@ -16,6 +16,14 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Current Database: `wildjob_app`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `wildjob_app` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
+
+USE `wildjob_app`;
+
+--
 -- Table structure for table `Entite`
 --
 
@@ -29,7 +37,6 @@ CREATE TABLE `Entite` (
   `mail` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `site` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `telephone` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `nomContact` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `type` enum('entreprises','ecosysteme') COLLATE utf8_unicode_ci DEFAULT NULL,
   `soustype` enum('ESN','Start Up','PME','Grand Groupe','Agence Web','Collectivite / Association','Editeur','Coworking','Incubateur / Accelerateur','French Tech','Cluster Numerique','Ecole de code') COLLATE utf8_unicode_ci DEFAULT NULL,
   `region` enum('Nord-Ouest','Sud-Ouest','Sud-Est','Nord-Est','Centre-IdF','Monde') COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -43,8 +50,18 @@ CREATE TABLE `Entite` (
   PRIMARY KEY (`idContact`),
   UNIQUE KEY `Nom_UNIQUE` (`nom`),
   UNIQUE KEY `Adresse_UNIQUE` (`adresse`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Entite`
+--
+
+LOCK TABLES `Entite` WRITE;
+/*!40000 ALTER TABLE `Entite` DISABLE KEYS */;
+INSERT INTO `Entite` VALUES (19,'entreprise1','1 place de la Bourse','mail@mail.com','website','0678',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0),(20,'entreprise2','2 place de la Bourse','mail2@mail.com','website','0678',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0),(21,'entreprise3','3 place de la bourse','mail3@mail.com','website','0678',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0),(22,'entreprise4','4 place de la bourse','mail4@mail.com','website','0678',NULL,NULL,NULL,NULL,NULL,43.6014,1.44214,0,0,0),(23,'entreprise5','4 rue saint Rome','mail5@mail.com','website','0676767676','entreprises','Start Up','Sud-Ouest','Toulouse','France',39.7702,-94.8398,3,2,2),(24,'entreprise6','6 rue saint Rome','mail6@mail.com','website','undefined','entreprises','Start Up','Sud-Ouest','Toulouse','France',39.7702,-94.8398,3,2,2),(25,'entreprise7','7 rue saint Rome','mail7@mail.com','website','undefined','entreprises','Start Up','Sud-Ouest','Toulouse','France',39.7702,-94.8398,3,2,2),(26,'entreprise8','8 rue saint Rome','mail8@mail.com','website','undefined','entreprises','Start Up','Sud-Ouest','Toulouse','France',39.7702,-94.8398,3,2,2);
+/*!40000 ALTER TABLE `Entite` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -55,4 +72,4 @@ CREATE TABLE `Entite` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-25 16:28:02
+-- Dump completed on 2018-04-25 23:00:58

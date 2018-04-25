@@ -70,15 +70,18 @@ app.post("/contact", (req, res) => {
     .then(json => {
       let lat = json.results["0"].geometry.location.lat
       let lng = json.results["0"].geometry.location.lng
-      const query = `INSERT INTO Entite (nom, adresse, mail, site, telephone, latitude, longitude)
-                    VALUES ('${newContact.name}', '${newContact.adresse}', '${newContact.email}', '${newContact.site}', '${newContact.telephone}', ${lat}, ${lng} )`
+      const query = `INSERT INTO Entite (nom, adresse, mail, site, telephone, type, soustype, region, ville, pays, latitude,
+                    longitude, nbCDICDD, nbStage, nbStageCDICDD)
+                    VALUES ('${newContact.name}', '${newContact.address}', '${newContact.email}', '${newContact.site}',
+                            '${newContact.phone}', '${newContact.entrEco}', '${newContact.soustype}', '${newContact.area}',
+                            '${newContact.city}', '${newContact.country}', ${lat}, ${lng}, '${newContact.job}',
+                            '${newContact.intern}', '${newContact.internJob}' )`
       connection.query(query, (error, result) => {
         if(error) {
           return res.status(500).json({
             error: error.message
           })
         }
-        console.log(result)
         res.json(
           result
         )
