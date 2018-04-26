@@ -131,120 +131,123 @@ const sidebar = /* @html */`
 <!-- sidebar end-->`
 // HTML sidebar end
 
+const rechercheEntite =`<h3>Modifier une entreprise/ecole</h3>
+<div class="form-row">
+  <label for="inputResearch" class="col-2 col-form-label">Entreprise / ecole</label>
+  <div class="col-9">
+    <input type="text" class="form-control" id="inputResearch" placeholder="Recherche entreprise / ecole auto-complétion">
+    </div>
+    <button class="btn btn-primary col-1" type="submit">Submit</button>
+  </div>`
+
+const form = (entite) => `<h3>Créer une entreprise/ecole</h3>
+<form id="form-post" method="POST" action="/contact">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputName">Nom de l'entreprise</label>
+      <input type="text" name="name" class="form-control" id="inputName" value="${entite.nom}" />
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Email</label>
+      <input type="email" name="email" class="form-control" id="inputEmail4" value="${entite.mail}">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputWebsite">Site</label>
+      <input type="text" name="site" class="form-control" id="inputWebsite">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPhone">Téléphone</label>
+      <input type="text" name="phone" class="form-control" id="inputPhone">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-8">
+      <label for="inputAddress">Addresse</label>
+      <input type="text" name="address" class="form-control" id="inputAddress" value="${entite.adresse}">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputCity">Ville</label>
+      <input type="text" name="city" class="form-control" id="inputCity" value="${entite.ville}">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCountry">Pays</label>
+      <input type="text" name="country" class="form-control" id="inputCity">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputArea">Region</label>
+      <select id="inputArea" class="form-control" name="area">
+        <option selected value="Sud-Ouest">Sud-Ouest</option>
+        <option value="Sud-Est">Sud-Est</option>
+        <option value="Nord-Ouest">Nord-Ouest</option>
+        <option value="Nord-Est">Nord-Est</option>
+        <option value="Centre-Idf">Centre-IdF</option>
+        <option value="Monde">Monde</option>>
+      </select>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputType">Entreprises / Ecosysteme</label>
+      <select id="inputType" class="form-control" name="entrEco">
+        <option selected value="entreprises">Entreprises</option>
+        <option value="ecosysteme">Ecosysteme</option>
+      </select>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputSousType">Type d'entreprise</label>
+      <select id="inputSousType" class="form-control" name="soustype">
+        <option selected value="ESN">ESN</option>
+        <option value="Start Up">Start Up</option>
+        <option value="PME">PME</option>
+        <option value="Grand Groupe">Grand Groupe</option>
+        <option value="Agence Web">Agence Web</option>
+        <option value="Collectivite / Association">Collectivité / Association</option>
+        <option value="Editeur">Editeur</option>
+        <option value="Coworking">Coworking</option>
+        <option value="Incubateur / Accelerateur">Incubateur / Accelerateur</option>
+        <option value="French Tech">French Tech</option>
+        <option value="Cluster Numerique">Cluster Numérique</option>
+        <option value="Ecole de code">Ecole de code</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="inputIntern">Stages</label>
+      <input type="text" name="intern" class="form-control" id="inputIntern">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputJob">Emplois</label>
+      <input type="text" name="job" class="form-control" id="inputJob">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputInternJob">Stages puis emplois</label>
+      <input type="text" name="internJob" class="form-control" id="internJob">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <button type="submit" class="btn btn-primary">Create</button>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <a href="/"><button id="exitAdmin" type="button" class="btn btn-primary">Exit</button></a>
+    </div>
+  </div>
+</form>`
 // HTML admin
-const adminHtml = /* @html */`
+const adminHtml = contenu => /* @html */`
 <div class="container titleFormAdmin">
   <h1>Interface admin</h1>
   <!--formulaire recherche-->
-  <h3>Modifier une entreprise/ecole</h3>
-  <div class="form-row">
-    <label for="inputResearch" class="col-2 col-form-label">Entreprise / ecole</label>
-    <div class="col-9">
-      <input type="text" class="form-control" id="inputResearch" placeholder="Recherche entreprise / ecole auto-complétion">
-    </div>
-    <button class="btn btn-primary col-1" type="submit">Submit</button>
-  </div>
-  <!--formulaire recherche end-->
 
+  <!--formulaire recherche end-->
+${contenu}
   <!--formulaire création-->
-  <h3>Créer une entreprise/ecole</h3>
-  <form id="form-post" method="POST" action="/contact">
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="inputName">Nom de l'entreprise</label>
-        <input type="text" name="name" class="form-control" id="inputName">
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputEmail4">Email</label>
-        <input type="email" name="email" class="form-control" id="inputEmail4">
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputWebsite">Site</label>
-        <input type="text" name="site" class="form-control" id="inputWebsite">
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputPhone">Téléphone</label>
-        <input type="text" name="phone" class="form-control" id="inputPhone">
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-8">
-        <label for="inputAddress">Addresse</label>
-        <input type="text" name="address" class="form-control" id="inputAddress">
-      </div>
-      <div class="form-group col-md-4">
-        <label for="inputCity">Ville</label>
-        <input type="text" name="city" class="form-control" id="inputCity">
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="inputCountry">Pays</label>
-        <input type="text" name="country" class="form-control" id="inputCity">
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputArea">Region</label>
-        <select id="inputArea" class="form-control" name="area">
-          <option selected value="Sud-Ouest">Sud-Ouest</option>
-          <option value="Sud-Est">Sud-Est</option>
-          <option value="Nord-Ouest">Nord-Ouest</option>
-          <option value="Nord-Est">Nord-Est</option>
-          <option value="Centre-Idf">Centre-IdF</option>
-          <option value="Monde">Monde</option>>
-        </select>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="inputType">Entreprises / Ecosysteme</label>
-        <select id="inputType" class="form-control" name="entrEco">
-          <option selected value="entreprises">Entreprises</option>
-          <option value="ecosysteme">Ecosysteme</option>
-        </select>
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputSousType">Type d'entreprise</label>
-        <select id="inputSousType" class="form-control" name="soustype">
-          <option selected value="ESN">ESN</option>
-          <option value="Start Up">Start Up</option>
-          <option value="PME">PME</option>
-          <option value="Grand Groupe">Grand Groupe</option>
-          <option value="Agence Web">Agence Web</option>
-          <option value="Collectivite / Association">Collectivité / Association</option>
-          <option value="Editeur">Editeur</option>
-          <option value="Coworking">Coworking</option>
-          <option value="Incubateur / Accelerateur">Incubateur / Accelerateur</option>
-          <option value="French Tech">French Tech</option>
-          <option value="Cluster Numerique">Cluster Numérique</option>
-          <option value="Ecole de code">Ecole de code</option>
-        </select>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-4">
-        <label for="inputIntern">Stages</label>
-        <input type="text" name="intern" class="form-control" id="inputIntern">
-      </div>
-      <div class="form-group col-md-4">
-        <label for="inputJob">Emplois</label>
-        <input type="text" name="job" class="form-control" id="inputJob">
-      </div>
-      <div class="form-group col-md-4">
-        <label for="inputInternJob">Stages puis emplois</label>
-        <input type="text" name="internJob" class="form-control" id="internJob">
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-12">
-        <button type="submit" class="btn btn-primary">Create</button>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-12">
-        <a href="/"><button id="exitAdmin" type="button" class="btn btn-primary">Exit</button></a>
-      </div>
-    </div>
-  </form>
+
   <!--formulaire création end-->
 </div>`
 // HTML admin end
@@ -393,7 +396,10 @@ const showHome = (texte) => () => {
 
 
 const showAdmin = () => {
-  mainDiv.innerHTML = adminHtml
+  const emptyEntity = {
+    nom:'', adresse:'', ville:'',
+  }
+  mainDiv.innerHTML = adminHtml(rechercheEntite + form(emptyEntity))
   const formPost = document.getElementById("form-post")
   formPost.addEventListener("submit", event => {
     let data = {}
