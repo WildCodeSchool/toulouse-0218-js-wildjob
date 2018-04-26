@@ -355,3 +355,10 @@ label{
   margin-bottom: 0.5rem;
 }
 /*form admin end*/
+
+
+/*Authentification */
+/***** Modal *****/
+.modal-backdrop {
+  z-index: -1;
+}

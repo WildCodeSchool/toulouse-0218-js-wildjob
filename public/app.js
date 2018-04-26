@@ -12,8 +12,23 @@ const accueil = paragraphe => /* @html */`
       </div>
     </label>
     <div class="menu">
+      <a href="admin" data-toggle="modal"  class="administrateur"  data-target="#popUpWindow">Administrateur</a>
+        <div class="modal fade" id="popUpWindow">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <form role="form">
+                  <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Email"/>
+                    <input type="password" class="form-control" placeholder="Password" />
+                  </div>
+                </form>
+              </div>
+                <button class="btn btn-secondary">Log In</button>
+            </div>
+          </div>
+        </div>
       <a href="https://wildcodeschool.fr/" class="ecole" target="_blank">L'école</a>
-      <a href="admin" class="administrateur">Administrateur</a>
     </div>
   </div>
 </div>
@@ -132,7 +147,13 @@ const sidebar = /* @html */`
 // HTML sidebar end
 
 // HTML admin
+
+
+
+
+
 const adminHtml = /* @html */`
+
 <div class="container titleFormAdmin">
   <h1>Interface admin</h1>
   <!--formulaire recherche-->
@@ -339,7 +360,6 @@ const showHome = (texte) => () => {
       stockageParagraphe.innerHTML = texte
       mapWrapper.innerHTML = maps
     }
-
     initMap(markers)
   })
 }
@@ -387,6 +407,8 @@ const showAdmin = () => {
     })
   })
 }
+
+
 
 const notFoundHtml = `<img src="https://fab404.com/wp-content/uploads/2009/06/simpsoncrazy404.jpg" alt="">`
 const notFound = () => {
