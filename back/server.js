@@ -59,6 +59,16 @@ const indexHtml = /* @html */ `
 
 </html>`
 
+app.get("/tasks", (req, res) => {
+  connection.query("SELECT idContact, name, address, mail, website, phone FROM Entite", (error, Entite) => {
+    if(error) {
+      return res.status(500).json({
+        error: error.message
+      })
+    }
+    res.json(Entite)
+  })
+})
 
 app.post("/contact", (req, res) => {
   let newContact = req.body
