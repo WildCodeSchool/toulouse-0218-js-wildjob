@@ -13,7 +13,7 @@ const accueil = paragraphe => /* @html */`
     </label>
     <div class="menu">
       <a href="https://wildcodeschool.fr/" class="ecole" target="_blank">L'école</a>
-      <a href="admin" class="administrateur">Administrateur</a>
+      <a href="admin" class="administrateur">Admin</a>
     </div>
   </div>
 </div>
@@ -133,9 +133,9 @@ const sidebar = /* @html */`
 
 const rechercheEntite =`<h3>Modifier une entreprise/ecole</h3>
 <div class="form-row">
-  <label for="inputResearch" class="col-2 col-form-label">Entreprise / ecole</label>
-  <div class="col-9">
-    <input type="text" class="form-control" id="inputResearch" placeholder="Recherche entreprise / ecole auto-complétion">
+  <label for="inputResearch" class="col-1 col-form-label">Recherche</label>
+  <div class="col-10">
+    <input type="text" class="form-control" id="inputResearch">
     </div>
     <button class="btn btn-primary col-1" type="submit">Submit</button>
   </div>`
@@ -145,40 +145,41 @@ const form = (entite) => `<h3>Créer une entreprise/ecole</h3>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputName">Nom de l'entreprise</label>
-      <input type="text" name="name" class="form-control" id="inputName" value="${entite.nom}" />
+      <input type="text" name="name" class="form-control" id="inputName" value="${entite.name}" />
     </div>
     <div class="form-group col-md-6">
       <label for="inputEmail4">Email</label>
-      <input type="email" name="email" class="form-control" id="inputEmail4" value="${entite.mail}">
+      <input type="email" name="mail" class="form-control" id="inputEmail4" value="${entite.mail}">
     </div>
     <div class="form-group col-md-6">
       <label for="inputWebsite">Site</label>
-      <input type="text" name="site" class="form-control" id="inputWebsite">
+      <input type="text" name="website" class="form-control" id="inputWebsite" value="${entite.website}">
     </div>
     <div class="form-group col-md-6">
       <label for="inputPhone">Téléphone</label>
-      <input type="text" name="phone" class="form-control" id="inputPhone">
+      <input type="text" name="phone" class="form-control" id="inputPhone" value="${entite.phone}">
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-8">
       <label for="inputAddress">Addresse</label>
-      <input type="text" name="address" class="form-control" id="inputAddress" value="${entite.adresse}">
+      <input type="text" name="address" class="form-control" id="inputAddress" value="${entite.address}">
     </div>
     <div class="form-group col-md-4">
       <label for="inputCity">Ville</label>
-      <input type="text" name="city" class="form-control" id="inputCity" value="${entite.ville}">
+      <input type="text" name="city" class="form-control" id="inputCity" value="${entite.city}">
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputCountry">Pays</label>
-      <input type="text" name="country" class="form-control" id="inputCity">
+      <input type="text" name="country" class="form-control" id="inputCity" value="${entite.country}">
     </div>
     <div class="form-group col-md-6">
       <label for="inputArea">Region</label>
-      <select id="inputArea" class="form-control" name="area">
-        <option selected value="Sud-Ouest">Sud-Ouest</option>
+      <select id="inputArea" class="form-control" name="area" value="${entite.area}">
+        <option value=""></option>
+        <option value="Sud-Ouest">Sud-Ouest</option>
         <option value="Sud-Est">Sud-Est</option>
         <option value="Nord-Ouest">Nord-Ouest</option>
         <option value="Nord-Est">Nord-Est</option>
@@ -190,15 +191,17 @@ const form = (entite) => `<h3>Créer une entreprise/ecole</h3>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputType">Entreprises / Ecosysteme</label>
-      <select id="inputType" class="form-control" name="entrEco">
-        <option selected value="entreprises">Entreprises</option>
+      <select id="inputType" class="form-control" name="type" value="${entite.type}">
+        <option value=""></option>
+        <option value="entreprises">Entreprises</option>
         <option value="ecosysteme">Ecosysteme</option>
       </select>
     </div>
     <div class="form-group col-md-6">
       <label for="inputSousType">Type d'entreprise</label>
-      <select id="inputSousType" class="form-control" name="soustype">
-        <option selected value="ESN">ESN</option>
+      <select id="inputSousType" class="form-control" name="category" value="${entite.category}">
+        <option value=""></option>
+        <option value="ESN">ESN</option>
         <option value="Start Up">Start Up</option>
         <option value="PME">PME</option>
         <option value="Grand Groupe">Grand Groupe</option>
@@ -216,15 +219,15 @@ const form = (entite) => `<h3>Créer une entreprise/ecole</h3>
   <div class="form-row">
     <div class="form-group col-md-4">
       <label for="inputIntern">Stages</label>
-      <input type="text" name="intern" class="form-control" id="inputIntern">
+      <input type="text" name="intern" class="form-control" id="inputIntern" value="${entite.intern}">
     </div>
     <div class="form-group col-md-4">
       <label for="inputJob">Emplois</label>
-      <input type="text" name="job" class="form-control" id="inputJob">
+      <input type="text" name="job" class="form-control" id="inputJob" value="${entite.job}">
     </div>
     <div class="form-group col-md-4">
       <label for="inputInternJob">Stages puis emplois</label>
-      <input type="text" name="internJob" class="form-control" id="internJob">
+      <input type="text" name="internJob" class="form-control" id="internJob" value="${entite.internJob}">
     </div>
   </div>
   <div class="form-row">
@@ -241,14 +244,10 @@ const form = (entite) => `<h3>Créer une entreprise/ecole</h3>
 // HTML admin
 const adminHtml = contenu => /* @html */`
 <div class="container titleFormAdmin">
-  <h1>Interface admin</h1>
-  <!--formulaire recherche-->
+  <h1>Interface Administrateur - Campus Manager</h1>
 
-  <!--formulaire recherche end-->
 ${contenu}
-  <!--formulaire création-->
 
-  <!--formulaire création end-->
 </div>`
 // HTML admin end
 
@@ -397,7 +396,8 @@ const showHome = (texte) => () => {
 
 const showAdmin = () => {
   const emptyEntity = {
-    nom:'', adresse:'', ville:'',
+    name:'', address:'', mail:'', website:'', phone:'', type:'', category:'', area:'', city:'', country:'',
+    latitude:'',longitude:'', job:'', intern:'', internJob:''
   }
   mainDiv.innerHTML = adminHtml(rechercheEntite + form(emptyEntity))
   const formPost = document.getElementById("form-post")

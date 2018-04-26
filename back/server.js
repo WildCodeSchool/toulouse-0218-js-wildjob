@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const path = require('path')
 const fetch = require('node-fetch')
 const connection = require('./sql/db.js')
+const mysqlEscape = require('./sql/mysqlEscape.js')
 
 const app = express()
 // console.log(__dirname)
@@ -70,12 +71,12 @@ app.post("/contact", (req, res) => {
     .then(json => {
       let lat = json.results["0"].geometry.location.lat
       let lng = json.results["0"].geometry.location.lng
-      const query = `INSERT INTO Entite (nom, adresse, mail, site, telephone, type, soustype, region, ville, pays, latitude,
-                    longitude, nbCDICDD, nbStage, nbStageCDICDD)
-                    VALUES ('${newContact.name}', '${newContact.address}', '${newContact.email}', '${newContact.site}',
-                            '${newContact.phone}', '${newContact.entrEco}', '${newContact.soustype}', '${newContact.area}',
-                            '${newContact.city}', '${newContact.country}', ${lat}, ${lng}, '${newContact.job}',
-                            '${newContact.intern}', '${newContact.internJob}' )`
+      const query = `INSERT INTO Entite (name, address, mail, website, phone, type, category, area, city, country, latitude,
+                    longitude, job, intern, internJob)
+                    VALUES ("${newContact.name}", "${newContact.address}", "${newContact.mail}", "${newContact.website}",
+                            "${newContact.phone}", "${newContact.type}", "${newContact.category}", "${newContact.area}",
+                            "${newContact.city}", "${newContact.country}", ${lat}, ${lng}, "${newContact.job}",
+                            "${newContact.intern}", "${newContact.internJob}" )`
       connection.query(query, (error, result) => {
         if(error) {
           return res.status(500).json({
