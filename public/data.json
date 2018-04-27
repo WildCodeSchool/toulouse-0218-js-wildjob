@@ -1,0 +1,8 @@
+var data = [
+	{ "label": "Torino", "value": "Torino" },
+	{ "label": "Milano", "value": "Milano" },
+	{ "label": "Roma", "value": "Roma" },
+	{ "label": "Napoli", "value": "Napoli" },
+	{ "label": "Venezia", "value": "Venezia" },
+	{ "label": "Bologna", "value": "Bologna" },
+];

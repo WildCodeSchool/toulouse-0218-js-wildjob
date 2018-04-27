@@ -131,16 +131,16 @@ const sidebar = /* @html */`
 <!-- sidebar end-->`
 // HTML sidebar end
 
-const rechercheEntite =`<h3>Modifier une entreprise/ecole</h3>
+const rechercheEntite = () => /* @html */ `<h3>Modifier une entreprise/ecole</h3>
 <div class="form-row">
   <label for="inputResearch" class="col-1 col-form-label">Recherche</label>
   <div class="col-10">
-    <input type="text" class="form-control" id="inputResearch">
-    </div>
-    <button class="btn btn-primary col-1" type="submit">Submit</button>
-  </div>`
+    <input type="text" class="form-control" id="inputResearch" action="/existingEntity">
+  </div>
+  <button class="btn btn-primary col-1" type="submit">Submit</button>
+</div>`
 
-const form = (entite) => `<h3>Créer une entreprise/ecole</h3>
+const form = (entite) => /* @html */ `<h3>Créer une entreprise/ecole</h3>
 <form id="form-post" method="POST" action="/contact">
   <div class="form-row">
     <div class="form-group col-md-6">
@@ -393,13 +393,33 @@ const showHome = (texte) => () => {
 //   })
 // }
 
+const autoCompletion = () => {
+  console.log($('#inputResearch'))
+  $('#inputResearch').lightAutocomplete({
+    sourceData: function(search, success) {
+      $.ajax({
+        url: '/existingEntity',
+        method: 'GET',
+        dataType: 'json',
+        data: {
+          search: search
+        },
+        success: function(data) {
+          console.log(data)
+          success(data);
+        }
+      });
+    }
+  });
+}
 
 const showAdmin = () => {
   const emptyEntity = {
     name:'', address:'', mail:'', website:'', phone:'', type:'', category:'', area:'', city:'', country:'',
     latitude:'',longitude:'', job:'', intern:'', internJob:''
   }
-  mainDiv.innerHTML = adminHtml(rechercheEntite + form(emptyEntity))
+  mainDiv.innerHTML = adminHtml(rechercheEntite() + form(emptyEntity))
+  autoCompletion()
   const formPost = document.getElementById("form-post")
   formPost.addEventListener("submit", event => {
     let data = {}
