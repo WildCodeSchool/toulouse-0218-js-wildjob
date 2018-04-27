@@ -132,13 +132,18 @@ const sidebar = /* @html */`
 // HTML sidebar end
 
 const rechercheEntite = () => /* @html */ `<h3>Modifier une entreprise/ecole</h3>
-<div class="form-row">
-  <label for="inputResearch" class="col-1 col-form-label">Recherche</label>
-  <div class="col-10">
-    <input type="text" class="form-control" id="inputResearch" action="/existingEntity">
+<form>
+  <div class="form-row">
+    <div class="col-12">
+      <input type="text" class="form-control form-group" id="inputResearch" action="/existingEntity" placeholder="Essayez 'Capgemini'">
+    </div>
   </div>
-  <button class="btn btn-primary col-1" type="submit">Submit</button>
-</div>`
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+</form>`
 
 const form = (entite) => /* @html */ `<h3>Créer une entreprise/ecole</h3>
 <form id="form-post" method="POST" action="/contact">
@@ -410,15 +415,16 @@ const autoCompletion = () => {
         }
       });
     }
-  });
+  })
 }
 
+
 const showAdmin = () => {
-  const emptyEntity = {
+  const entity = {
     name:'', address:'', mail:'', website:'', phone:'', type:'', category:'', area:'', city:'', country:'',
     latitude:'',longitude:'', job:'', intern:'', internJob:''
   }
-  mainDiv.innerHTML = adminHtml(rechercheEntite() + form(emptyEntity))
+  mainDiv.innerHTML = adminHtml(rechercheEntite() + form(entity))
   autoCompletion()
   const formPost = document.getElementById("form-post")
   formPost.addEventListener("submit", event => {
