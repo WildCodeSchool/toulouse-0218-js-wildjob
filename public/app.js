@@ -399,7 +399,6 @@ const showHome = (texte) => () => {
 // }
 
 const autoCompletion = () => {
-  console.log($('#inputResearch'))
   $('#inputResearch').lightAutocomplete({
     sourceData: function(search, success) {
       $.ajax({
@@ -410,38 +409,19 @@ const autoCompletion = () => {
           search: search
         },
         success: function(data) {
-          console.log(data)
           success(data);
         }
       })
-    }
-    onClick: function(data) {
-      $('#inputResearch').val(item.);
-      triggerClickWindow(data);
+    },
+    onClick: item => {
+      $('#inputResearch').val(item);
+      affichage(item)
     },
   })
 }
 
-const autoRemplissage = (obj) => {
-  let result = {name:'', address:'', mail:'', website:'', phone:'', type:'', category:'', area:'', city:'', country:'',
-   latitude:'',longitude:'', job:'', intern:'', internJob:''}
-  for(item of obj){
-    result.item = obj.item
-  }
-  return result
-  console.log(result)
-}
-
-
-const showAdmin = () => {
-  const entity = {
-      name:'', address:'', mail:'', website:'', phone:'', type:'', category:'', area:'', city:'', country:'',
-      latitude:'',longitude:'', job:'', intern:'', internJob:''
-  }
-  mainDiv.innerHTML = adminHtml(rechercheEntite() + form(entity))
+const displayEntity = () => {
   autoCompletion()
-  // research.addEventListener('click', evt =>
-  //   autoRemplissage(autoCompletion(entity)))
   const formPost = document.getElementById("form-post")
   formPost.addEventListener("submit", event => {
     let data = {}
@@ -452,7 +432,6 @@ const showAdmin = () => {
         data[input.name] = input.value
       }
     }
-    // console.log(data)
     const body = JSON.stringify(data)
 
     fetch("/contact",
@@ -469,6 +448,17 @@ const showAdmin = () => {
       // console.log(data)
     })
   })
+}
+
+const affichage = (entity) => mainDiv.innerHTML = adminHtml(rechercheEntite() + form(entity))
+
+const showAdmin = () => {
+  const emptyEntity = {
+      name:'', address:'', mail:'', website:'', phone:'', type:'', category:'', area:'', city:'', country:'',
+      latitude:'',longitude:'', job:'', intern:'', internJob:''
+  }
+  affichage(emptyEntity)
+  displayEntity()
 }
 
 const notFoundHtml = `<img src="https://fab404.com/wp-content/uploads/2009/06/simpsoncrazy404.jpg" alt="">`
