@@ -135,12 +135,12 @@ const rechercheEntite = () => /* @html */ `<h3>Modifier une entreprise/ecole</h3
 <form>
   <div class="form-row">
     <div class="col-12">
-      <input type="text" class="form-control form-group" id="inputResearch" action="/existingEntity" placeholder="Essayez 'Capgemini'">
+      <input type="text" class="form-control form-group" id="inputResearch" action="/existingEntity">
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-12">
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button id="research" type="submit" class="btn btn-primary">Submit</button>
     </div>
   </div>
 </form>`
@@ -413,19 +413,35 @@ const autoCompletion = () => {
           console.log(data)
           success(data);
         }
-      });
+      })
     }
+    onClick: function(data) {
+      $('#inputResearch').val(item.);
+      triggerClickWindow(data);
+    },
   })
+}
+
+const autoRemplissage = (obj) => {
+  let result = {name:'', address:'', mail:'', website:'', phone:'', type:'', category:'', area:'', city:'', country:'',
+   latitude:'',longitude:'', job:'', intern:'', internJob:''}
+  for(item of obj){
+    result.item = obj.item
+  }
+  return result
+  console.log(result)
 }
 
 
 const showAdmin = () => {
   const entity = {
-    name:'', address:'', mail:'', website:'', phone:'', type:'', category:'', area:'', city:'', country:'',
-    latitude:'',longitude:'', job:'', intern:'', internJob:''
+      name:'', address:'', mail:'', website:'', phone:'', type:'', category:'', area:'', city:'', country:'',
+      latitude:'',longitude:'', job:'', intern:'', internJob:''
   }
   mainDiv.innerHTML = adminHtml(rechercheEntite() + form(entity))
   autoCompletion()
+  // research.addEventListener('click', evt =>
+  //   autoRemplissage(autoCompletion(entity)))
   const formPost = document.getElementById("form-post")
   formPost.addEventListener("submit", event => {
     let data = {}
@@ -436,7 +452,7 @@ const showAdmin = () => {
         data[input.name] = input.value
       }
     }
-    console.log(data)
+    // console.log(data)
     const body = JSON.stringify(data)
 
     fetch("/contact",
@@ -450,7 +466,7 @@ const showAdmin = () => {
     })
     .then(response => response.json())
     .then(data => {
-      console.log(data)
+      // console.log(data)
     })
   })
 }
