@@ -67,6 +67,7 @@ const indexHtml = /* @html */ `
 
 app.post("/contact", (req, res) => {
   let newContact = req.body
+  // console.log(req)
 
   const geocoderQuery = `${req.body.adresse} ${req.body.ville}`.replace(/ /g, '+')
 
@@ -95,7 +96,6 @@ app.post("/contact", (req, res) => {
 })
 
 app.get("/existingEntity", (req, res) =>{
-  console.log(req.query)
   const search = mysqlEscape(req.query.search)
   const query = `SELECT * FROM Entite WHERE name LIKE '%${search}%'`
 
@@ -111,7 +111,6 @@ app.get("/existingEntity", (req, res) =>{
         return obj
       })
     )
-    console.log(result)
   })
 })
 
