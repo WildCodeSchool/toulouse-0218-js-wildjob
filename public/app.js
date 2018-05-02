@@ -13,21 +13,7 @@ const accueil = paragraphe => /* @html */`
     </label>
     <div class="menu">
       <a href="admin" data-toggle="modal"  class="administrateur"  data-target="#popUpWindow">Administrateur</a>
-        <div class="modal fade" id="popUpWindow">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <form role="form">
-                  <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Email"/>
-                    <input type="password" class="form-control" placeholder="Password" />
-                  </div>
-                </form>
-              </div>
-                <button class="btn btn-secondary">Log In</button>
-            </div>
-          </div>
-        </div>
+
       <a href="https://wildcodeschool.fr/" class="ecole" target="_blank">L'école</a>
     </div>
   </div>
@@ -39,8 +25,8 @@ const accueil = paragraphe => /* @html */`
   <div class="container-fluid">
     <div class="row">
       <div class="col-12 accueil">
-        <img class="fondAccueil" alt="accueil" src="img/fond-fini.png"/>
-        <img class="logoAccueil" alt="logo" src="img/LOGOFINI.png"/>
+        <img class="fondAccueil" alt="accueil" src="img/NEWFONDBLEU.png"/>
+        <img class="logoAccueil" alt="logo" src="img/NEWLOGO.png"/>
         <div class="texteAccueil">
           <p id="paragraphe">${paragraphe}</p>
         </div>
@@ -49,6 +35,9 @@ const accueil = paragraphe => /* @html */`
   </div>
 </div>
 <!--accueil end-->`
+
+
+
 
 const texteEcosysteme = `La Wild Code School est une école de code <span>dont chaque campus est connecté à son écosystème local</span>`
 const texteEntreprise = `94% des élèves formés à la Wild Code School sont en stage/emploi <span>un mois après la fin de leur formation de développeur</span>`
@@ -283,7 +272,31 @@ function initMap(markers) {
   let map = new google.maps.Map(document.getElementById('map'),
   {
     zoom: 10,
-    center: wildcodeschool
+    center: wildcodeschool,
+    styles: [
+      {
+        "featureType": "poi.business",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+       { "featureType": "poi.medical",
+        "elementType": "labels.text",
+         "stylers": [ { "visibility": "off"
+         }
+       ]
+     },
+      {
+        "featureType": "poi.sports_complex",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      }
+    ]
   });
   for ( let m of markers){
     let marker = new google.maps.Marker({
@@ -377,6 +390,43 @@ const showHome = (texte) => () => {
 //     initMap(markers)
 //   })
 // }
+const form = document.getElementById('loginadmin')
+  form.addEventListener('submit', evt => {
+    evt.preventDefault()
+    const data ={}
+    const inputs = document.getElementsByTagName('input')
+    for (input of inputs) {
+      data[input.name] = input.value
+    }
+    fetch('/login',{
+      method: 'POST',
+      headers:{
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include',
+      body: JSON.stringify(data)
+    })
+    .then(r => r.json())
+    .then(user => {
+      loggedInuser = user
+      page("/admin")
+      $('#popUpWindow').modal('dispose')
+    })
+  })
+
+
+  const chekLoginMidleware = (context, next) => {
+    if (loggedInuser === undefined) {
+        page("/", showHome(texteEntreprise))
+    }
+    next()
+  }
+
+
+
+
+
 
 const showAdmin = () => {
   mainDiv.innerHTML = adminHtml
@@ -408,8 +458,6 @@ const showAdmin = () => {
   })
 }
 
-
-
 const notFoundHtml = `<img src="https://fab404.com/wp-content/uploads/2009/06/simpsoncrazy404.jpg" alt="">`
 const notFound = () => {
   mainDiv.innerHTML = notFoundHtml
@@ -426,4 +474,7 @@ document.addEventListener("DOMContentLoaded", event => {
 
   page()
 })
+
+
+
 // modification url end
