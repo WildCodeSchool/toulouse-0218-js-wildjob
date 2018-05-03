@@ -218,12 +218,15 @@ const adminHtml = /* @html */`
     </div>
     <div class="form-row">
       <div class="form-group col-md-12">
-        <a href="/"><button id="exitAdmin" type="button" class="btn btn-primary">Exit</button></a>
+        <!-- <a href="/"> -->
+        <button id="exitAdmin" type="button" class="btn btn-primary">Exit</button>
+      <!--</a> -->
       </div>
     </div>
   </form>
   <!--formulaire création end-->
 </div>`
+
 // HTML admin end
 
 // marqueurs et légende
