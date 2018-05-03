@@ -12,8 +12,9 @@ const accueil = paragraphe => /* @html */`
       </div>
     </label>
     <div class="menu">
+      <a href="admin" data-toggle="modal"  class="administrateur"  data-target="#modal">Administrateur</a>
+
       <a href="https://wildcodeschool.fr/" class="ecole" target="_blank">L'école</a>
-      <a href="admin" class="administrateur">Admin</a>
     </div>
   </div>
 </div>
@@ -24,8 +25,8 @@ const accueil = paragraphe => /* @html */`
   <div class="container-fluid">
     <div class="row">
       <div class="col-12 accueil">
-        <img class="fondAccueil" alt="accueil" src="img/fond-fini.png"/>
-        <img class="logoAccueil" alt="logo" src="img/LOGOFINI.png"/>
+        <img class="fondAccueil" alt="accueil" src="https://sylvainkosc.github.io/img/NEWFONDBLEU.png"/>
+        <img class="logoAccueil" alt="logo" src="https://sylvainkosc.github.io/img/NEWLOGO.png"/>
         <div class="texteAccueil">
           <p id="paragraphe">${paragraphe}</p>
         </div>
@@ -34,6 +35,9 @@ const accueil = paragraphe => /* @html */`
   </div>
 </div>
 <!--accueil end-->`
+
+
+
 
 const texteEcosysteme = `La Wild Code School est une école de code <span>dont chaque campus est connecté à son écosystème local</span>`
 const texteEntreprise = `94% des élèves formés à la Wild Code School sont en stage/emploi <span>un mois après la fin de leur formation de développeur</span>`
@@ -185,7 +189,7 @@ const form = (entite) => /* @html */ `<h3>Créer une entreprise/ecole</h3>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputCountry">Pays</label>
-      <input type="text" name="country" class="form-control" id="inputCity" value="${entite.country}">
+      <input type="text" name="country" class="form-control" id="inputCountry" value="${entite.country}">
     </div>
     <div class="form-group col-md-6">
       <label for="inputArea">Region</label>
@@ -302,8 +306,32 @@ function initMap(markers, path) {
   };
   let map = new google.maps.Map(document.getElementById('map'),
   {
-    zoom: 10,
-    center: {lat: 43.6006785, lng: 1.3626296}
+    zoom: 13,
+    center: {lat: 43.6032661, lng: 1.4422609},
+    styles: [
+      {
+        "featureType": "poi.business",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+       { "featureType": "poi.medical",
+        "elementType": "labels.text",
+         "stylers": [ { "visibility": "off"
+         }
+       ]
+     },
+      {
+        "featureType": "poi.sports_complex",
+        "stylers": [
+          {
+            "visibility": "off"
+          }
+        ]
+      }
+    ]
   });
   let marker
   let listMarker = []
@@ -458,6 +486,43 @@ const showHome = (texte, type, filtre) => (context) => {
 //     initMap(markers)
 //   })
 // }
+//debut  modal connexion//
+const formLogin = document.getElementById('loginadmin')
+  formLogin.addEventListener('submit', evt => {
+    evt.preventDefault()
+    const data ={}
+    const inputs = document.getElementsByTagName('input')
+    for (input of inputs) {
+      data[input.name] = input.value
+    }
+    fetch('/login',{
+      method: 'POST',
+      headers:{
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include',
+      body: JSON.stringify(data)
+    })
+    .then(r => r.json())
+    .then(data => {
+      if (data.error){
+        alert(data.error)
+      }
+      else {
+        loggedInuser = data
+        page("/admin")
+      }
+      $('#modal').modal('hide')
+    })
+  })
+  const chekLoginMidleware = (context, next) => {
+    if (loggedInuser === undefined) {
+        page("/", showHome(texteEntreprise))
+    }
+    next()
+  }
+//fin modal connexion//
 
 const autoCompletion = () => {
   $('#inputResearch').lightAutocomplete({
@@ -556,4 +621,7 @@ document.addEventListener("DOMContentLoaded", event => {
 
   page()
 })
+
+
+
 // modification url end

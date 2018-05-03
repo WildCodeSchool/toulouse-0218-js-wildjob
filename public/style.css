@@ -43,13 +43,14 @@ label{
   right: 40px;
   max-width:90%;
   z-index: 30;
+  filter: drop-shadow(2px 2px 2px black);
 }
 .texteAccueil span{
   color:white;
   transition: color 200ms ease-out;
 }
 .texteAccueil:hover span{
-  color: #93238d;
+  color: #ff00ff;
 }
 /*Accueil end*/
 
@@ -63,6 +64,7 @@ label{
   background-color:black;
   transition:top 100ms ease-out;
   z-index:20;
+
 }
 .btnBurger{
   position:absolute;
@@ -106,10 +108,12 @@ label{
   font-size:28pt;;
   text-decoration:none;
   color:#93238d;
+
 }
 
 .menu a:hover{
-  color:#9353a0;
+  color:#ff00ff;
+
 }
 .administrateur{
   right:130px;
@@ -142,6 +146,7 @@ label{
   top: 0;
   left: 0;
   width: 57px;
+  filter: drop-shadow(0.5px 0.5px 0.5px black);
 }
 .sidemenu nav {
   position: fixed;
@@ -162,7 +167,7 @@ label{
 .sidemenu nav li a {
    cursor: pointer;
    -webkit-font-smoothing: antialiased;
-   font-size: 19px; color: #93238d;
+   font-size: 19px; color: #993399;
    letter-spacing: 1px;
    position: relative;
    display: block;
@@ -174,7 +179,7 @@ label{
   left: 0;
   width: 0;
   height: 2px;
-  background: #9353a0;
+  background: #ff00ff;
   opacity: 0;
   transition: all .3s cubic-bezier(0.46, 0, 0.07, 1);
 }
@@ -373,3 +378,15 @@ label{
   margin-bottom: 0.5rem;
 }
 /*form admin end*/
+
+
+/*Authentification */
+/***** Modal *****/
+.modal-backdrop {
+  z-index: -1;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #93238D;
+    border-color: #9353aO;
+}
