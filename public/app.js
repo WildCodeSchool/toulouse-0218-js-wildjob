@@ -252,15 +252,15 @@ const form = (entite) => /* @html */ `<h3>Créer une entreprise/ecole</h3>
   </div>
   <div class="form-row">
     <div class="form-group col-md-12">
-      <a href="/"><button id="exitAdmin" type="button" class="btn btn-primary">Exit</button></a>
+      <button id="exitAdmin" type="button" class="btn btn-primary">Exit</button>
     </div>
   </div>
 </form>`
+
 // HTML admin
 const adminHtml = contenu => /* @html */`
 <div class="container titleFormAdmin">
   <h1>Interface Administrateur - Campus Manager</h1>
-
 ${contenu}
 
 </div>`
@@ -593,7 +593,10 @@ const affichage = (entity) => {
   $('#inputType').val(entity.type)
   $('#inputCategory').val(entity.category)
   autoCompletion()
-  page ("/", showHome())
+  exitButton = document.getElementById("exitAdmin")
+  exitButton.addEventListener("click", evt =>
+    location.replace(location.origin)
+  )
 }
 
 const showAdmin = () => {
