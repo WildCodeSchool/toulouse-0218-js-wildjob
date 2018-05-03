@@ -62,7 +62,7 @@ const mapHtml = filtre => /* @html */`
           <div class="row">
             <input type="checkbox" id="clickMe"/>
             <div class="col-5 col-sm-4 col-md-3 col-lg-2 filter">
-              <div class="mask">
+              <div id="mask">
                 <h1>Filtres:</h1>
                 <label for="clickMe"><img class="cross" alt="retour" src="img/Navigation/ferme.png"/></label>
                 ${filtre}
@@ -94,7 +94,8 @@ const mapHtml = filtre => /* @html */`
   </div>
   <!--map end-->
 </div>`
-const maps = /* @html */ `<div id="map"></div>
+const maps = /* @html */ `
+<div id="map"></div>
 <div id="legend" class="container" style="right:40px;">
   <div class="row">
     <div class="col-12 elementLegend">
@@ -102,6 +103,11 @@ const maps = /* @html */ `<div id="map"></div>
     </div>
   </div>
 </div>`
+const mask = filtre => /* @html */`
+  <h1>Filtres:</h1>
+  <label for="clickMe"><img class="cross" alt="retour" src="img/Navigation/ferme.png"/></label>
+  ${filtre}
+`
 // HTML map end
 
 // HTML sidebar
@@ -229,7 +235,7 @@ const adminHtml = /* @html */`
 // HTML admin end
 
 // marqueurs et légende
-function initMap(markers) {
+function initMap(markers, path) {
 
   // configuration de l'icône personnalisée
   let iconBase = 'https://sylvainkosc.github.io/img/';
@@ -361,10 +367,10 @@ function initMap(markers) {
       }
     }
   }
-  if(window.location == "http://localhost:3000/") {
+  if(path == "/") {
     legende("entreprises")
   }
-  else if(window.location == "http://localhost:3000/eco") {
+  else if(path == "/eco") {
     legende("ecosysteme")
   }
   map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
@@ -382,9 +388,10 @@ lateralMenu.innerHTML = sidebar
 
 let mapWrapper
 let stockageParagraphe
+let filterWrapper
 let initialized = false
 
-const showHome = (texte, type, filtre) => () => {
+const showHome = (texte, type, filtre) => (context) => {
   fetch (`/data/${type}`)
   .then(function(response){
     return response.json()
@@ -394,6 +401,7 @@ const showHome = (texte, type, filtre) => () => {
       slide.innerHTML = accueil(texte) + mapHtml(filtre)
       mapWrapper = document.getElementById('mapWrapper')
       stockageParagraphe = document.getElementById('paragraphe')
+      filterWrapper = document.getElementById('mask')
       mainDiv.appendChild(lateralMenu)
       fullpageDiv = $('#fullpage')
       fullpageDiv.fullpage({
@@ -404,9 +412,9 @@ const showHome = (texte, type, filtre) => () => {
     else {
       stockageParagraphe.innerHTML = texte
       mapWrapper.innerHTML = maps
+      filterWrapper.innerHTML = mask(filtre)
     }
-
-    initMap(markers)
+    initMap(markers, context.path)
   })
 }
 

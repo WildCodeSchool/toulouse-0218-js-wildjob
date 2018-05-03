@@ -284,10 +284,10 @@ label{
   transition:width 100ms ease-out;
   z-index:10;
 }
-.mask{
+#mask{
   display:none;
 }
-.mask h1{
+#mask h1{
   position:absolute;
   top:120px;
   left:20px;
@@ -339,7 +339,7 @@ label{
 #clickMe:checked ~ .filter{
   width:100%;
 }
-#clickMe:checked ~ .filter .mask{
+#clickMe:checked ~ .filter #mask{
   display:contents;
 }
 /*filter end*/
