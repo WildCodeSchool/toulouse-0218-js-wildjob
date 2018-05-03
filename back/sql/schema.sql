@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.21, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.22, for Linux (x86_64)
 --
 -- Host: localhost    Database: wildjob_app
 -- ------------------------------------------------------
--- Server version	5.7.21-0ubuntu0.16.04.1
+-- Server version	5.7.22-0ubuntu0.16.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -24,6 +24,31 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/ `wildjob_app` /*!40100 DEFAULT CHARACTE
 USE `wildjob_app`;
 
 --
+-- Table structure for table `Admin`
+--
+
+DROP TABLE IF EXISTS `Admin`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Admin` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Admin`
+--
+
+LOCK TABLES `Admin` WRITE;
+/*!40000 ALTER TABLE `Admin` DISABLE KEYS */;
+INSERT INTO `Admin` VALUES (1,'justineAdmin','wildcodeschooltoulouse');
+/*!40000 ALTER TABLE `Admin` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `Entite`
 --
 
@@ -32,25 +57,25 @@ DROP TABLE IF EXISTS `Entite`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Entite` (
   `idContact` int(11) NOT NULL AUTO_INCREMENT,
-  `nom` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `adresse` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `address` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `mail` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `site` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `telephone` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `website` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `phone` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `type` enum('entreprises','ecosysteme') COLLATE utf8_unicode_ci DEFAULT NULL,
-  `soustype` enum('ESN','Start Up','PME','Grand Groupe','Agence Web','Collectivite / Association','Editeur','Coworking','Incubateur / Accelerateur','French Tech','Cluster Numerique','Ecole de code') COLLATE utf8_unicode_ci DEFAULT NULL,
-  `region` enum('Nord-Ouest','Sud-Ouest','Sud-Est','Nord-Est','Centre-IdF','Monde') COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ville` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `pays` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `latitude` float DEFAULT NULL,
-  `longitude` float DEFAULT NULL,
-  `nbCDICDD` int(11) DEFAULT '0',
-  `nbStage` int(11) DEFAULT '0',
-  `nbStageCDICDD` int(11) DEFAULT '0',
+  `category` enum('ESN','Start Up','PME','Grand Groupe','Agence Web','Collectivite / Association','Editeur','Coworking','Incubateur / Accelerateur','French Tech','Cluster Numerique','Ecole de code') COLLATE utf8_unicode_ci DEFAULT NULL,
+  `area` enum('Nord-Ouest','Sud-Ouest','Sud-Est','Nord-Est','Centre-IdF','Monde') COLLATE utf8_unicode_ci DEFAULT NULL,
+  `city` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `country` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lat` float DEFAULT NULL,
+  `lng` float DEFAULT NULL,
+  `job` int(11) DEFAULT NULL,
+  `intern` int(11) DEFAULT NULL,
+  `internJob` int(11) DEFAULT NULL,
   PRIMARY KEY (`idContact`),
-  UNIQUE KEY `Nom_UNIQUE` (`nom`),
-  UNIQUE KEY `Adresse_UNIQUE` (`adresse`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  UNIQUE KEY `Adresse_UNIQUE` (`address`),
+  UNIQUE KEY `Nom_UNIQUE` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -59,7 +84,7 @@ CREATE TABLE `Entite` (
 
 LOCK TABLES `Entite` WRITE;
 /*!40000 ALTER TABLE `Entite` DISABLE KEYS */;
-INSERT INTO `Entite` VALUES (19,'entreprise1','1 place de la Bourse','mail@mail.com','website','0678',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0),(20,'entreprise2','2 place de la Bourse','mail2@mail.com','website','0678',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0),(21,'entreprise3','3 place de la bourse','mail3@mail.com','website','0678',NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0),(22,'entreprise4','4 place de la bourse','mail4@mail.com','website','0678',NULL,NULL,NULL,NULL,NULL,43.6014,1.44214,0,0,0),(23,'entreprise5','4 rue saint Rome','mail5@mail.com','website','0676767676','entreprises','Start Up','Sud-Ouest','Toulouse','France',39.7702,-94.8398,3,2,2),(24,'entreprise6','6 rue saint Rome','mail6@mail.com','website','undefined','entreprises','Start Up','Sud-Ouest','Toulouse','France',39.7702,-94.8398,3,2,2),(25,'entreprise7','7 rue saint Rome','mail7@mail.com','website','undefined','entreprises','Start Up','Sud-Ouest','Toulouse','France',39.7702,-94.8398,3,2,2),(26,'entreprise8','8 rue saint Rome','mail8@mail.com','website','undefined','entreprises','Start Up','Sud-Ouest','Toulouse','France',39.7702,-94.8398,3,2,2);
+INSERT INTO `Entite` VALUES (58,'Wild Code School','1 Place de la Bourse','justine@wildcodeschool.fr','wildcodeschool.fr','06 66 47 68 70','ecosysteme','Ecole de code','Sud-Ouest','Toulouse','France',43.6015,1.44215,1,1,1),(60,'Capgemini','109 Avenue du Général Eisenhower','email@capgemini.com','www.capgemini.com','05 31 08 80 00','entreprises','Grand Groupe','Sud-Ouest','Toulouse','France',43.5664,1.37763,1,1,1);
 /*!40000 ALTER TABLE `Entite` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -72,4 +97,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-25 23:00:58
+-- Dump completed on 2018-05-03 17:04:15
