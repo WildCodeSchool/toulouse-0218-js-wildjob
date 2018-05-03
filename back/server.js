@@ -42,7 +42,7 @@ const indexHtml = /* @html */ `
     <div id="fullpage"></div>
   </div>
 <!-- Modal-->
-  <div class="modal fade" id="popUpWindow">
+  <div class="modal fade" id="modal">
     <div class="modal-dialog">
       <div class="modal-content">
           <form id="loginadmin" method="POST" action="/login">
@@ -69,13 +69,10 @@ const indexHtml = /* @html */ `
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <!--script bootstrap end-->
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/jquery.fullpage.min.js"></script>
-
-
 </body>
-
 </html>`
+//debut modal//
 app.post("/login", (req, res) => {
   const query =`select * from Admin where name='${req.body.name}' and password='${req.body.password}'`
   console.log(query)
@@ -96,10 +93,7 @@ app.post("/login", (req, res) => {
     )
   })
 })
-
-
-
-
+//fin modal//
 
 app.post("/contact", (req, res) => {
   let newContact = req.body

@@ -12,7 +12,7 @@ const accueil = paragraphe => /* @html */`
       </div>
     </label>
     <div class="menu">
-      <a href="admin" data-toggle="modal"  class="administrateur"  data-target="#popUpWindow">Administrateur</a>
+      <a href="admin" data-toggle="modal"  class="administrateur"  data-target="#modal">Administrateur</a>
 
       <a href="https://wildcodeschool.fr/" class="ecole" target="_blank">L'école</a>
     </div>
@@ -390,6 +390,7 @@ const showHome = (texte) => () => {
 //     initMap(markers)
 //   })
 // }
+//debut  modal connexion//
 const form = document.getElementById('loginadmin')
   form.addEventListener('submit', evt => {
     evt.preventDefault()
@@ -408,25 +409,24 @@ const form = document.getElementById('loginadmin')
       body: JSON.stringify(data)
     })
     .then(r => r.json())
-    .then(user => {
-      loggedInuser = user
-      page("/admin")
-      $('#popUpWindow').modal('dispose')
+    .then(data => {
+      if (data.error){
+        alert(data.error)
+      }
+      else {
+        loggedInuser = data
+        page("/admin")
+      }
+      $('#modal').modal('hide')
     })
   })
-
-
   const chekLoginMidleware = (context, next) => {
     if (loggedInuser === undefined) {
         page("/", showHome(texteEntreprise))
     }
     next()
   }
-
-
-
-
-
+//fin modal connexion//
 
 const showAdmin = () => {
   mainDiv.innerHTML = adminHtml
