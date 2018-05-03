@@ -67,13 +67,18 @@ const indexHtml = /* @html */ `
 
 app.post("/contact", (req, res) => {
   let newContact = req.body
-  // console.log(req)
 
-  const geocoderQuery = `${req.body.adresse} ${req.body.ville}`.replace(/ /g, '+')
+  const geocoderQuery = encodeURIComponent(`${req.body.address} ${req.body.city}`.replace(/ /g, '+'))
 
   fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${geocoderQuery}&key=AIzaSyCwC__7psOPTWbszU21xZvnsFL2XdrrpZk`)
     .then(res => res.json())
     .then(json => {
+      console.log(json)
+      if (json.results.length === 0){
+        return res.status(400).json({
+          error: "Adresse improbable"
+        })
+      }
       let lat = json.results["0"].geometry.location.lat
       let lng = json.results["0"].geometry.location.lng
       const query = `INSERT INTO Entite (name, address, mail, website, phone, type, category, area, city, country, latitude,
@@ -93,6 +98,42 @@ app.post("/contact", (req, res) => {
         )
       })
     })
+})
+
+app.post("/contact/:id", (req, res) => {
+  let id = req.params.id
+  console.log(id)
+  let updatedContact = req.body
+  console.log(updatedContact)
+
+  const geocoderQuery = encodeURIComponent(`${req.body.address} ${req.body.city}`.replace(/ /g, '+'))
+
+  fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${geocoderQuery}&key=AIzaSyCwC__7psOPTWbszU21xZvnsFL2XdrrpZk`)
+    .then(res => res.json())
+    .then(json => {
+      console.log(json)
+      if (json.results.length === 0){
+        return res.status(400).json({
+          error: "Adresse improbable"
+        })
+      }
+      let lat = json.results["0"].geometry.location.lat
+      let lng = json.results["0"].geometry.location.lng
+      const query = `UPDATE Entite SET name = "${updatedContact.name}", address = "${updatedContact.address}", mail = "${updatedContact.mail}", website = "${updatedContact.website}",
+            phone = "${updatedContact.phone}", type = "${updatedContact.type}", category = "${updatedContact.category}", area = "${updatedContact.area}",
+            city = "${updatedContact.city}", country = "${updatedContact.country}", latitude = ${lat}, longitude = ${lng}, job = "${updatedContact.job}",
+            intern = "${updatedContact.intern}", internJob = "${updatedContact.internJob}" WHERE idContact = ${id}`
+      connection.query(query, (error, result) => {
+        if(error) {
+          return res.status(500).json({
+            error: error.message
+          })
+        }
+        res.json(
+          result
+        )
+    })
+  })
 })
 
 app.get("/existingEntity", (req, res) =>{

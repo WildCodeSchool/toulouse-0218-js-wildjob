@@ -138,15 +138,10 @@ const rechercheEntite = () => /* @html */ `<h3>Modifier une entreprise/ecole</h3
       <input type="text" class="form-control form-group" id="inputResearch" action="/existingEntity">
     </div>
   </div>
-  <div class="form-row">
-    <div class="form-group col-md-12">
-      <button id="research" type="submit" class="btn btn-primary">Submit</button>
-    </div>
-  </div>
 </form>`
 
 const form = (entite) => /* @html */ `<h3>Créer une entreprise/ecole</h3>
-<form id="form-post" method="POST" action="/contact">
+<form id="form-post" method="POST" action="${entite.idContact ? '/contact/' + entite.idContact : '/contact'}">
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputName">Nom de l'entreprise</label>
@@ -203,8 +198,8 @@ const form = (entite) => /* @html */ `<h3>Créer une entreprise/ecole</h3>
       </select>
     </div>
     <div class="form-group col-md-6">
-      <label for="inputSousType">Type d'entreprise</label>
-      <select id="inputSousType" class="form-control" name="category" value="${entite.category}">
+      <label for="inputCategory">Type d'entreprise</label>
+      <select id="inputCategory" class="form-control" name="category" value="${entite.category}">
         <option value=""></option>
         <option value="ESN">ESN</option>
         <option value="Start Up">Start Up</option>
@@ -237,7 +232,7 @@ const form = (entite) => /* @html */ `<h3>Créer une entreprise/ecole</h3>
   </div>
   <div class="form-row">
     <div class="form-group col-md-12">
-      <button type="submit" class="btn btn-primary">Create</button>
+      <button type="submit" class="btn btn-primary">${entite.idContact ? 'Modifier' : 'Créer'}</button>
     </div>
   </div>
   <div class="form-row">
@@ -414,14 +409,20 @@ const autoCompletion = () => {
       })
     },
     onClick: item => {
-      $('#inputResearch').val(item);
+      $('#inputResearch').val(item)
       affichage(item)
+      displayEntity()
+    },
+    onPressEnter: item => {
+      $('#inputResearch').val(item)
+      affichage(item)
+      displayEntity()
+      console.log(item);
     },
   })
 }
 
 const displayEntity = () => {
-  autoCompletion()
   const formPost = document.getElementById("form-post")
   formPost.addEventListener("submit", event => {
     let data = {}
@@ -433,8 +434,7 @@ const displayEntity = () => {
       }
     }
     const body = JSON.stringify(data)
-
-    fetch("/contact",
+    fetch(formPost.action,
     {
       method: "POST",
       body: body,
@@ -443,14 +443,27 @@ const displayEntity = () => {
         "Content-Type": "application/json"
       }
     })
-    .then(response => response.json())
+    .then(response => {
+      console.log(response)
+      let decodedData = response.json()
+      if(response.status >= 400){
+        alert("Adresse improbable")
+      }
+      return decodedData
+    })
     .then(data => {
       // console.log(data)
     })
   })
 }
 
-const affichage = (entity) => mainDiv.innerHTML = adminHtml(rechercheEntite() + form(entity))
+const affichage = (entity) => {
+  mainDiv.innerHTML = adminHtml(rechercheEntite() + form(entity))
+  $('#inputArea').val(entity.area)
+  $('#inputType').val(entity.type)
+  $('#inputCategory').val(entity.category)
+  autoCompletion()
+}
 
 const showAdmin = () => {
   const emptyEntity = {
