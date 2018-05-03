@@ -77,12 +77,10 @@ label{
 }
 .btnBurger1{
   width:50px;
-  /* height:10px; */
   transition:transform 150ms ease-in, width 150ms ease-in;
 }
 .btnBurger2{
   width:50px;
-  /* height:10px; */
   margin-top: 25px;
   transition:transform 150ms ease-in, width 150ms ease-in;
 }
@@ -241,7 +239,6 @@ label{
 /*legend*/
 #legend {
   width:140px;
-  max-height:175px;
   font-family: Arial, sans-serif;
   background: #fff ;
   padding:0;
@@ -325,7 +322,7 @@ label{
   position:absolute;
   top:41px;
   right:-121px;
-  color:#9353a0;
+  color:#ff00ff;
   background-color:#ffffff;
   margin:0;
   padding:0 10px 0 20px;
