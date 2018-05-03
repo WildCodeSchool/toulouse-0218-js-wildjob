@@ -87,7 +87,7 @@ app.post("/login", (req, res) => {
     }
     if (result.length === 0){
       return res.status(401).json({
-        error: 'Identifiant erreur'
+        error: 'Authentification erronée'
       })
     }
     // req.session.user
