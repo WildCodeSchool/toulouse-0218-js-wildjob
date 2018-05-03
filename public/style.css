@@ -343,6 +343,27 @@ label{
   display:contents;
 }
 /*filter end*/
+/* autocomplete admin */
+
+.light-autocomplete-list ul {
+	width: 100%;
+	background-color: #34495E;
+	top: 0px;
+	padding: 0;
+	margin: 0;
+}
+.light-autocomplete-element {
+	height: 50px;
+	padding: 15px;
+	font-size: 14px;
+	cursor: pointer;
+	color: #FFFFFF;
+}
+.light-autocomplete-element.selected {
+	border: 2px solid #212121;
+	background-color: #3a3f45;
+}
+/* autocomplete admin end */
 
 /*form admin*/
 .titleFormAdmin h3{

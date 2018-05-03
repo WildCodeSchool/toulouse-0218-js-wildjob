@@ -13,7 +13,7 @@ const accueil = paragraphe => /* @html */`
     </label>
     <div class="menu">
       <a href="https://wildcodeschool.fr/" class="ecole" target="_blank">L'école</a>
-      <a href="admin" class="administrateur">Administrateur</a>
+      <a href="admin" class="administrateur">Admin</a>
     </div>
   </div>
 </div>
@@ -143,93 +143,128 @@ const sidebar = /* @html */`
 <!-- sidebar end-->`
 // HTML sidebar end
 
-// HTML admin
-const adminHtml = /* @html */`
-<div class="container titleFormAdmin">
-  <h1>Interface admin</h1>
-  <!--formulaire recherche-->
-  <h3>Modifier une entreprise/ecole</h3>
+const rechercheEntite = () => /* @html */ `<h3>Modifier une entreprise/ecole</h3>
+<form>
   <div class="form-row">
-    <label for="inputResearch" class="col-2 col-form-label">Entreprise / ecole</label>
-    <div class="col-9">
-      <input type="text" class="form-control" id="inputResearch" placeholder="Recherche entreprise / ecole auto-complétion">
+    <div class="col-12">
+      <input type="text" class="form-control form-group" id="inputResearch" action="/existingEntity">
     </div>
-    <button class="btn btn-primary col-1" type="submit">Submit</button>
   </div>
-  <!--formulaire recherche end-->
+</form>`
 
-  <!--formulaire création-->
-  <h3>Créer une entreprise/ecole</h3>
-  <form id="form-post" method="POST" action="/contact">
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="inputName">Nom de l'entreprise</label>
-        <input type="text" name="name" class="form-control" id="inputName" placeholder="Nom">
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputEmail4">Email</label>
-        <input type="email" name="email" class="form-control" id="inputEmail4" placeholder="Email">
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputWebsite">Site</label>
-        <input type="text" name="site" class="form-control" id="inputWebsite" placeholder="www.">
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputPhone">Téléphone</label>
-        <input type="text" name="telephone" class="form-control" id="inputPhone">
-      </div>
+const form = (entite) => /* @html */ `<h3>Créer une entreprise/ecole</h3>
+<form id="form-post" method="POST" action="${entite.idContact ? '/contact/' + entite.idContact : '/contact'}">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputName">Nom de l'entreprise</label>
+      <input type="text" name="name" class="form-control" id="inputName" value="${entite.name}" />
     </div>
-    <div class="form-row">
-      <div class="form-group col-md-8">
-        <label for="inputAddress">Addresse</label>
-        <input type="text" name="adresse" class="form-control" id="inputAddress" placeholder="1234 Main St">
-      </div>
-      <div class="form-group col-md-4">
-        <label for="inputCity">Ville</label>
-        <input type="text" name="ville" class="form-control" id="inputCity">
-      </div>
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Email</label>
+      <input type="email" name="mail" class="form-control" id="inputEmail4" value="${entite.mail}">
     </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="inputSociety">Type d'entreprise</label>
-        <select id="inputSociety" class="form-control">
-          <option selected>Type...</option>
-          <option>ESN</option>
-          <option>Start Up</option>
-          <option>PME</option>
-          <option>Grand Groupe</option>
-          <option>Agence Web</option>
-          <option>Collectivité / Association</option>
-          <option>Editeur</option>
-        </select>
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputContract">Type de contrat</label>
-        <select id="inputContract" class="form-control">
-          <option selected>Type...</option>
-          <option>Stage</option>
-          <option>CDD / CDI</option>
-          <option>Stage puis CDD / CDI</option>
-        </select>
-      </div>
+    <div class="form-group col-md-6">
+      <label for="inputWebsite">Site</label>
+      <input type="text" name="website" class="form-control" id="inputWebsite" value="${entite.website}">
     </div>
-    <div class="form-row">
-      <div class="form-group col-md-12">
-        <button type="submit" class="btn btn-primary">Create</button>
-      </div>
+    <div class="form-group col-md-6">
+      <label for="inputPhone">Téléphone</label>
+      <input type="text" name="phone" class="form-control" id="inputPhone" value="${entite.phone}">
     </div>
-    <div class="form-row">
-      <div class="form-group col-md-12">
-        <a href="/"><button id="exitAdmin" type="button" class="btn btn-primary">Exit</button></a>
-      </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-8">
+      <label for="inputAddress">Addresse</label>
+      <input type="text" name="address" class="form-control" id="inputAddress" value="${entite.address}">
     </div>
-  </form>
-  <!--formulaire création end-->
+    <div class="form-group col-md-4">
+      <label for="inputCity">Ville</label>
+      <input type="text" name="city" class="form-control" id="inputCity" value="${entite.city}">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCountry">Pays</label>
+      <input type="text" name="country" class="form-control" id="inputCity" value="${entite.country}">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputArea">Region</label>
+      <select id="inputArea" class="form-control" name="area" value="${entite.area}">
+        <option value=""></option>
+        <option value="Sud-Ouest">Sud-Ouest</option>
+        <option value="Sud-Est">Sud-Est</option>
+        <option value="Nord-Ouest">Nord-Ouest</option>
+        <option value="Nord-Est">Nord-Est</option>
+        <option value="Centre-Idf">Centre-IdF</option>
+        <option value="Monde">Monde</option>>
+      </select>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputType">Entreprises / Ecosysteme</label>
+      <select id="inputType" class="form-control" name="type" value="${entite.type}">
+        <option value=""></option>
+        <option value="entreprises">Entreprises</option>
+        <option value="ecosysteme">Ecosysteme</option>
+      </select>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputCategory">Type d'entreprise</label>
+      <select id="inputCategory" class="form-control" name="category" value="${entite.category}">
+        <option value=""></option>
+        <option value="ESN">ESN</option>
+        <option value="Start Up">Start Up</option>
+        <option value="PME">PME</option>
+        <option value="Grand Groupe">Grand Groupe</option>
+        <option value="Agence Web">Agence Web</option>
+        <option value="Collectivite / Association">Collectivité / Association</option>
+        <option value="Editeur">Editeur</option>
+        <option value="Coworking">Coworking</option>
+        <option value="Incubateur / Accelerateur">Incubateur / Accelerateur</option>
+        <option value="French Tech">French Tech</option>
+        <option value="Cluster Numerique">Cluster Numérique</option>
+        <option value="Ecole de code">Ecole de code</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="inputIntern">Stages</label>
+      <input type="text" name="intern" class="form-control" id="inputIntern" value="${entite.intern}">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputJob">Emplois</label>
+      <input type="text" name="job" class="form-control" id="inputJob" value="${entite.job}">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputInternJob">Stages puis emplois</label>
+      <input type="text" name="internJob" class="form-control" id="internJob" value="${entite.internJob}">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <button type="submit" class="btn btn-primary">${entite.idContact ? 'Modifier' : 'Créer'}</button>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <a href="/"><button id="exitAdmin" type="button" class="btn btn-primary">Exit</button></a>
+    </div>
+  </div>
+</form>`
+// HTML admin
+const adminHtml = contenu => /* @html */`
+<div class="container titleFormAdmin">
+  <h1>Interface Administrateur - Campus Manager</h1>
+
+${contenu}
+
 </div>`
 // HTML admin end
 
 // marqueurs et légende
-function initMap(markers) {
+function initMap(markers, path) {
 
   // configuration de l'icône personnalisée
   let iconBase = 'https://sylvainkosc.github.io/img/';
@@ -361,10 +396,10 @@ function initMap(markers) {
       }
     }
   }
-  if(window.location == "http://localhost:3000/") {
+  if(path == "/") {
     legende("entreprises")
   }
-  else if(window.location == "http://localhost:3000/eco") {
+  else if(path == "/eco") {
     legende("ecosysteme")
   }
   map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
@@ -384,7 +419,7 @@ let mapWrapper
 let stockageParagraphe
 let initialized = false
 
-const showHome = (texte, type, filtre) => () => {
+const showHome = (texte, type, filtre) => (context) => {
   fetch (`/data/${type}`)
   .then(function(response){
     return response.json()
@@ -406,7 +441,7 @@ const showHome = (texte, type, filtre) => () => {
       mapWrapper.innerHTML = maps
     }
 
-    initMap(markers)
+    initMap(markers, context.path)
   })
 }
 
@@ -424,21 +459,48 @@ const showHome = (texte, type, filtre) => () => {
 //   })
 // }
 
-const showAdmin = () => {
-  mainDiv.innerHTML = adminHtml
+const autoCompletion = () => {
+  $('#inputResearch').lightAutocomplete({
+    sourceData: function(search, success) {
+      $.ajax({
+        url: '/existingEntity',
+        method: 'GET',
+        dataType: 'json',
+        data: {
+          search: search
+        },
+        success: function(data) {
+          success(data);
+        }
+      })
+    },
+    onClick: item => {
+      $('#inputResearch').val(item)
+      affichage(item)
+      displayEntity()
+    },
+    onPressEnter: item => {
+      $('#inputResearch').val(item)
+      affichage(item)
+      displayEntity()
+      console.log(item);
+    },
+  })
+}
+
+const displayEntity = () => {
   const formPost = document.getElementById("form-post")
   formPost.addEventListener("submit", event => {
     let data = {}
     event.preventDefault()
-    const inputs = formPost.getElementsByTagName("input")
+    const inputs = formPost.getElementsByClassName("form-control")
     for(input of inputs){
       if(input.name !== ""){
         data[input.name] = input.value
       }
     }
     const body = JSON.stringify(data)
-
-    fetch("/contact",
+    fetch(formPost.action,
     {
       method: "POST",
       body: body,
@@ -447,11 +509,35 @@ const showAdmin = () => {
         "Content-Type": "application/json"
       }
     })
-    .then(response => response.json())
+    .then(response => {
+      console.log(response)
+      let decodedData = response.json()
+      if(response.status >= 400){
+        alert("Adresse improbable")
+      }
+      return decodedData
+    })
     .then(data => {
-      console.log(data)
+      // console.log(data)
     })
   })
+}
+
+const affichage = (entity) => {
+  mainDiv.innerHTML = adminHtml(rechercheEntite() + form(entity))
+  $('#inputArea').val(entity.area)
+  $('#inputType').val(entity.type)
+  $('#inputCategory').val(entity.category)
+  autoCompletion()
+}
+
+const showAdmin = () => {
+  const emptyEntity = {
+      name:'', address:'', mail:'', website:'', phone:'', type:'', category:'', area:'', city:'', country:'',
+      lat:'',lng:'', job:'', intern:'', internJob:''
+  }
+  affichage(emptyEntity)
+  displayEntity()
 }
 
 const notFoundHtml = `<img src="https://fab404.com/wp-content/uploads/2009/06/simpsoncrazy404.jpg" alt="">`

@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.22, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.21, for Linux (x86_64)
 --
 -- Host: localhost    Database: wildjob_app
 -- ------------------------------------------------------
--- Server version	5.7.22-0ubuntu0.16.04.1
+-- Server version	5.7.21-0ubuntu0.16.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -32,24 +32,24 @@ DROP TABLE IF EXISTS `Entite`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Entite` (
   `idContact` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `address` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `nom` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `adresse` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `mail` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `website` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `phone` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `site` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `telephone` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `type` enum('entreprises','ecosysteme') COLLATE utf8_unicode_ci DEFAULT NULL,
-  `category` enum('ESN','Start Up','PME','Grand Groupe','Agence Web','Collectivite / Association','Editeur','Coworking','Incubateur / Accelerateur','French Tech','Cluster Numerique','Ecole de code') COLLATE utf8_unicode_ci DEFAULT NULL,
-  `area` enum('Nord-Ouest','Sud-Ouest','Sud-Est','Nord-Est','Centre-IdF','Monde') COLLATE utf8_unicode_ci DEFAULT NULL,
-  `city` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `country` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `soustype` enum('ESN','Start Up','PME','Grand Groupe','Agence Web','Collectivite / Association','Editeur','Coworking','Incubateur / Accelerateur','French Tech','Cluster Numerique','Ecole de code') COLLATE utf8_unicode_ci DEFAULT NULL,
+  `region` enum('Nord-Ouest','Sud-Ouest','Sud-Est','Nord-Est','Centre-IdF','Monde') COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ville` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `pays` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `latitude` float DEFAULT NULL,
   `longitude` float DEFAULT NULL,
-  `job` int(11) DEFAULT NULL,
-  `intern` int(11) DEFAULT NULL,
-  `internJob` int(11) DEFAULT NULL,
+  `nbCDICDD` int(11) DEFAULT '0',
+  `nbStage` int(11) DEFAULT '0',
+  `nbStageCDICDD` int(11) DEFAULT '0',
   PRIMARY KEY (`idContact`),
-  UNIQUE KEY `Adresse_UNIQUE` (`address`),
-  UNIQUE KEY `Nom_UNIQUE` (`name`)
+  UNIQUE KEY `Nom_UNIQUE` (`nom`),
+  UNIQUE KEY `Adresse_UNIQUE` (`adresse`)
 ) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -72,4 +72,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-26 11:38:41
+-- Dump completed on 2018-04-25 23:00:58
