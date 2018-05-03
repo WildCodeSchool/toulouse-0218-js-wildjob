@@ -30,7 +30,7 @@ const indexHtml = /* @html */ `
   <link href="https://fonts.googleapis.com/css?family=Paytone+One" rel="stylesheet">
 
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/jquery.fullpage.css" />
-
+  <!-- <link rel="icon" type="image/png" href="public/img/favicon/favicon.png"/> -->
 </head>
 
 <body class="payTone">
@@ -59,6 +59,38 @@ const indexHtml = /* @html */ `
 
 </html>`
 
+app.get("/data", (req, res) => {
+  connection.query("SELECT * FROM Entite", (error, data) => {
+    if(error) {
+      return res.status(500).json({
+        error: error.message
+      })
+    }
+    res.json(data)
+  })
+})
+
+app.get("/data/:type", (req, res) => {
+  const type = req.params.type
+  const query = `SELECT * FROM Entite WHERE type = "${type}"`
+  connection.query(query, (error, data) => {
+    if(error) {
+      return res.status(500).json({
+        error: error.message
+      })
+    }
+    if(data.length === 0) {
+      return res.status(404).json({
+        error: `Company with id ${dataId} not found`
+      })
+    }
+    res.json(data)
+  })
+})
+
+app.get("/data", (req, res) => {
+  res.json(data)
+})
 
 app.post("/contact", (req, res) => {
   let newContact = req.body
@@ -70,7 +102,7 @@ app.post("/contact", (req, res) => {
     .then(json => {
       let lat = json.results["0"].geometry.location.lat
       let lng = json.results["0"].geometry.location.lng
-      const query = `INSERT INTO Entite (nom, adresse, mail, site, telephone, latitude, longitude)
+      const query = `INSERT INTO Entite (nom, adresse, mail, site, telephone, lat, lng)
                     VALUES ('${newContact.name}', '${newContact.adresse}', '${newContact.email}', '${newContact.site}', '${newContact.telephone}', ${lat}, ${lng} )`
       connection.query(query, (error, result) => {
         if(error) {

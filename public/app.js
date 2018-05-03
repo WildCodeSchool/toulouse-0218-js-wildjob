@@ -40,7 +40,18 @@ const texteEntreprise = `94% des élèves formés à la Wild Code School sont en
 // HTML accueil end
 
 // HTML map
-const mapHtml = /* @html */`
+const checkboxEntreprises = /* @html */ `<div class="filtreCheckboxes">
+  <input type="checkbox" id="grandGroupe"/>
+  <label for="grandGroupe"><p>Grand Groupe</p></label>
+  <input type="checkbox" id="pme"/>
+  <label for="pme"><p>PME</p></label>
+</div>`
+const checkboxEcosysteme = /* @html */ `<div class="filtreCheckboxes"></div>`
+const checkboxCommuns = /* @html */ `<div class="filtresCommuns"></div>`
+const filtreEntreprises = checkboxEntreprises + checkboxCommuns
+const filtreEcosysteme = checkboxEcosysteme + checkboxCommuns
+
+const mapHtml = filtre => /* @html */`
 <div class="section">
   <!--map-->
   <div class="container-fluid">
@@ -54,13 +65,14 @@ const mapHtml = /* @html */`
               <div class="mask">
                 <h1>Filtres:</h1>
                 <label for="clickMe"><img class="cross" alt="retour" src="img/Navigation/ferme.png"/></label>
+                ${filtre}
               </div>
             </div>
           </div>
           <div class="row">
             <label for="clickMe">
               <div class="btnFilter">
-                <img class="arrow" alt="ouvrir" src="img/Navigation/2.0fleche.png"/>
+                <img class="arrow" alt="ouvrir" src="https://sylvainkosc.github.io/img/Navigation/2.0fleche.png"/>
                 <h3 class="texteBtnFilter">Filtres</h3>
               </div>
             </label>
@@ -82,7 +94,7 @@ const mapHtml = /* @html */`
   </div>
   <!--map end-->
 </div>`
-const maps = `<div id="map"></div>
+const maps = /* @html */ `<div id="map"></div>
 <div id="legend" class="container" style="right:40px;">
   <div class="row">
     <div class="col-12 elementLegend">
@@ -218,87 +230,142 @@ const adminHtml = /* @html */`
 
 // marqueurs et légende
 function initMap(markers) {
-  const wildcodeschool = {lat: 43.601433, lng: 1.442133};
-
-  // info bulle
-  const contentString = `
-  <div id="content">
-    <div id="Wildcode School Toulouse">
-  </div>
-  <h1 id="firstHeading" class="firstHeading"Wildcode School>
-    <div id="bodyContent">
-      <p><b>Wildcode School Toulouse</b></p>
-      <p>The Best place</p>
-      <p>28 eleves</p>
-      <a href="https://wildcodeschool.fr/toulouse/" target="_blank">https://wildcodeschool.fr/toulouse</a>
-    </div>
-  </h1>`;
-  let infowindow = new google.maps.InfoWindow({
-    content: contentString
-  });
-  // info bulle end
 
   // configuration de l'icône personnalisée
-  let iconBase = 'https://sylvainkosc.github.io/marqeurs/';
+  let iconBase = 'https://sylvainkosc.github.io/img/';
   let icons = {
-    school: {
-      name: 'School',
-      icon: iconBase + 'marqeurschool.png'
-    },
-    library: {
-      name: 'Entreprise',
-      icon: iconBase + 'marqeurentreprise.png'
-    },
-    info: {
-      name: 'Incubateur',
-      icon: iconBase + 'marqeurincubateur.png'
-    }
+    entreprises: [],
+    ecosysteme: []
   };
+  let categoryEntreprises = ["ESN", "Startup", "PME", "Grand Groupe", "Agence Web", "Collectivite/ Association", "Editeur"]
+  let templateEntreprises
+  let categoryEcosysteme = ["Coworking", "Incubateur/ Accelerateur", "French Tech", "Cluster Numerique", "Ecole de code"]
+  let templateEcosysteme
+  let i = 1
+  for(category of categoryEntreprises){
+    templateEntreprises = {
+      name: category,
+      icon: iconBase + `MarqeurEntreprises/${i}entre.png`
+    }
+    icons.entreprises.push(templateEntreprises)
+    i = i + 1
+  }
+  i = 1
+  for(category of categoryEcosysteme){
+    templateEcosysteme = {
+      name: category,
+      icon: iconBase + `MarqeurEcosysteme/${i}eco.png`
+    }
+    icons.ecosysteme.push(templateEcosysteme)
+    i = i + 1
+  }
+
 
   let images = {
-    /* adresse de l'icône personnalisée */
-    url: 'https://sylvainkosc.github.io/marqeurs/marqeurschool.png'
+    urlEntreprises: "https://sylvainkosc.github.io/img/MarqeurEntreprises/",
+    urlEcosysteme: "https://sylvainkosc.github.io/img/MarqeurEcosysteme/"
   };
   let map = new google.maps.Map(document.getElementById('map'),
   {
     zoom: 10,
-    center: wildcodeschool
+    center: {lat: 43.6006785, lng: 1.3626296}
   });
-  for ( let m of markers){
-    let marker = new google.maps.Marker({
-      position: m,
-      map: map,
-      title: m.title,
-      icon: images
+  let marker
+  let listMarker = []
+  // console.log(markers)
+  for (let m of markers) {
+    function selectionMarqueur(propriete, nomIcone) {
+      const {lat, lng} = m
+      marker = new google.maps.Marker({
+        position: {lat, lng},
+        map: map,
+        title: m.name,
+        icon: images[propriete] + nomIcone
+      });
+      listMarker.push(marker.icon)
+      return marker
+    }
+    i = 1
+    for(category of categoryEntreprises) {
+      if(m.category == category) {
+        selectionMarqueur("urlEntreprises", `${i}entre.png`)
+      }
+      i = i + 1
+    }
+    i = 1
+    for(category of categoryEcosysteme) {
+      if(m.category == category) {
+        selectionMarqueur("urlEcosysteme", `${i}eco.png`)
+      }
+      i = i + 1
+    }
+    // info bulle
+    const contentString = `
+    <h2>
+      <p><b>${m.name}</b></p>
+    </h2>
+    <h5>
+      <p><b>${m.category}</b></p>
+    </h5>
+    <h6>
+      <p><a href="${m.website}" target="_blank">${m.website}</a></p>
+      <p>${m.address}</p>
+      <p>${m.city}</p>
+      <p>${m.country}</p>
+    </h6>`;
+    let infowindow = new google.maps.InfoWindow({
+      content: contentString
     });
+    let openInfowindow = []
+    // console.log(openInfowindow)
+    marker.addListener('click', function() {
+        if(openInfowindow.length > 0) {
+          openInfowindow[0].close()
+          openInfowindow.pop
+          // console.log(openInfowindow)
+        }
+        infowindow.open(map, this)
+        openInfowindow.push(infowindow)
+        // console.log(openInfowindow)
+    });
+    map.addListener('click', function() {
+      infowindow.close()
+      openInfowindow.pop
+      // console.log(openInfowindow)
+    });
+    // info bulle end
   }
-  let marker = new google.maps.Marker({
-    position: wildcodeschool,
-    map: map,
-    title: 'Wildcode School (Toulouse)',
-    icon: images
-  });
-  marker.addListener('click', function() {
-    infowindow.open(map, marker);
-  });
-  // configuration de l'icone personalisée end
+    // configuration de l'icone personalisée end
 
   // légende
-  var legend = document.getElementById('legend');
-  for (var key in icons) {
-    var type = icons[key];
-    var name = type.name;
-    var icon = type.icon;
-    var div = document.createElement('div');
-    div.className = "row"
-    div.innerHTML = `
-    <div class="col-2 elementLegend">
-      <img class="marqueursLegend" src="${icon}">
-    </div>
-    <div class="col-10 containerLabelLegend elementLegend">
-      <p class="labelLegend">${name}</p>
-    </div>`;
-    legend.appendChild(div);
+  const legend = document.getElementById('legend');
+  function legende(type) {
+    for (category of icons[type]) {
+      const name = category.name;
+      const icon = category.icon;
+      const dejaAffiche = []
+      for(marker of listMarker){
+        if(marker == icon && !dejaAffiche.includes(marker)) {
+          dejaAffiche.push(marker)
+          const div = document.createElement('div');
+          div.className = "row"
+          div.innerHTML = `
+          <div class="col-2 elementLegend">
+            <img class="marqueursLegend" src="${icon}">
+          </div>
+          <div class="col-10 containerLabelLegend elementLegend">
+            <p class="labelLegend">${name}</p>
+          </div>`;
+          legend.appendChild(div);
+        }
+      }
+    }
+  }
+  if(window.location == "http://localhost:3000/") {
+    legende("entreprises")
+  }
+  else if(window.location == "http://localhost:3000/eco") {
+    legende("ecosysteme")
   }
   map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
   // légende end
@@ -317,15 +384,14 @@ let mapWrapper
 let stockageParagraphe
 let initialized = false
 
-const showHome = (texte) => () => {
-
-  fetch ('/markers.json')
+const showHome = (texte, type, filtre) => () => {
+  fetch (`/data/${type}`)
   .then(function(response){
     return response.json()
   })
-  .then( markers => {
+  .then(markers => {
     if(! initialized) {
-      slide.innerHTML = accueil(`${texte}`) + mapHtml
+      slide.innerHTML = accueil(texte) + mapHtml(filtre)
       mapWrapper = document.getElementById('mapWrapper')
       stockageParagraphe = document.getElementById('paragraphe')
       mainDiv.appendChild(lateralMenu)
@@ -395,8 +461,8 @@ const notFound = () => {
 // appel HTML end
 
 // modification url
-page("/", showHome(texteEntreprise))
-page("/eco", showHome(texteEcosysteme))
+page("/", showHome(texteEntreprise, "entreprises", filtreEntreprises))
+page("/eco", showHome(texteEcosysteme, "ecosysteme", filtreEcosysteme))
 page("/admin", showAdmin)
 page("*", notFound)
 
