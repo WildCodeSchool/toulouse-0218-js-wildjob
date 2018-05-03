@@ -12,8 +12,7 @@ const accueil = paragraphe => /* @html */`
       </div>
     </label>
     <div class="menu">
-      <a href="admin" data-toggle="modal"  class="administrateur"  data-target="#modal">Administrateur</a>
-
+      <a href="admin" data-toggle="modal"  class="administrateur"  data-target="#modal">Admin</a>
       <a href="https://wildcodeschool.fr/" class="ecole" target="_blank">L'école</a>
     </div>
   </div>
@@ -594,6 +593,7 @@ const affichage = (entity) => {
   $('#inputType').val(entity.type)
   $('#inputCategory').val(entity.category)
   autoCompletion()
+  page ("/", showHome())
 }
 
 const showAdmin = () => {
