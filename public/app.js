@@ -40,14 +40,20 @@ const texteEntreprise = `94% des élèves formés à la Wild Code School sont en
 // HTML accueil end
 
 // HTML map
-const checkboxEntreprises = /* @html */ `<div class="filtreCheckboxes">
+const checkboxEntreprises = /* @html */ `
+<div class="filtreCheckboxes">
   <input type="checkbox" id="grandGroupe"/>
   <label for="grandGroupe"><p>Grand Groupe</p></label>
-  <input type="checkbox" id="pme"/>
+  <input type="checkbox" id="pme" checked/>
   <label for="pme"><p>PME</p></label>
 </div>`
-const checkboxEcosysteme = /* @html */ `<div class="filtreCheckboxes"></div>`
-const checkboxCommuns = /* @html */ `<div class="filtresCommuns"></div>`
+const checkboxEcosysteme = /* @html */ `
+  <div class="filtreCheckboxes"></div>`
+const checkboxCommuns = /* @html */ `
+<div class="filtresCommuns">
+  <input type="checkbox" id="sudOuest" checked/>
+  <label for="sudOuest"><p>Sud-Ouest</p></label>
+</div>`
 const filtreEntreprises = checkboxEntreprises + checkboxCommuns
 const filtreEcosysteme = checkboxEcosysteme + checkboxCommuns
 
@@ -390,9 +396,13 @@ let mapWrapper
 let stockageParagraphe
 let filterWrapper
 let initialized = false
+let defaultCategoryChecked = ["PME", "Stratup", "Editeur"]
+let defaultAreaChecked = ["Sud-Ouest"]
 
 const showHome = (texte, type, filtre) => (context) => {
-  fetch (`/data/${type}`)
+  let filterCategory = defaultCategoryChecked.join()
+  let filterArea = defaultAreaChecked.join()
+  fetch (`/data/${type}?category=${filterCategory}&area=${filterArea}`)
   .then(function(response){
     return response.json()
   })
@@ -416,6 +426,7 @@ const showHome = (texte, type, filtre) => (context) => {
     }
     initMap(markers, context.path)
   })
+
 }
 
 // const showEco = () => {
@@ -440,7 +451,7 @@ const showAdmin = () => {
     event.preventDefault()
     const inputs = formPost.getElementsByTagName("input")
     for(input of inputs){
-      if(input.name !== ""){
+      if(input.name !== ""){filtre
         data[input.name] = input.value
       }
     }
