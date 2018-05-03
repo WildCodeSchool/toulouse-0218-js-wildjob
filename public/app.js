@@ -195,12 +195,12 @@ const form = (entite) => /* @html */ `<h3>Créer une entreprise/ecole</h3>
       <label for="inputArea">Region</label>
       <select id="inputArea" class="form-control" name="area" value="${entite.area}">
         <option value=""></option>
-        <option value="SW">Sud-Ouest</option>
-        <option value="SE">Sud-Est</option>
-        <option value="NW">Nord-Ouest</option>
-        <option value="NE">Nord-Est</option>
-        <option value="Center">Centre-IdF</option>
-        <option value="World">Monde</option>>
+        <option value="Sud-Ouest">Sud-Ouest</option>
+        <option value="Sud-Est">Sud-Est</option>
+        <option value="Nord-Ouest">Nord-Ouest</option>
+        <option value="Nord-Est">Nord-Est</option>
+        <option value="Centre-IdF">Centre-IdF</option>
+        <option value="Monde">Monde</option>>
       </select>
     </div>
   </div>
