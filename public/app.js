@@ -146,7 +146,7 @@ const sidebar = /* @html */`
 <!-- sidebar end-->`
 // HTML sidebar end
 
-const rechercheEntite = () => /* @html */ `<h3>Modifier une entreprise/ecole</h3>
+const rechercheEntite = () => /* @html */ `<h3>Modifier une entité</h3>
 <form>
   <div class="form-row">
     <div class="col-12">
@@ -155,7 +155,7 @@ const rechercheEntite = () => /* @html */ `<h3>Modifier une entreprise/ecole</h3
   </div>
 </form>`
 
-const form = (entite) => /* @html */ `<h3>Créer une entreprise/ecole</h3>
+const form = (entite) => /* @html */ `<h3>Créer une entité</h3>
 <form id="form-post" method="POST" action="${entite.idContact ? '/contact/' + entite.idContact : '/contact'}">
   <div class="form-row">
     <div class="form-group col-md-6">
@@ -247,20 +247,20 @@ const form = (entite) => /* @html */ `<h3>Créer une entreprise/ecole</h3>
   </div>
   <div class="form-row">
     <div class="form-group col-md-12">
-      <button type="submit" class="btn btn-primary">${entite.idContact ? 'Modifier' : 'Créer'}</button>
+      <button id="submit" type="submit" class="btn">${entite.idContact ? 'Modifier' : 'Créer'}</button>
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-12">
-      <button id="exitAdmin" type="button" class="btn btn-primary">Exit</button>
+      <a href="/"><button id="exitAdmin" type="button" class="btn">Exit</button></a>
     </div>
   </div>
 </form>`
-
 // HTML admin
 const adminHtml = contenu => /* @html */`
 <div class="container titleFormAdmin">
   <h1>Interface Administrateur - Campus Manager</h1>
+
 ${contenu}
 
 </div>`
@@ -593,10 +593,6 @@ const affichage = (entity) => {
   $('#inputType').val(entity.type)
   $('#inputCategory').val(entity.category)
   autoCompletion()
-  exitButton = document.getElementById("exitAdmin")
-  exitButton.addEventListener("click", evt =>
-    location.replace(location.origin)
-  )
 }
 
 const showAdmin = () => {

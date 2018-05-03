@@ -385,7 +385,7 @@ label{
 .modal-backdrop {
   z-index: -1;
 }
-.btn-primary {
+.btn {
     color: #fff;
     background-color: #93238D;
     border-color: #9353aO;

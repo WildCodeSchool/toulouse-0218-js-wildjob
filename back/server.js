@@ -49,7 +49,7 @@ const indexHtml = /* @html */ `
           <form id="loginadmin" method="POST" action="/login">
               <input type="text" name="name" class="form-control" placeholder="Name" />
               <input type="password" name="password" class="form-control" placeholder="Password" />
-              <button type="sumbit" class="btn btn-primary btn-lg">Log In</button>
+              <button type="sumbit" class="btn btn-lg">Log In</button>
           </form>
       </div>
     </div>
