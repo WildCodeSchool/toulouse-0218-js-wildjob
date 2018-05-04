@@ -43,14 +43,89 @@ const texteEntreprise = `94% des élèves formés à la Wild Code School sont en
 // HTML accueil end
 
 // HTML map
-const checkboxEntreprises = /* @html */ `<div class="filtreCheckboxes">
-  <input type="checkbox" id="grandGroupe"/>
-  <label for="grandGroupe"><p>Grand Groupe</p></label>
-  <input type="checkbox" id="pme"/>
-  <label for="pme"><p>PME</p></label>
+let statusCheckbox = {
+  esn: "",
+  startup:"checked",
+  pme: "checked",
+  grandGroupe: "checked",
+  agenceWeb: "",
+  collectiviteAssociation: "",
+  editeur: "",
+  coworking:"",
+  incubateurAccelerateur:"",
+  frenchTech: "",
+  clusterNumerique: "checked",
+  ecoleDeCode: "checked",
+  sudOuest: "checked",
+  sudEst: "",
+  nordOuest: "",
+  nordEst: "",
+  centreIDF: "",
+  monde: ""
+}
+const checkboxEntreprises = /* @html */ `
+<div class="filtreCheckboxes">
+  <input type="checkbox" id="esn" ${statusCheckbox.esn}/>
+  <label for="esn">ESN</label>
+  </br>
+  <input type="checkbox" id="startup" ${statusCheckbox.startup}/>
+  <label for="startup">Startup</label>
+  </br>
+  <input type="checkbox" id="pme" ${statusCheckbox.pme}/>
+  <label for="pme">PME</label>
+  </br>
+  <input type="checkbox" id="grandGroupe" ${statusCheckbox.grandGroupe}/>
+  <label for="grandGroupe">Grand Groupe</label>
+  </br>
+  <input type="checkbox" id="agenceWeb" ${statusCheckbox.agenceWeb}/>
+  <label for="agenceWeb">Agence Web</label>
+  </br>
+  <input type="checkbox" id="collectiviteAssociation" ${statusCheckbox.collectiviteAssociation}/>
+  <label for="collectiviteAssociation">Collectivite/ Association</label>
+  </br>
+  <input type="checkbox" id="editeur" ${statusCheckbox.editeur}/>
+  <label for="editeur">Editeur</label>
 </div>`
-const checkboxEcosysteme = /* @html */ `<div class="filtreCheckboxes"></div>`
-const checkboxCommuns = /* @html */ `<div class="filtresCommuns"></div>`
+
+const checkboxEcosysteme = /* @html */ `
+<div class="filtreCheckboxes">
+  <input type="checkbox" id="coworking" ${statusCheckbox.coworking}/>
+  <label for="coworking">Coworking</label>
+  </br>
+  <input type="checkbox" id="incubateurAccelerateur" ${statusCheckbox.incubateurAccelerateur}/>
+  <label for="incubateurAccelerateur">Incubateur/ Accelerateur</label>
+  </br>
+  <input type="checkbox" id="frenchTech" ${statusCheckbox.frenchTech}/>
+  <label for="frenchTech">French Tech</label>
+  </br>
+  <input type="checkbox" id="clusterNumerique" ${statusCheckbox.clusterNumerique}/>
+  <label for="clusterNumerique">Cluster Numerique</label>
+  </br>
+  <input type="checkbox" id="ecoleDeCode" ${statusCheckbox.ecoleDeCode}/>
+  <label for="ecoleDeCode">Ecole de Code</label>
+</div>`
+
+const checkboxCommuns = /* @html */ `
+<h1 class="title2">Zones:</h1>
+<div class="filtresCommuns">
+  <input type="checkbox" id="sudOuest" ${statusCheckbox.sudOuest}/>
+  <label for="sudOuest">Sud-Ouest</label>
+  </br>
+  <input type="checkbox" id="sudEst" ${statusCheckbox.sudEst}/>
+  <label for="sudEst">Sud-Est</label>
+  </br>
+  <input type="checkbox" id="nordOuest" ${statusCheckbox.nordOuest}/>
+  <label for="nordOuest">Nord-Ouest</label>
+  </br>
+  <input type="checkbox" id="nordEst" ${statusCheckbox.nordEst}/>
+  <label for="nordEst">Nord-Est</label>
+  </br>
+  <input type="checkbox" id="centreIDF" ${statusCheckbox.centreIDF}/>
+  <label for="centreIDF">Centre IdF</label>
+  </br>
+  <input type="checkbox" id="monde" ${statusCheckbox.monde}/>
+  <label for="monde">Monde</label>
+</div>`
 const filtreEntreprises = checkboxEntreprises + checkboxCommuns
 const filtreEcosysteme = checkboxEcosysteme + checkboxCommuns
 
@@ -64,9 +139,9 @@ const mapHtml = filtre => /* @html */`
         <div class="container">
           <div class="row">
             <input type="checkbox" id="clickMe"/>
-            <div class="col-5 col-sm-4 col-md-3 col-lg-2 filter">
-              <div class="mask">
-                <h1>Filtres:</h1>
+            <div class="col-6 col-sm-5 col-md-4 col-lg-3 filter">
+              <div id="mask">
+                <h1 class="title1">Filtres:</h1>
                 <label for="clickMe"><img class="cross" alt="retour" src="img/Navigation/ferme.png"/></label>
                 ${filtre}
               </div>
@@ -97,7 +172,9 @@ const mapHtml = filtre => /* @html */`
   </div>
   <!--map end-->
 </div>`
-const maps = /* @html */ `<div id="map"></div>
+
+const maps = /* @html */ `
+<div id="map"></div>
 <div id="legend" class="container" style="right:40px;">
   <div class="row">
     <div class="col-12 elementLegend">
@@ -105,6 +182,12 @@ const maps = /* @html */ `<div id="map"></div>
     </div>
   </div>
 </div>`
+
+const mask = filtre => /* @html */`
+  <h1 class="title1">Filtres:</h1>
+  <label for="clickMe"><img class="cross" alt="retour" src="img/Navigation/ferme.png"/></label>
+  ${filtre}
+`
 // HTML map end
 
 // HTML sidebar
@@ -288,6 +371,9 @@ ${contenu}
 
 // HTML admin end
 
+let categoryEntreprises = ["ESN", "Startup", "PME", "Grand Groupe", "Agence Web", "Collectivite/ Association", "Editeur"]
+let categoryEcosysteme = ["Coworking", "Incubateur/ Accelerateur", "French Tech", "Cluster Numerique", "Ecole de code"]
+let area = ["Sud-Ouest", "Sud-Est", "Nord-Ouest", "Nord-Est", "Centre IdF", "Monde"]
 // marqueurs et légende
 function initMap(markers, path) {
 
@@ -297,9 +383,7 @@ function initMap(markers, path) {
     entreprises: [],
     ecosysteme: []
   };
-  let categoryEntreprises = ["ESN", "Startup", "PME", "Grand Groupe", "Agence Web", "Collectivite/ Association", "Editeur"]
   let templateEntreprises
-  let categoryEcosysteme = ["Coworking", "Incubateur/ Accelerateur", "French Tech", "Cluster Numerique", "Ecole de code"]
   let templateEcosysteme
   let i = 1
   for(category of categoryEntreprises){
@@ -466,10 +550,15 @@ lateralMenu.innerHTML = sidebar
 
 let mapWrapper
 let stockageParagraphe
+let filterWrapper
 let initialized = false
+let defaultCategoryChecked = ["PME", "Grand Groupe", "Startup", "Ecole de Code", "Cluster Numerique"]
+let defaultAreaChecked = ["Sud-Ouest"]
 
 const showHome = (texte, type, filtre) => (context) => {
-  fetch (`/data/${type}`)
+  let filterCategory = defaultCategoryChecked.join()
+  let filterArea = defaultAreaChecked.join()
+  fetch (`/data/${type}?category=${filterCategory}&area=${filterArea}`)
   .then(function(response){
     return response.json()
   })
@@ -478,6 +567,7 @@ const showHome = (texte, type, filtre) => (context) => {
       slide.innerHTML = accueil(texte) + mapHtml(filtre)
       mapWrapper = document.getElementById('mapWrapper')
       stockageParagraphe = document.getElementById('paragraphe')
+      filterWrapper = document.getElementById('mask')
       mainDiv.appendChild(lateralMenu)
       fullpageDiv = $('#fullpage')
       fullpageDiv.fullpage({
@@ -488,11 +578,62 @@ const showHome = (texte, type, filtre) => (context) => {
     else {
       stockageParagraphe.innerHTML = texte
       mapWrapper.innerHTML = maps
+      filterWrapper.innerHTML = mask(filtre)
     }
-
     initMap(markers, context.path)
+    for(let id in statusCheckbox) {
+      $('#' + id).prop('checked', statusCheckbox[id] !== '')
+    }
+    $("#mask [type='checkbox']").change(function(){
+      const checkbox = $(this)
+      const isChecked = checkbox.is(':checked')
+      const checkboxId = checkbox.attr('id')
+      const label = $(`[for="${checkboxId}"]`).text()
+
+      if(isChecked == true) {
+        statusCheckbox[checkboxId] = "checked"
+        if (categoryEntreprises.includes(label) || categoryEcosysteme.includes(label)) {
+          defaultCategoryChecked.push(label)
+          console.log(defaultCategoryChecked)
+        }
+        else if (area.includes(label)) {
+          defaultAreaChecked.push(label)
+          console.log(defaultAreaChecked)
+        }
+        page(context.path)
+      }
+
+      if(isChecked == false) {
+        // statusCheckbox[checkboxId] = ""
+        // for (i = 0; i < defaultCategoryChecked.length; i++) {
+        //   for (category of defaultCategoryChecked) {
+        //     if (label == category) {
+        //       defaultCategoryChecked.splice(i, 1)
+        //     }
+        //   }
+        // }
+        statusCheckbox[checkboxId] = ""
+        let idx
+        if (categoryEntreprises.includes(label) || categoryEcosysteme.includes(label)) {
+          idx = defaultCategoryChecked.indexOf(label)
+          if(idx !== -1) {
+            defaultCategoryChecked.splice(idx, 1)
+            console.log(defaultCategoryChecked)
+          }
+        }
+        else if (area.includes(label)) {
+          idx = defaultAreaChecked.indexOf(label)
+          if(idx !== -1) {
+            defaultAreaChecked.splice(idx, 1)
+            console.log(defaultAreaChecked)
+          }
+        }
+        page(context.path)
+      }
+    })
   })
 }
+
 
 // const showEco = () => {
 //   fetch ('/markers.json')
@@ -580,7 +721,7 @@ const displayEntity = () => {
     event.preventDefault()
     const inputs = formPost.getElementsByClassName("form-control")
     for(input of inputs){
-      if(input.name !== ""){
+      if(input.name !== ""){filtre
         data[input.name] = input.value
       }
     }

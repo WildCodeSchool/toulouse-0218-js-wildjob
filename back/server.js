@@ -95,18 +95,28 @@ app.get("/data", (req, res) => {
 
 app.get("/data/:type", (req, res) => {
   const type = req.params.type
-  const query = `SELECT * FROM Entite WHERE type = "${type}"`
+  const category = req.query.category
+  const area = req.query.area
+  let query = `SELECT * FROM Entite WHERE type = "${type}"`
+  if(category) {
+    const chaineCategory = category.split(",").map(c => `'${c}'`).join()
+    query += ` AND category IN (${chaineCategory})`
+  }
+  if(area) {
+    const chaineArea = area.split(",").map(c => `'${c}'`).join()
+    query += ` AND area IN (${chaineArea})`
+  }
   connection.query(query, (error, data) => {
   if(error) {
     return res.status(500).json({
       error: error.message
     })
   }
-  if(data.length === 0) {
-    return res.status(404).json({
-      error: `Company with id ${dataId} not found`
-    })
-  }
+  // if(data.length === 0) {
+  //   return res.status(404).json({
+  //     error: `Company with id ${dataId} not found`
+  //   })
+  // }
   res.json(data)
   })
 })
