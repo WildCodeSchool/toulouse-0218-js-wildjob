@@ -69,7 +69,7 @@ const checkboxEntreprises = /* @html */ `
   <label for="esn">ESN</label>
   </br>
   <input type="checkbox" id="startup" ${statusCheckbox.startup}/>
-  <label for="startup">Startup</label>
+  <label for="startup">Start Up</label>
   </br>
   <input type="checkbox" id="pme" ${statusCheckbox.pme}/>
   <label for="pme">PME</label>
@@ -81,7 +81,7 @@ const checkboxEntreprises = /* @html */ `
   <label for="agenceWeb">Agence Web</label>
   </br>
   <input type="checkbox" id="collectiviteAssociation" ${statusCheckbox.collectiviteAssociation}/>
-  <label for="collectiviteAssociation">Collectivite/ Association</label>
+  <label for="collectiviteAssociation">Collectivite / Association</label>
   </br>
   <input type="checkbox" id="editeur" ${statusCheckbox.editeur}/>
   <label for="editeur">Editeur</label>
@@ -93,7 +93,7 @@ const checkboxEcosysteme = /* @html */ `
   <label for="coworking">Coworking</label>
   </br>
   <input type="checkbox" id="incubateurAccelerateur" ${statusCheckbox.incubateurAccelerateur}/>
-  <label for="incubateurAccelerateur">Incubateur/ Accelerateur</label>
+  <label for="incubateurAccelerateur">Incubateur / Accelerateur</label>
   </br>
   <input type="checkbox" id="frenchTech" ${statusCheckbox.frenchTech}/>
   <label for="frenchTech">French Tech</label>
@@ -102,7 +102,7 @@ const checkboxEcosysteme = /* @html */ `
   <label for="clusterNumerique">Cluster Numerique</label>
   </br>
   <input type="checkbox" id="ecoleDeCode" ${statusCheckbox.ecoleDeCode}/>
-  <label for="ecoleDeCode">Ecole de Code</label>
+  <label for="ecoleDeCode">Ecole de code</label>
 </div>`
 
 const checkboxCommuns = /* @html */ `
@@ -121,7 +121,7 @@ const checkboxCommuns = /* @html */ `
   <label for="nordEst">Nord-Est</label>
   </br>
   <input type="checkbox" id="centreIDF" ${statusCheckbox.centreIDF}/>
-  <label for="centreIDF">Centre IdF</label>
+  <label for="centreIDF">Centre-IdF</label>
   </br>
   <input type="checkbox" id="monde" ${statusCheckbox.monde}/>
   <label for="monde">Monde</label>
@@ -371,9 +371,9 @@ ${contenu}
 
 // HTML admin end
 
-let categoryEntreprises = ["ESN", "Startup", "PME", "Grand Groupe", "Agence Web", "Collectivite/ Association", "Editeur"]
-let categoryEcosysteme = ["Coworking", "Incubateur/ Accelerateur", "French Tech", "Cluster Numerique", "Ecole de code"]
-let area = ["Sud-Ouest", "Sud-Est", "Nord-Ouest", "Nord-Est", "Centre IdF", "Monde"]
+let categoryEntreprises = ["ESN", "Start Up", "PME", "Grand Groupe", "Agence Web", "Collectivite / Association", "Editeur"]
+let categoryEcosysteme = ["Coworking", "Incubateur / Accelerateur", "French Tech", "Cluster Numerique", "Ecole de code"]
+let area = ["Sud-Ouest", "Sud-Est", "Nord-Ouest", "Nord-Est", "Centre-IdF", "Monde"]
 // marqueurs et légende
 function initMap(markers, path) {
 
@@ -552,7 +552,7 @@ let mapWrapper
 let stockageParagraphe
 let filterWrapper
 let initialized = false
-let defaultCategoryChecked = ["PME", "Grand Groupe", "Startup", "Ecole de Code", "Cluster Numerique"]
+let defaultCategoryChecked = ["PME", "Grand Groupe", "Start Up", "Ecole de code", "Cluster Numerique"]
 let defaultAreaChecked = ["Sud-Ouest"]
 
 const showHome = (texte, type, filtre) => (context) => {
