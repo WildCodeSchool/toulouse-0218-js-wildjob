@@ -155,8 +155,8 @@ app.post("/contact", (req, res) => {
       let lng = json.results["0"].geometry.location.lng
       const query = `INSERT INTO Entite (name, address, mail, website, phone, type, category, area, city, country, lat,
                     lng, job, intern, internJob)
-                    VALUES ("${newContact.name}", "${newContact.address}", "${newContact.mail}", "${newContact.website}",
-                            "${newContact.phone}", "${newContact.type}", "${newContact.category}", "${newContact.area}",
+                    VALUES ("${newContact.name}", "${newContact.address}", "${newContact.mail ? newContact.mail : ""}", "${newContact.website}",
+                            "${newContact.phone ? newContact.phone : ""}", "${newContact.type}", "${newContact.category}", "${newContact.area}",
                             "${newContact.city}", "${newContact.country}", ${lat}, ${lng}, ${newContact.job ? newContact.job : 0},
                             ${newContact.intern ? newContact.intern : 0}, ${newContact.internJob ? newContact.internJob : 0} )`
       connection.query(query, (error, result) => {
@@ -191,9 +191,9 @@ app.post("/contact/:id", (req, res) => {
       }
       let lat = json.results["0"].geometry.location.lat
       let lng = json.results["0"].geometry.location.lng
-      const query = `UPDATE Entite SET name = "${updatedContact.name}", address = "${updatedContact.address}", mail = "${updatedContact.mail}", website = "${updatedContact.website}",
-            phone = "${updatedContact.phone}", type = "${updatedContact.type}", category = "${updatedContact.category}", area = "${updatedContact.area}",
-            city = "${updatedContact.city}", country = "${updatedContact.country}", lat = ${lat}, ng = ${lng}, job = "${updatedContact.job}",
+      const query = `UPDATE Entite SET name = "${updatedContact.name}", address = "${updatedContact.address}", mail = "${updatedContact.mail ? updatedContact.mail : ""}", website = "${updatedContact.website}",
+            phone = "${updatedContact.phone ? updatedContact.phone : ""}", type = "${updatedContact.type}", category = "${updatedContact.category}", area = "${updatedContact.area}",
+            city = "${updatedContact.city}", country = "${updatedContact.country}", lat = ${lat}, lng = ${lng}, job = "${updatedContact.job}",
             intern = "${updatedContact.intern}", internJob = "${updatedContact.internJob}" WHERE idContact = ${id}`
       connection.query(query, (error, result) => {
         if(error) {
