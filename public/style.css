@@ -287,11 +287,31 @@ label{
 #mask{
   display:none;
 }
-#mask h1{
+.title1{
   position:absolute;
   top:120px;
   left:20px;
   color:#9353a0;
+}
+.title2{
+  position:absolute;
+  top:380px;
+  left:20px;
+  color:#9353a0;
+}
+.filtreCheckboxes{
+  position:absolute;
+  top:180px;
+  left:30px;
+  max-width: 200px;
+  color:#ff00ff;
+}
+.filtresCommuns{
+  position:absolute;
+  top:440px;
+  left:30px;
+  max-width: 200px;
+  color:#ff00ff;
 }
 .cross{
   position:absolute;

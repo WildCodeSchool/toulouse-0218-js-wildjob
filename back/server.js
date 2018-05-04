@@ -89,11 +89,11 @@ app.get("/data/:type", (req, res) => {
         error: error.message
       })
     }
-    if(data.length === 0) {
-      return res.status(404).json({
-        error: `Not found`
-      })
-    }
+    // if(data.length === 0) {
+    //   return res.status(404).json({
+    //     error: `Not found`
+    //   })
+    // }
     res.json(data)
   })
 })
