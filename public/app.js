@@ -622,6 +622,10 @@ const affichage = (entity) => {
   $('#inputType').val(entity.type)
   $('#inputCategory').val(entity.category)
   autoCompletion()
+  exitButton = document.getElementById("exitAdmin")
+  exitButton.addEventListener("click", evt =>
+    location.replace(location.origin)
+  )
 }
 
 
