@@ -78,7 +78,7 @@ const checkboxEntreprises = /* @html */ `
   <label for="agenceWeb">Agence Web</label>
   </br>
   <input type="checkbox" id="collectiviteAssociation" ${statusCheckbox.collectiviteAssociation}/>
-  <label for="collectiviteAssociation">Collectivité / Association</label>
+  <label for="collectiviteAssociation">Collectivite/ Association</label>
   </br>
   <input type="checkbox" id="editeur" ${statusCheckbox.editeur}/>
   <label for="editeur">Editeur</label>
@@ -90,13 +90,13 @@ const checkboxEcosysteme = /* @html */ `
   <label for="coworking">Coworking</label>
   </br>
   <input type="checkbox" id="incubateurAccelerateur" ${statusCheckbox.incubateurAccelerateur}/>
-  <label for="incubateurAccelerateur">Incubateur / Accélerateur</label>
+  <label for="incubateurAccelerateur">Incubateur/ Accelerateur</label>
   </br>
   <input type="checkbox" id="frenchTech" ${statusCheckbox.frenchTech}/>
   <label for="frenchTech">French Tech</label>
   </br>
   <input type="checkbox" id="clusterNumerique" ${statusCheckbox.clusterNumerique}/>
-  <label for="clusterNumerique">Cluster Numérique</label>
+  <label for="clusterNumerique">Cluster Numerique</label>
   </br>
   <input type="checkbox" id="ecoleDeCode" ${statusCheckbox.ecoleDeCode}/>
   <label for="ecoleDeCode">Ecole de Code</label>
@@ -136,7 +136,7 @@ const mapHtml = filtre => /* @html */`
         <div class="container">
           <div class="row">
             <input type="checkbox" id="clickMe"/>
-            <div class="col-5 col-sm-4 col-md-3 col-lg-2 filter">
+            <div class="col-6 col-sm-5 col-md-4 col-lg-3 filter">
               <div id="mask">
                 <h1 class="title1">Filtres:</h1>
                 <label for="clickMe"><img class="cross" alt="retour" src="img/Navigation/ferme.png"/></label>
@@ -311,6 +311,9 @@ const adminHtml = /* @html */`
 </div>`
 // HTML admin end
 
+let categoryEntreprises = ["ESN", "Startup", "PME", "Grand Groupe", "Agence Web", "Collectivite/ Association", "Editeur"]
+let categoryEcosysteme = ["Coworking", "Incubateur/ Accelerateur", "French Tech", "Cluster Numerique", "Ecole de code"]
+let area = ["Sud-Ouest", "Sud-Est", "Nord-Ouest", "Nord-Est", "Centre IdF", "Monde"]
 // marqueurs et légende
 function initMap(markers, path) {
 
@@ -320,9 +323,7 @@ function initMap(markers, path) {
     entreprises: [],
     ecosysteme: []
   };
-  let categoryEntreprises = ["ESN", "Startup", "PME", "Grand Groupe", "Agence Web", "Collectivite/ Association", "Editeur"]
   let templateEntreprises
-  let categoryEcosysteme = ["Coworking", "Incubateur/ Accelerateur", "French Tech", "Cluster Numerique", "Ecole de code"]
   let templateEcosysteme
   let i = 1
   for(category of categoryEntreprises){
@@ -467,7 +468,7 @@ let mapWrapper
 let stockageParagraphe
 let filterWrapper
 let initialized = false
-let defaultCategoryChecked = ["PME", "Grand Groupe", "Startup", "Ecole de Code", "Cluster Numérique"]
+let defaultCategoryChecked = ["PME", "Grand Groupe", "Startup", "Ecole de Code", "Cluster Numerique"]
 let defaultAreaChecked = ["Sud-Ouest"]
 
 const showHome = (texte, type, filtre) => (context) => {
@@ -507,7 +508,14 @@ const showHome = (texte, type, filtre) => (context) => {
 
       if(isChecked == true) {
         statusCheckbox[checkboxId] = "checked"
-        defaultCategoryChecked.push(label)
+        if (categoryEntreprises.includes(label) || categoryEcosysteme.includes(label)) {
+          defaultCategoryChecked.push(label)
+          console.log(defaultCategoryChecked)
+        }
+        else if (area.includes(label)) {
+          defaultAreaChecked.push(label)
+          console.log(defaultAreaChecked)
+        }
         page(context.path)
       }
 
@@ -521,9 +529,20 @@ const showHome = (texte, type, filtre) => (context) => {
         //   }
         // }
         statusCheckbox[checkboxId] = ""
-        const idx = defaultCategoryChecked.indexOf(label)
-        if(idx !== -1) {
-          defaultCategoryChecked.splice(idx, 1)
+        let idx
+        if (categoryEntreprises.includes(label) || categoryEcosysteme.includes(label)) {
+          idx = defaultCategoryChecked.indexOf(label)
+          if(idx !== -1) {
+            defaultCategoryChecked.splice(idx, 1)
+            console.log(defaultCategoryChecked)
+          }
+        }
+        else if (area.includes(label)) {
+          idx = defaultAreaChecked.indexOf(label)
+          if(idx !== -1) {
+            defaultAreaChecked.splice(idx, 1)
+            console.log(defaultAreaChecked)
+          }
         }
         page(context.path)
       }
