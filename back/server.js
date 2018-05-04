@@ -116,7 +116,6 @@ app.get("/data/:type", (req, res) => {
 //debut modal//
 app.post("/login", (req, res) => {
   const query =`select * from Admin where name='${req.body.name}' and password='${req.body.password}'`
-  console.log(query)
   connection.query(query, (error, result) => {
     if(error) {
       return res.status(500).json({

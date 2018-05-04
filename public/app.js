@@ -155,6 +155,22 @@ const rechercheEntite = () => /* @html */ `<h3>Modifier une entité</h3>
   </div>
 </form>`
 
+const optionEntreprise = `<option value=""></option>
+<option value="ESN">ESN</option>
+<option value="Start Up">Start Up</option>
+<option value="PME">PME</option>
+<option value="Grand Groupe">Grand Groupe</option>
+<option value="Agence Web">Agence Web</option>
+<option value="Collectivite / Association">Collectivité / Association</option>
+<option value="Editeur">Editeur</option>`
+
+const optionEcosysteme = `<option value=""></option>
+<option value="Coworking">Coworking</option>
+<option value="Incubateur / Accelerateur">Incubateur / Accelerateur</option>
+<option value="French Tech">French Tech</option>
+<option value="Cluster Numerique">Cluster Numérique</option>
+<option value="Ecole de code">Ecole de code</option>`
+
 const form = (entite) => /* @html */ `<h3>Créer une entité</h3>
 <form id="form-post" method="POST" action="${entite.idContact ? '/contact/' + entite.idContact : '/contact'}">
   <div class="form-row">
@@ -261,9 +277,15 @@ const adminHtml = contenu => /* @html */`
 <div class="container titleFormAdmin">
   <h1>Interface Administrateur - Campus Manager</h1>
 
+  <div id="success" class="alert alert-success" role="alert">
+    This is a success alert—check it out!
+  </div>
+
 ${contenu}
 
 </div>`
+
+
 // HTML admin end
 
 // marqueurs et légende
@@ -547,7 +569,6 @@ const autoCompletion = () => {
       $('#inputResearch').val(item)
       affichage(item)
       displayEntity()
-      console.log(item);
     },
   })
 }
@@ -589,11 +610,20 @@ const displayEntity = () => {
 
 const affichage = (entity) => {
   mainDiv.innerHTML = adminHtml(rechercheEntite() + form(entity))
+  $('#inputType').change(function(){
+    if($(this).val() == 'entreprises'){
+      $('#inputCategory').html(optionEntreprise)
+    }
+    else {
+      $('#inputCategory').html(optionEcosysteme)
+    }
+  })
   $('#inputArea').val(entity.area)
   $('#inputType').val(entity.type)
   $('#inputCategory').val(entity.category)
   autoCompletion()
 }
+
 
 const showAdmin = () => {
   const emptyEntity = {
