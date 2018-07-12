@@ -39,7 +39,7 @@ CREATE TABLE `Admin` (
 --
 
 INSERT INTO `Admin` (`id`, `name`, `password`) VALUES
-(1, 'justineAdmin', 'wildcodeschooltoulouse');
+(1, 'AdminLogin', 'AdminPassord');
 
 -- --------------------------------------------------------
 
