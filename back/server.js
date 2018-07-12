@@ -14,6 +14,10 @@ const app = express()
 // Il faut transformer ça en
 // /home/wilder/Documents/projet2/toulouse-0218-js-wildjob/public
 const staticPath = path.normalize(`${__dirname}/../public`)
+
+// Réglage du port d'écoute
+const port = process.env.PORT || 3000
+
 app.use(express.static(staticPath))
 app.use(bodyParser.json())
 
@@ -240,5 +244,5 @@ app.get('*', (req, res) => {
   res.send(indexHtml)
 })
 
-app.listen(3000)
-console.log('WASSUP BROOOOO ?!?! \nListening on http://localhost:3000')
+app.listen(port)
+console.log(`WASSUP BROOOOO ?!?! \nListening on port ${port}`)
