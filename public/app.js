@@ -39,7 +39,7 @@ const accueil = paragraphe => /* @html */`
 
 
 const texteEcosysteme = `La Wild Code School est une école de code <span>dont chaque campus est connecté à son écosystème local</span>`
-const texteEntreprise = `94% des élèves formés à la Wild Code School sont en stage/emploi <span>un mois après la fin de leur formation de développeur</span>`
+const texteEntreprise = `87% des élèves formés à la Wild Code School sont en poste <span>un an après la fin de leur formation de développeur</span>`
 // HTML accueil end
 
 // HTML map
