@@ -245,4 +245,4 @@ app.get('*', (req, res) => {
 })
 
 app.listen(port)
-console.log(`WASSUP BROOOOO ?!?! \nListening on port ${port}`)
+console.log(`WASSUP BROOOOO ?!?! \nListening on http://localhost:${port}`)
