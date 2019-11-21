@@ -27,7 +27,7 @@ const middleware = (req, res, next) => {
 app.use(middleware)
 
 
-const indexHtml = /* @html */ `
+const indexHtml =/* html */`
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -245,4 +245,4 @@ app.get('*', (req, res) => {
 })
 
 app.listen(port)
-console.log(`WASSUP BROOOOO ?!?! \nListening on port ${port}`)
+console.log(`WASSUP BROOOOO ?!?! \nListening on http://localhost:${port}`)

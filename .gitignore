@@ -1,3 +1,4 @@
 node_modules
 package-lock.json
-db-settings.json
+db-settings.sample.json
+db.sql

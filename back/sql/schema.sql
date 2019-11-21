@@ -22,6 +22,8 @@ SET time_zone = "+00:00";
 -- Base de données :  `wildjob_app`
 --
 
+USE wildjob_app;
+
 -- --------------------------------------------------------
 
 --
@@ -39,7 +41,7 @@ CREATE TABLE `Admin` (
 --
 
 INSERT INTO `Admin` (`id`, `name`, `password`) VALUES
-(1, 'justineAdmin', 'wildcodeschooltoulouse');
+(1, 'AdminLogin', 'AdminPassord');
 
 -- --------------------------------------------------------
 
