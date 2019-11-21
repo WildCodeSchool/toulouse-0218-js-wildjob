@@ -23,7 +23,7 @@ const middleware = (req, res, next) => {
 app.use(middleware)
 
 
-const indexHtml = /* @html */ `
+const indexHtml =/* html */`
 <!DOCTYPE html>
 <html lang="fr">
 <head>
